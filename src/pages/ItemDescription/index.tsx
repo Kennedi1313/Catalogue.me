@@ -58,7 +58,7 @@ function ItemDescription(){
             </PageHeader>
             <article className="item">
                 <header>
-                    <img src={ avatar !== '' ? 'http://localhost:3333/' + avatar_url : 'http://localhost:3333/' + default_url} alt="ps5"/>
+                    <img src={ avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url} alt="ps5"/>
                     <div className="info">
                         <h2>{name}</h2>
                         <p>

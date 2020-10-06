@@ -30,7 +30,7 @@ const ShopItem: React.FC<itemProps> = ( { item } ) => {
         <article className="shop-item">
             <a href={'/shop/'+item.shop_id+'/item/'+item.id}>
                 <header>
-                    <img src={ item.avatar !== '' ? 'http://localhost:3333/' + avatar_url : 'http://localhost:3333/' + default_url} alt="ps5"/>
+                    <img src={ item.avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url} alt="ps5"/>
                     <div>
                         <strong>{item.name}</strong>
                     </div>
