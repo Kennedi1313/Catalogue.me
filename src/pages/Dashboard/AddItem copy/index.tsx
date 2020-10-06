@@ -60,7 +60,7 @@ const AddItem: React.FC = () => {
     return (
         <div id="page-item-form" >
             <main>
-                <h2><h1>Cadastro de Item</h1> <p>Cadastre aqui algumas informações sobre o item que estará na sua loja.</p></h2>
+                <h1>Cadastro de Item</h1>
                 <form onSubmit={handleCreate}>
                 <fieldset className="add-item">
                     <legend>Dados do Item</legend>
