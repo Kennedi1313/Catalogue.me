@@ -1,0 +1,149 @@
+.button-back {
+    text-decoration: none;
+    color: antiquewhite;
+    float: right;
+    font: 700 1.6rem Poppins;
+    margin-right: 0.8rem;
+    margin-top: 0.4rem;
+}
+
+#item-description {
+    width: 100vw;
+    height: 100%;
+}
+.item {
+    width: 100vw;
+    height: 100%;
+    margin: 3.2rem auto;
+    background-color: snow;
+    border: 1px solid snow;
+    color: black;
+    border-radius: 0.8rem;
+    margin-top: 2.4rem;
+}
+
+.item header {
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 20rem 1fr;
+    grid-template-areas: 
+    "image"
+    "info";
+}
+
+.item header img {
+    align-self: center;
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+    margin: 1rem;
+    grid-area: image;
+}
+
+.item header div {
+    margin-top: 2.4rem;
+}
+
+.item header div strong {
+    display: block;
+}
+
+.item > p {
+    padding: 0 2rem;
+}
+
+.item p .description {
+    text-align: justify;
+}
+
+.item footer {
+    padding: 0rem;
+    border-top: 1px solid #2F4F4F;
+    margin-top: 2rem;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.item footer p {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.item footer p strong {
+    font-size: 1.6rem;
+    color: #2F4F4F;
+    display: inline;
+}
+
+.item footer a {
+    width: 100%;
+    height: 5rem;
+    background-color:  #2F4F4F;
+    color: white;
+    border-radius: 0.8rem;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    padding-right: 4rem;
+    text-decoration: none;
+}
+
+.item footer a img{
+    width: 4rem;
+    height: 4rem;
+}
+
+.item footer a:hover {
+    background-color: green;
+}
+
+.item footer p strong {
+    margin-left: 1.6rem;
+}
+
+@media(min-width: 700px) {
+    .item header, .shop-item footer {
+        padding: 1rem;
+    }
+    .item > p {
+        padding: 0 3.2rem;
+    }
+
+    .item {
+        width: 90vw;
+        height: 70vh;
+        margin-top: -4rem;
+    }
+
+    .item header {
+        padding: 2rem 2rem;
+        display: grid;
+        grid-template-columns: 50% 1fr;
+        grid-template-rows: 40rem;
+        grid-template-areas: 
+        "image info";
+    }
+
+    .item header img {
+        width: 90%;
+        height: 90%;
+        grid-area: image;
+    }
+    .item footer a {
+        padding-right: 10rem;
+        font-size: 2rem;
+    }
+
+    .item footer p strong {
+        font-size: 3rem;
+    }
+
+    .button-back {
+        margin-left: 45rem;
+    }
+}

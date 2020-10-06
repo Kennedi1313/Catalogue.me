@@ -1,0 +1,58 @@
+.page-header {
+    display: flex;
+    flex-direction: column;
+    background-color: #2F4F4F;
+}
+
+.page-header .top-bar-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: floralwhite;
+    padding: 1.6rem 0;
+}
+
+.page-header .top-bar-container a {
+    text-decoration: none;
+    color: antiquewhite;
+    font: 700 2.3rem Rancho;
+}
+
+.page-header .header-content {
+    width: 96%;
+    margin: 0 auto;
+    position: relative;
+    margin: 0.5rem auto;
+    color: antiquewhite;
+    font: 700 2rem Poppins;
+}
+
+.page-header .header-content p {
+    width: 96%;
+    margin: 0 auto;
+    position: relative;
+    margin: 0.5rem auto;
+    color: antiquewhite;
+    font: 400 1.6rem Poppins;
+}
+
+@media(min-width: 700px) {
+    .page-header {
+        height: 20rem;
+    }
+    .page-header .top-bar-container {
+        max-width: 1100px;;
+    }
+    .page-header .header-content {
+        flex: 1;
+        max-width: 740px;
+        margin: 0 auto;
+        padding-bottom: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}

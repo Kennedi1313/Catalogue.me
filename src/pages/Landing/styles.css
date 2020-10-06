@@ -1,0 +1,194 @@
+#page-landing {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: antiquewhite;
+    background-color: #2F4F4F;
+}
+
+#page-landing-content {
+    background-color: #2F4F4F;
+    width: 100%;
+    display: flex;
+    padding: 3rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.landing p {
+    padding: 1rem;
+}
+
+.landing .subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    font-size: 2.2rem;
+}
+
+.logo-container {
+    height: 5rem;
+    width: 100%;
+    text-align: right;
+    background-color: antiquewhite;
+    padding: 1rem;
+    font: 500 1rem Poppins;
+
+}
+
+.logo-container a {
+    text-decoration: none;
+}
+
+.logo-container .nav {
+    height: 3.2rem;
+    display: flex;
+    float: right;
+}
+
+.logo-container .nav a {
+    height: 3.2rem;
+    line-height: 3.2rem;
+    color: antiquewhite;
+    background-color: #2F4F4F;
+    margin-left: 0.2rem;
+    width: 8rem;
+    text-align: center;
+    border: 1px solid #2F4F4F;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    transition: color 0.2s;
+    
+}
+
+.logo-container a:hover {
+    color: #2F4F4F;
+    background-color: antiquewhite;
+}
+
+.logo-container .logo {
+    float: left;
+    font: 500 2.5rem Rancho;
+    border: none;
+    color: #2F4F4F;
+    background-color: antiquewhite;
+}
+
+.hero-image {
+    border-radius: 3rem;
+    width: 100%;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin: 3.2rem 0;
+    margin-bottom: 2rem;
+}
+
+.buttons-container a {
+    width: 21rem;
+    height: 10.4rem;
+    border-radius: 0.8rem;
+    font: 700 1.4rem Poppins;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: #2F4F4F;
+    background-color: antiquewhite;
+    transition: background-color 0.2s;
+}
+
+.buttons-container a:first-child {
+    margin-right: 1.6rem;
+}
+
+.buttons-container a:hover {
+    background-color: rgb(161, 160, 159);
+}
+
+.footer-container {
+    background-color: antiquewhite;
+    color: #2F4F4F;
+    width: 100%;
+    height: 12rem;
+    display: flex;
+    flex-direction: row;
+    font: 400 1.4rem Poppins;
+    text-align: center;
+}
+
+.footer-container .conections {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    border-right: 1px solid;
+    padding: 0.4rem;
+}
+.footer-container .suport {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    border-right: 1px solid;
+    padding: 0.4rem;
+}
+.footer-container .contact {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    padding: 0.4rem;
+}
+
+.footer-container a {
+    text-decoration: none;
+    color: #2F4F4F;
+}
+
+@media (min-width: 800px) {
+    #page-landing-content {
+        max-width: 1100px;
+        margin-top: 5rem;
+        display: grid;
+        grid-template-rows: 50px 100px 1fr;
+        grid-template-columns: 2fr 1fr;
+
+        grid-template-areas: 
+            "subtitle hero"
+            "text hero"
+            "button hero";
+    }
+    .subtitle {
+        grid-area: subtitle;
+    }
+    .landing .subtitle {
+        font-size: 3rem;
+    }
+    .text {
+        grid-area: text-first;
+        text-align: center;
+    }
+    .buttons-area {
+        grid-area: button;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .buttons-area .buttons-container a{
+        padding: 2rem;
+        width: 30rem;
+    }
+    .hero-image {
+        grid-area: hero;
+        width: 100%;
+    }
+    .footer-container {
+        position: absolute;
+        bottom: 0;
+        margin-top: 2rem;
+    }
+}

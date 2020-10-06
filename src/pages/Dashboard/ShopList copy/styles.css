@@ -1,0 +1,166 @@
+
+#page-shop-list {
+    width: 100%;
+    height: 100%;
+    background-color: antiquewhite;
+    font: 700 3rem Rancho;
+}
+
+#search-itens {
+    width: 100%;
+    margin-top: 0.3rem;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    margin-bottom: 0.5rem;
+}
+
+#search-itens .selects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+}
+
+
+#page-shop-list main {
+    background-color: antiquewhite !important;
+    width: 100%;
+    max-width: 100%;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+#page-shop-list main .container {
+    max-width: 800px;
+    margin: 0rem auto;
+    text-align: justify;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+}
+#page-shop-list form .input-block {
+    margin-top: 1rem;
+}
+
+#page-shop-list #search-itens button {
+    width: 100%;
+    height: 5.6rem;
+    background-color: #426f42;
+    color: antiquewhite;
+    border: 0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-top: 2.9rem;
+}
+
+#page-shop-list #search-itens button:hover {
+    background-color:#2f4f2f;
+}
+
+
+.page-header-dash {
+    display: flex;
+    flex-direction: column;
+    background-color: #2F4F4F;
+}
+
+.page-header-dash .top-bar-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: floralwhite;
+    padding: 1.6rem 0;
+}
+
+.page-header-dash .top-bar-container a {
+    text-decoration: none;
+    color: antiquewhite;
+    font: 700 2.3rem Rancho;
+}
+
+.page-header-dash .header-content {
+    width: 96%;
+    margin: 0 auto;
+    position: relative;
+    margin: 0.5rem auto;
+    color: antiquewhite;
+    font: 700 2rem Poppins;
+}
+
+.page-header-dash .header-content p {
+    width: 96%;
+    margin: 0 auto;
+    position: relative;
+    margin: 0.5rem auto;
+    color: antiquewhite;
+    font: 400 1.6rem Poppins;
+}
+
+#page-shop-list main h2 {
+    margin-bottom: 2rem;
+    margin-top: 0;
+    text-align: center;
+    background-color: #2F4F4F;
+    color: antiquewhite;
+    height: 8rem;
+    width: 100%;
+    font: 400 1.8rem Poppins;
+    justify-self: center;
+}
+
+@media(min-width: 800px) {
+    #page-shop-list {
+        max-width: 100%;
+    }
+    #page-shop-list main .container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    
+    #page-shop-list #search-itens {
+        grid-template-columns: 1fr 2fr 1fr;
+        column-gap: 5px;
+    }
+    #search-itens .selects {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    #search-itens {
+        height: 6rem;
+    }
+
+    .page-header-dash {
+        height: 15rem;
+        width: 100%;
+    }
+    .page-header-dash .header-content {
+        flex: 1;
+        max-width: 700px;
+        margin: 0 auto;
+        padding-bottom: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    #page-item-form main h2 p {
+        display: none;
+        font: 400 0.2rem Poppins;
+    }
+    #page-item-form main h2 {
+        max-width: 100vw;
+        width: 100vw;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+    }
+}
