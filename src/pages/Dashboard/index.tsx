@@ -71,7 +71,7 @@ function Dashboard() {
                         : 
                         <fieldset className="link-shop">
                             <legend><h2>Copie esse link e envie para os seus clientes!</h2></legend>
-                            <p > <p>{'http://localhost:3000/shop/'+user.shop_id}</p> </p>
+                            <p > <p>{process.env.REACT_APP_API_URL+'/shop/'+user.shop_id}</p> </p>
                         </fieldset>
                     }
                 </div>
