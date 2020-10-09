@@ -120,7 +120,6 @@ function ShopList() {
                         </div>
                     </div>
                 </a>
-                <br></br>
                 <h4>Pesquisar {<SearchIcon/>}</h4>
                 <form onSubmit={searchItems} id="search-itens">
                     <Input 

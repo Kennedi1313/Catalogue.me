@@ -59,8 +59,8 @@
 }
 
 #schedule-div {
-    width: 98%;
-    margin-left: 1%;
+    width: 99.8%;
+    margin-left: 0.1%;
 }
 
 .input-block text{
@@ -96,13 +96,9 @@
     border-radius: 0rem !important;
     background-color: #709292;
 }
-
-.button-abrir h4 {
-    border: 1px solid #253f3f;
+h4 {
     width: 100%;
     padding: 0.5rem;
-    display: grid;
-    grid-template-columns: 90% 1fr;
     margin-top: 1rem;
 }
 
