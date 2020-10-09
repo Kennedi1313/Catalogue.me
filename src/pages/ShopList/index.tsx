@@ -9,7 +9,8 @@ import Select from '../../components/Select'
 import api from '../../services/api'
 import { useParams } from 'react-router-dom'
 import ArrowDown from '@material-ui/icons/ArrowDownwardOutlined';
-import Arrowup from '@material-ui/icons/ArrowUpwardRounded';
+import ArrowUp from '@material-ui/icons/ArrowUpwardOutlined';
+import SearchIcon from '@material-ui/icons/SearchOutlined';
 
 
 interface ParamProps {
@@ -69,7 +70,7 @@ function ShopList() {
     function abrirSchedule() {
         if(mostrarSchedule === 'none'){
             setMostrarSchedule('block')
-            setArrowSchedule(<Arrowup/>)
+            setArrowSchedule(<ArrowUp/>)
         }
         if(mostrarSchedule === 'block'){
             setMostrarSchedule('none')
@@ -78,28 +79,14 @@ function ShopList() {
             
     }
 
-    function abrirPesquisa() {
-        if(mostrarPesquisa === 'none'){
-            setMostrarPesquisa('block')
-            setArrowPesquisa(<Arrowup/>)
-        }
-
-        if(mostrarPesquisa === 'block'){
-            setMostrarPesquisa('none')
-            setArrowPesquisa(<ArrowDown/>)
-        }
-    }
-
     const [mostrarSchedule, setMostrarSchedule] = useState('none')
-    const [mostrarPesquisa, setMostrarPesquisa] = useState('none')
     const [arrowSchedule, setArrowSchedule] = useState(<ArrowDown/>)
-    const [arrowPesquisa, setArrowPesquisa] = useState(<ArrowDown/>)
 
     return (
         <div id="page-shop-list">
             <PageHeader title={shop_name}>
                 <a className="button-abrir" href="#page-shop-list" onClick={abrirSchedule}>
-                <h4>Horários Disponíveis {arrowSchedule}</h4>
+                <h4>Horários de funcionamento {arrowSchedule}</h4>
                     <div id="schedule-div" style = {{display: mostrarSchedule}} className="input-block">
                         <div >
                             
@@ -114,7 +101,7 @@ function ShopList() {
 
                             {schedule.map( (item: {week_day: number, from: number, to: number}) => {
                                 function minutesToHour(min: number){
-                                    return (Math.trunc(min/60)+":"+ Math.trunc(min%60))
+                                    return (Math.trunc(min/60) < 9 ?  '0' + Math.trunc(min/60) : Math.trunc(min/60)) + " : " + (Math.trunc(min%60) < 9 ? '0' + Math.trunc(min%60) :  Math.trunc(min%60))
                                 }
                                 function diaSemana(dia: number){
                                     return dia === 1 ? 'Segunda' : dia === 2 ? 'Terça' : dia === 3 ? 'Quarta' : dia === 4 ? 'Quinta' : dia === 5 ? 'Sexta' : dia === 6 ? 'Sabado' : 'Domingo'
@@ -133,43 +120,43 @@ function ShopList() {
                         </div>
                     </div>
                 </a>
-                <a className="button-abrir" href="#page-shop-list" onClick={abrirPesquisa}>
-                    <h4>Pesquisar {arrowPesquisa}</h4>
-                    <form style = {{display: mostrarPesquisa}} onSubmit={searchItems} id="search-itens">
-                        <Input 
-                            name="name" 
-                            label="Nome" 
-                            type="text"
-                            value={name}
-                            onChange={(e) => {setName(e.target.value)}}
+                <br></br>
+                <h4>Pesquisar {<SearchIcon/>}</h4>
+                <form onSubmit={searchItems} id="search-itens">
+                    <Input 
+                        name="name" 
+                        label="Nome" 
+                        type="text"
+                        value={name}
+                        onChange={(e) => {setName(e.target.value)}}
+                    />
+                    <div className="selects">
+                        <Select 
+                            name="category" 
+                            label="Categoria" 
+                            value={category}
+                            onChange={(e) => {setCategory(e.target.value)}}
+                            options={[
+                                {value: 'product', label: 'Produto'},
+                                {value: 'work', label: 'Serviço'},
+                            ]} 
                         />
-                        <div className="selects">
-                            <Select 
-                                name="category" 
-                                label="Categoria" 
-                                value={category}
-                                onChange={(e) => {setCategory(e.target.value)}}
-                                options={[
-                                    {value: 'product', label: 'Produto'},
-                                    {value: 'work', label: 'Serviço'},
-                                ]} 
-                            />
-                            <Select 
-                                name="price" 
-                                label="Preço" 
-                                value={price}
-                                onChange={(e) => {setPrice(e.target.value)}}
-                                options={[
-                                    {value: 'desc', label: 'Maior para Menor'},
-                                    {value: 'cres', label: 'Menor para Maior'},
-                                ]} 
-                            />
-                        </div>
-                        <button type="submit">
-                            Buscar
-                        </button>
-                    </form>
-                </a>
+                        <Select 
+                            name="price" 
+                            label="Preço" 
+                            value={price}
+                            onChange={(e) => {setPrice(e.target.value)}}
+                            options={[
+                                {value: 'desc', label: 'Maior para Menor'},
+                                {value: 'cres', label: 'Menor para Maior'},
+                            ]} 
+                        />
+                    </div>
+                    <button type="submit">
+                        Buscar
+                    </button>
+                </form>
+
             </PageHeader>
             <main>
                 <div className="container">

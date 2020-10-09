@@ -61,7 +61,6 @@
 #schedule-div {
     width: 98%;
     margin-left: 1%;
-
 }
 
 .input-block text{
@@ -81,11 +80,12 @@
 
 .input-block #schedule input {
     border-radius: 0rem !important;
+    transition: all .2s;
 }
 
 .input-block #schedule-title{
     height: 4rem !important;
-
+    margin-top: 0rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -103,6 +103,7 @@
     padding: 0.5rem;
     display: grid;
     grid-template-columns: 90% 1fr;
+    margin-top: 1rem;
 }
 
 .button-abrir {
