@@ -57,6 +57,60 @@
 #page-shop-list #search-itens button:hover {
     background-color:#2f4f2f;
 }
+
+#schedule-div {
+    width: 98%;
+    margin-left: 1%;
+
+}
+
+.input-block text{
+    background-color: snow;
+    color: #2f4f2f;
+    padding-left: 0.5rem;
+    font: 400 1.6rem Poppins;
+    
+}
+
+.input-block #schedule{
+    height: 4rem !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.input-block #schedule input {
+    border-radius: 0rem !important;
+}
+
+.input-block #schedule-title{
+    height: 4rem !important;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    
+}
+
+.input-block #schedule-title input {
+    border-radius: 0rem !important;
+    background-color: #709292;
+}
+
+.button-abrir h4 {
+    border: 1px solid #253f3f;
+    width: 100%;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 90% 1fr;
+}
+
+.button-abrir {
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+
 @media(min-width: 800px) {
     #page-shop-list {
         max-width: 100vw;
