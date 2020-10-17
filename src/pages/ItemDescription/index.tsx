@@ -51,7 +51,7 @@ function ItemDescription(){
 
     var avatar_url = ''
     var default_url = '/uploads/default.png'
-    var avatar_s3 = 'https://upload-catalogueme.s3-sa-east-1.amazonaws.com/'
+    var avatar_s3 = 'https://upload-catalogueme.'
     var isS3 = false
     
     if(avatar) {
