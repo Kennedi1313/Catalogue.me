@@ -77,8 +77,8 @@ const AddItem: React.FC = () => {
                         value={category}
                         onChange={(e) => {setCategory(e.target.value)}}
                         options={[
-                            {value: 'product', label: 'Produto'},
-                            {value: 'work', label: 'Serviço'},
+                            {value: 'Produto', label: 'Produto'},
+                            {value: 'Serviço', label: 'Serviço'},
                         ]} 
                     />
                     <Input 

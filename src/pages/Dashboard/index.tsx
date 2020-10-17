@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import './styles.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import AddItem from './AddItem copy'
 import ShopList from './ShopList copy'
 import StoreContext from '../../components/Store/Context'
@@ -8,33 +8,18 @@ import api from '../../services/api'
 
 function deslogar() {
     localStorage.removeItem('token')
+    localStorage.removeItem('user')
 }
 
+interface ParamProps {
+    page: string;
+}
+
+
+
 function Dashboard() {
-    const [page, setPage] = useState('');
+    const { page } = useParams<ParamProps>();
     const { user } = useContext(StoreContext)
-    const [shop_name, setShopName] = useState('');
-    const [items, setItems] = useState([{}] as any);
-    
-    async function searchAllItems(){
-        console.log(user.shop_id)
-        const item = await api.get('/items', {
-            params: {
-                shop_id: user.shop_id,
-            }
-        })
-        
-        setItems(item.data)
-
-        console.log(user.shop_id)
-        const shop = await api.get('/shopbyid', {
-            params: {
-                shop_id: user.shop_id,
-            }
-        })
-
-        setShopName(shop.data[0].name)
-    }
 
     return (
         <div id="page-dashboard">
@@ -49,30 +34,27 @@ function Dashboard() {
                 <label htmlFor="chk" id="menu-icon" className="menu-icon">&#9776;</label>
                 <nav id="side-menu" className="buttons-side-container">
                    
-                    <Link to="#" onClick={()=>{setPage('')}}>Inicio</Link>
-                    <Link to="#" onClick={()=>{
-                                searchAllItems().then(
-                                    () => setPage('shop')
-                                )
-                            }
-                        }
-                    >Minha Loja</Link>
-                    <Link to="#" onClick={()=>{setPage('add-item')}}>Adicionar Itens</Link>
+                    <Link to="/dashboard/inicio">Inicio</Link>
+                    <Link to="/dashboard/shop">Minha Loja</Link>
+                    <Link to="/dashboard/add-item">Adicionar Itens</Link>
                     <Link to="#">Meu Perfil</Link>
                     <Link to="#">Duvidas?</Link>
                     
                 </nav>
                 <div id="page-dashboard-content">
                     {
-                        page === 'add-item' ? <AddItem></AddItem> 
+                        page === 'add-item' ? 
+                            <AddItem></AddItem> 
                         : page === 'shop' ? 
-                        
-                        <ShopList shop_id={user.shop_id} item={items} shop_name={shop_name}></ShopList> 
-                        : 
-                        <fieldset className="link-shop">
-                            <legend><h2>Copie esse link e envie para os seus clientes!</h2></legend>
-                            <input type="text" value={process.env.REACT_APP_URL+'/shop/'+user.shop_id}></input>
-                        </fieldset>
+                            <ShopList 
+                                shop_id={user.shop_id} 
+                            />
+                        : page === 'inicio' ?
+                            <fieldset className="link-shop">
+                                <legend><h2>Copie esse link e envie para os seus clientes!</h2></legend>
+                                <input type="text" value={process.env.REACT_APP_URL+'/shop/'+user.shop_id}></input>
+                            </fieldset>
+                        : ''
                     }
                 </div>
             </main>

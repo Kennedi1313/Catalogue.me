@@ -5,7 +5,11 @@ import whatsappIcon from '../../assets/images/whatsappIcon.png'
 import PageHeader from '../../components/PageHeader';
 import api from '../../services/api';
 
+import { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+
 import './styles.css'
+import StoreContext from '../../components/Store/Context';
 
 interface ParamProps {
     shop_id: string,
@@ -19,6 +23,9 @@ function ItemDescription(){
     const [avatar, setAvatar] = useState('')
     const [info, setInfo] = useState('')
     const [price, setPrice] = useState('')
+    const [whatsapp, setWhatsapp] = useState('')
+
+    const { user } = useContext(StoreContext)
 
     window.onload = getItem;
     async function getItem() {
@@ -31,7 +38,6 @@ function ItemDescription(){
         setInfo(res.data[0].info)
         setPrice(res.data[0].price)
 
-        console.log(shop_id)
         const shop = await api.get('/shopbyid', {
             params: {
                 shop_id,
@@ -39,26 +45,33 @@ function ItemDescription(){
         })
 
         setShopName(shop.data[0].name)
-        
+        setWhatsapp(shop.data[0].whatsapp)
+        console.log(whatsapp)
     }
+
     var avatar_url = ''
-        var default_url = '/uploads/default.png'
+    var default_url = '/uploads/default.png'
+    var avatar_s3 = 'https://upload-catalogueme.s3-sa-east-1.amazonaws.com/'
+    var isS3 = false
     
-        if(avatar) {
+    if(avatar) {
+        if(avatar.substring(0, avatar_s3.length) === avatar_s3){
+            isS3 = true
+        } else {
             avatar_url = avatar.substring(6, avatar.length)
         }
+        
+    }
     return (
-        
-        
         <div id="item-description">
             <PageHeader title={shop_name}>
-                <a className="button-back" href={"/shop/" + shop_id}>
+                <a className="button-back" href={!!user ? "/dashboard/shop/" : "/shop/" + shop_id}>
                     Voltar à loja
                 </a>
             </PageHeader>
             <article className="item">
                 <header>
-                    <img src={ avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url} alt="ps5"/>
+                    <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>
                     <div className="info">
                         <h2>{name}</h2>
                         <p>
@@ -74,11 +87,10 @@ function ItemDescription(){
                                 <strong>R$ {price}</strong>
                             </p>
                             
-                            <a target="_blank" rel="noopener noreferrer" href="https://wa.me/5584998594171">
+                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/' + whatsapp }>
                                 <img src={whatsappIcon} alt="whatsapp"/>
                                 Entrar em contato
                             </a>
-                            
                         </footer>
                     </div>
                 </header>

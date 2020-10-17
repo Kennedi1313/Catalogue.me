@@ -25,7 +25,7 @@ const SignIn: React.FC = () => {
         if(token) {
           setToken(token);
           setUser(user);
-          return history.push('/dashboard')
+          return history.push('/dashboard/inicio')
         }
       }).catch((err) => {
         setError('Credenciais inválidas. ')

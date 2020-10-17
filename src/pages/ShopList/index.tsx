@@ -8,24 +8,33 @@ import PageHeader from '../../components/PageHeader'
 import Select from '../../components/Select'
 import api from '../../services/api'
 import { useParams } from 'react-router-dom'
-import ArrowDown from '@material-ui/icons/ArrowDownwardOutlined';
-import ArrowUp from '@material-ui/icons/ArrowUpwardOutlined';
 import SearchIcon from '@material-ui/icons/SearchOutlined';
-
 
 interface ParamProps {
     shop_id: string
 }
 
+interface itemProps{
+    item: {
+        name: string;
+        price: number;
+        avatar: string;
+        info: string;
+        category: string;
+        id: string;
+        shop_id: number;
+    }
+}
 
 function ShopList() {
     const { shop_id } = useParams<ParamProps>();
     const [shop_name, setShopName] = useState('');
-    const [schedule, setSchedule] = useState([]);
     const [items, setItems] = useState([]);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
+    const [whatsapp, setWhatsapp] = useState('')
     const [category, setCategory] = useState('');
+    const [arrayCategory, setArrayCategory] = useState(['Produto', 'Serviço']);
     
     window.onload = searchAllItems;
     async function searchAllItems(){
@@ -34,8 +43,8 @@ function ShopList() {
                 shop_id,
             }
         })
-        
-        setItems(item.data)
+        setArrayCategory(item.data.categories)
+        setItems(item.data.items)
 
         const shop = await api.get('/shopbyid', {
             params: {
@@ -44,14 +53,7 @@ function ShopList() {
         })
 
         setShopName(shop.data[0].name)
-
-        const schedule = await api.get('/schedulebyidshop', {
-            params: {
-                shop_id,
-            }
-        })
-
-        setSchedule(schedule.data)
+        setWhatsapp(shop.data[0].whatsapp)
 
     }
 
@@ -61,65 +63,17 @@ function ShopList() {
             params: {
                 shop_id,
                 name,
+                category,
+                price
             }
         })
-
-        setItems(response.data)
+        setArrayCategory(response.data.categories)
+        setItems(response.data.result)
     }
-
-    function abrirSchedule() {
-        if(mostrarSchedule === 'none'){
-            setMostrarSchedule('block')
-            setArrowSchedule(<ArrowUp/>)
-        }
-        if(mostrarSchedule === 'block'){
-            setMostrarSchedule('none')
-            setArrowSchedule(<ArrowDown/>)
-        }
-            
-    }
-
-    const [mostrarSchedule, setMostrarSchedule] = useState('none')
-    const [arrowSchedule, setArrowSchedule] = useState(<ArrowDown/>)
 
     return (
         <div id="page-shop-list">
             <PageHeader title={shop_name}>
-                <a className="button-abrir" href="#page-shop-list" onClick={abrirSchedule}>
-                <h4>Horários de funcionamento {arrowSchedule}</h4>
-                    <div id="schedule-div" style = {{display: mostrarSchedule}} className="input-block">
-                        <div >
-                            
-                            <div id="schedule-title">
-                                  
-                                <input value="Dia" onChange={()=>{}}/>
-                                <input value="Das" onChange={()=>{}}/>
-                                <input value="Até" onChange={()=>{}}/>
-                            
-                            </div>
-
-
-                            {schedule.map( (item: {week_day: number, from: number, to: number}) => {
-                                function minutesToHour(min: number){
-                                    return (Math.trunc(min/60) < 9 ?  '0' + Math.trunc(min/60) : Math.trunc(min/60)) + " : " + (Math.trunc(min%60) < 9 ? '0' + Math.trunc(min%60) :  Math.trunc(min%60))
-                                }
-                                function diaSemana(dia: number){
-                                    return dia === 1 ? 'Segunda' : dia === 2 ? 'Terça' : dia === 3 ? 'Quarta' : dia === 4 ? 'Quinta' : dia === 5 ? 'Sexta' : dia === 6 ? 'Sabado' : 'Domingo'
-                                }
-                                return ( 
-                                    <div key={item.week_day} id="schedule">
-                                  
-                                        <input value={ diaSemana(item.week_day) } onChange={()=>{}}/>
-                                        <input value={ minutesToHour(item.from) } onChange={()=>{}}/>
-                                        <input value={  minutesToHour(item.to) } onChange={()=>{}}/>
-                                  
-                                    </div>
-                                )
-                                })
-                            }                            
-                        </div>
-                    </div>
-                </a>
                 <h4>Pesquisar {<SearchIcon/>}</h4>
                 <form onSubmit={searchItems} id="search-itens">
                     <Input 
@@ -134,10 +88,11 @@ function ShopList() {
                             name="category" 
                             label="Categoria" 
                             value={category}
-                            onChange={(e) => {setCategory(e.target.value)}}
+                            onChange={(e) => { setCategory(e.target.value)}}
                             options={[
-                                {value: 'product', label: 'Produto'},
-                                {value: 'work', label: 'Serviço'},
+                                {value: 'all', label: 'Todas'},
+                                {value: 'Produto', label: 'Produto'},
+                                {value: 'Serviço', label: 'Serviço'},
                             ]} 
                         />
                         <Select 
@@ -158,11 +113,23 @@ function ShopList() {
 
             </PageHeader>
             <main>
-                <div className="container">
-                    {items.map(item => {
-                        return (<ShopItem key={item} item={item}/>)
-                    })}
-                </div>
+                {arrayCategory.map((category: string) => {
+                    return(
+                        <div key={category}>
+                            <h2 className="categoria">{category}</h2>
+                            <div className="container">
+                            
+                                {console.log(category)}
+                                {items.map((item: itemProps["item"]) => {
+                                    if(item.category ===  category)
+                                        return ( <ShopItem key={item.id} whatsapp={whatsapp} item={item}/> )
+                                }) }
+
+                            </div>
+                        </div>
+                    )
+                }) }
+               
             </main>
         </div>
     )

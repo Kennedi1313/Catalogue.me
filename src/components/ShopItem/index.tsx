@@ -1,9 +1,6 @@
-import React from 'react'
-
+import React, { useContext, useEffect } from 'react'
+import StoreContext from '../Store/Context'
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
-
-
-
 import './styles.css'
 
 interface itemProps {
@@ -13,39 +10,60 @@ interface itemProps {
         avatar: string,
         info: string,
         category: string,
-        id: number,
+        id: string,
         shop_id: number,
-    }
+    },
+    whatsapp: string,
+    onDelete?,
+    onInative?
 }
 
-const ShopItem: React.FC<itemProps> = ( { item } ) => {
+const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative } ) => {
+    const { user } = useContext(StoreContext)
     var avatar_url = ''
     var default_url = '/uploads/default.png'
-
-    if(item.avatar) {
-        avatar_url = item.avatar.substring(6, item.avatar.length)
-    }
+    var avatar_s3 = 'https://upload-catalogueme.s3-sa-east-1.amazonaws.com/'
+    var isS3 = false
     
+    if(item.avatar) {
+        if(item.avatar.match(avatar_s3)){
+            isS3 = true
+        } else {
+            avatar_url = item.avatar.substring(6, item.avatar.length)
+        }
+        
+    }
+
     return (
         <article className="shop-item">
             <a href={'/shop/'+item.shop_id+'/item/'+item.id}>
                 <header>
-                    <img src={ item.avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url} alt="ps5"/>
+                <img src={ isS3 ? item.avatar : ( item.avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>
                     <div>
                         <strong>{item.name}</strong>
                     </div>
                 </header>
+                </a>
                 <footer>
                     <p>
                         Preço: 
                         <strong>R$ {item.price}</strong>
                     </p>
-                    <button type="button">
-                        <img src={whatsappIcon} alt="whatsapp"/>
-                        Entrar em contato
-                    </button>
+                    {
+                        !!user 
+                        ?    
+                            <>
+                                <button type="button" className="deletar" onClick={onDelete}>Deletar</button>
+                                <button type="button" className="indisponivel" onClick={onInative}>Indisponível</button>
+                            </>
+                            
+                        
+                        :   <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/' + whatsapp }>
+                                <img src={whatsappIcon} alt="whatsapp"/>
+                                Entrar em contato
+                            </a>
+                    }
                 </footer>
-            </a>
         </article>
     )
 }

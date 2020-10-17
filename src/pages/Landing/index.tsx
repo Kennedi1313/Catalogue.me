@@ -12,7 +12,7 @@ function Landing() {
             <div className="logo-container">
                 <a href="/" className="logo">Catalogue.me</a>
                 <div className="nav">
-                    <Link to={token ? "/dashboard" : "/login"}>{token ? "Dashboard" : "Login"}</Link>
+                    <Link to={token ? "/dashboard/inicio" : "/login"}>{token ? "Dashboard" : "Login"}</Link>
                     {token ? "" : <Link to="/user-form">Cadastro</Link>}
                 </div>
             </div>

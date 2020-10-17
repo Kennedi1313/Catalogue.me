@@ -16,17 +16,36 @@ function UserForm() {
 
 
     // validações dos campos do formulario
-    const phoneRegExp = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
     const validations = yup.object().shape({
         user_name: yup.string().max(80).required(),
-        user_whatsapp: yup.string().matches(phoneRegExp).required(),
         user_email: yup.string().email().required(),
         user_passwd: yup.string().min(8).required(),
         new_user_passwd: yup.string().oneOf([yup.ref('user_passwd')]).required(),
 
         shop_name: yup.string().max(80).required(),
-        shop_whatsapp: yup.string().matches(phoneRegExp).required(),
+        shop_whatsapp: yup.string().required(),
     })
+
+    function mascaraTelefone(input){
+        input.maxLength = 13;//propriedade maxlength adicionada ao campo por javascript
+        setTimeout(//set timeout usado para atualização mais precisa
+            function(){
+                input.value = formataTelefone(input.value);//atualização do campo com seu valor formatado em formataTelefone()
+            }
+            ,1//atualização do campo a cada milisegundo
+        );
+    }
+
+    function formataTelefone(value){
+        value = value.replace(/\D/g,"");//Remove tudo o que não é dígito
+        
+        value = value.replace(/^(\d\d)(\d)/g,"$1 $2");//Coloca parênteses em volta dos dois primeiros dígitos
+        
+        if(value.length < 11) value = value.replace(/(\d{4})(\d)/,"$1-$2");//Número com 8 dígitos. Formato: (99) 9999-9999
+        else value = value.replace(/(\d{5})(\d)/,"$1-$2");//Número com 9 dígitos. Formato: (99) 99999-9999
+        
+        return value;
+    }
 
     const history = useHistory();
 
@@ -34,16 +53,16 @@ function UserForm() {
 
     // cria e atualiza o status o schedule item
     const [scheduleItems, setScheduleItem] = useState([
-        { week_day: 1, from: '', to: ''},
-        { week_day: 2, from: '', to: ''},
-        { week_day: 3, from: '', to: ''},
-        { week_day: 4, from: '', to: ''},
-        { week_day: 5, from: '', to: ''},
+        { week_day: 1, from: '08:00', to: '18:00'},
+        { week_day: 2, from: '08:00', to: '18:00'},
+        { week_day: 3, from: '08:00', to: '18:00'},
+        { week_day: 4, from: '08:00', to: '18:00'},
+        { week_day: 5, from: '08:00', to: '18:00'},
     ]);
     function addNewScheduleItem() {
         setScheduleItem([
             ...scheduleItems,
-            { week_day: 0, from: '', to: ''}
+            { week_day: 0, from: '08:00', to: '18:00'}
         ]);
     }
 
@@ -134,7 +153,7 @@ function UserForm() {
                             <legend>Seus dados</legend>
                             <div className="input-block">
                                 <label htmlFor="name" >Nome</label>
-                                <Field name="user_name" />
+                                <Field name="user_name" placeHolder="seu nome"/>
                                 <ErrorMessage 
                                     component="span"  
                                     name="user_name" 
@@ -142,17 +161,8 @@ function UserForm() {
                                 />
                             </div>
                             <div className="input-block">
-                                <label htmlFor="whatsapp" >Whatsapp</label>
-                                <Field name="user_whatsapp" />
-                                <ErrorMessage 
-                                    component="span"  
-                                    name="user_whatsapp" 
-                                    render={()=><span className="error-submit">Telefone Inválido</span>}
-                                />
-                            </div>
-                            <div className="input-block">
-                                <label htmlFor="email" >Email</label>
-                                <Field  name="user_email" />
+                                <label htmlFor="email">Email</label>
+                                <Field  name="user_email" placeHolder="email@mail.com"/>
                                 <ErrorMessage 
                                     component="span"  
                                     name="user_email" 
@@ -183,7 +193,7 @@ function UserForm() {
                             <legend>Sobre seu trabalho</legend>
                             <div className="input-block">
                                 <label htmlFor="nomeloja" >Nome da Loja</label>
-                                <Field name="shop_name" />
+                                <Field name="shop_name" placeHolder="nome da loja"/>
                                 <ErrorMessage 
                                     component="span"  
                                     name="shop_name" 
@@ -192,7 +202,7 @@ function UserForm() {
                             </div>
                             <div className="input-block">
                                 <label htmlFor="whats" >Whatsapp</label>
-                                <Field name="shop_whatsapp" />
+                                <Field name="shop_whatsapp" placeHolder="84 99999 9999" onKeyPress={(e) => mascaraTelefone(e.target)}/>
                                 <ErrorMessage 
                                     component="span"  
                                     name="shop_whatsapp" 
@@ -220,7 +230,14 @@ function UserForm() {
                                 <button type="button" onClick={addNewScheduleItem}>
                                     + novo horário
                                 </button>
+                                
                             </legend>
+                            
+                            <span>Diga para os clientes em quais dias e horários você atende. </span>
+                            <br></br>
+                            <span>(Clique no botão acima para adicionar mais dias). </span>
+                            <br></br>
+                            <br></br>
                             {scheduleItems.map((scheduleItem, index) => {
                                 return(
                                     <div key={index} className="schedule-item">

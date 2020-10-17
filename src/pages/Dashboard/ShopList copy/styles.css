@@ -21,7 +21,6 @@
     column-gap: 5px;
 }
 
-
 #page-shop-list main {
     background-color: antiquewhite !important;
     width: 100%;
@@ -63,7 +62,6 @@
 #page-shop-list #search-itens button:hover {
     background-color:#2f4f2f;
 }
-
 
 .page-header-dash {
     display: flex;
@@ -117,11 +115,17 @@
     justify-self: center;
 }
 
+#page-shop-list main div .categoria {
+    color: #2F4F4F;
+    font: 700 2.3rem Poppins;
+    text-align: center;
+}
+
 @media(min-width: 800px) {
     #page-shop-list {
         max-width: 100%;
     }
-    #page-shop-list main .container {
+    #page-shop-list main div .container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
     

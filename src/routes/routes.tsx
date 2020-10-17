@@ -25,7 +25,7 @@ function Routes() {
                     <Route path="/login" component={Login} />
 
                     <PrivateRoute path="/add-item" component={AddItem}/>
-                    <PrivateRoute path="/dashboard" component={Dashboard}/>
+                    <PrivateRoute path="/dashboard/:page" component={Dashboard} />
                 </Switch>
             </StoreProvider>
         </BrowserRouter>
