@@ -22,7 +22,7 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative } 
     const { user } = useContext(StoreContext)
     var avatar_url = ''
     var default_url = '/uploads/default.png'
-    var avatar_s3 = 'https://upload-catalogueme.s3-sa-east-1.amazonaws.com/'
+    var avatar_s3 = 'https://upload-catalogueme.'
     var isS3 = false
     
     if(item.avatar) {
