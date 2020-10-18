@@ -17,30 +17,31 @@ function Landing() {
                 </div>
             </div>
             <div id="page-landing-content">
-                
                 <div className="landing">
-                    <h2 className="subtitle">Catálogo virtual para sua renda</h2>
-                    <p className="text">
-                        Cadastre seu comércio e comece a usar o Catalogue.me
-                    </p>
-                </div>
-                <div className="landing-image">
-                    <img src={landingImg} className="hero-image" alt="landing"/>
-                </div>
-
-                <div className="buttons-area">
-                    <p className="text">
-                        Escolha entre vender seus produtos ou prestar serviços.
-                    </p>
-                    <div className="buttons-container">
-                        <Link to="/user-form" className="products">
-                            Expor meus produtos em um catálogo virtual
-                        </Link>
-                        <Link to="/user-form" className="services">
-                            Expor meus serviços em um catálogo virtual
-                        </Link>
+                    <h2 className="subtitle">O catálogo virtual perfeito para o seu comércio.</h2>
+                    <br/>
+                    <div className="buttons-area">
+                        <p className="text" id="text3">
+                            Entre agora mesmo na plataforma, basta cadastrar seus produtos.
+                        </p>
+                        <div className="buttons-container">
+                            <Link to="/user-form" className="products">
+                                Cadastre o seu catálogo virtual agora clicando aqui.
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                
+                    <p className="text" id="text1">
+                        Com o Catalogue.me você cadastra seus itens em um catálogo virtual e envia para seus clientes, com a facilidade de um clique!
+                    </p>
+                    <div className="landing-image">
+                        <img src={landingImg} className="hero-image" alt="landing"/>
+                    </div>
+                    <p className="text" id="text2">
+                        Cadastre seu comércio agora mesmo e comece a usar o Catalogue.me! É a praticidade que você estava procurando. 
+                    </p>
+                    
+                </div> 
             </div>
             
             <div className="footer-container">

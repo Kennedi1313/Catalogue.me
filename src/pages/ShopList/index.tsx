@@ -9,14 +9,14 @@ import Select from '../../components/Select'
 import api from '../../services/api'
 import { useParams } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/SearchOutlined';
-import ArrowDown from '@material-ui/icons/ArrowDownwardOutlined';
-import ArrowUp from '@material-ui/icons/ArrowUpwardOutlined';
+/* import ArrowDown from '@material-ui/icons/ArrowDownwardOutlined';
+import ArrowUp from '@material-ui/icons/ArrowUpwardOutlined'; */
 
 interface ParamProps {
     shop_id: string
 }
 
-interface ScheduleItemProps {
+/* interface ScheduleItemProps {
     item: [
         {
             week_day: number,
@@ -26,7 +26,7 @@ interface ScheduleItemProps {
         }
     ]
     
-}
+} */
 
 interface itemProps{
     item: {
@@ -49,7 +49,7 @@ function ShopList() {
     const [whatsapp, setWhatsapp] = useState('')
     const [category, setCategory] = useState('');
     const [arrayCategory, setArrayCategory] = useState(['Produto', 'Serviço']);
-    const [schedule, setSchedule] = useState<ScheduleItemProps["item"]>([{}] as ScheduleItemProps["item"]);
+    /* const [schedule, setSchedule] = useState<ScheduleItemProps["item"]>([{}] as ScheduleItemProps["item"]); */
 
     window.onload = searchAllItems;
     async function searchAllItems(){
@@ -70,13 +70,13 @@ function ShopList() {
         setShopName(shop.data[0].name)
         setWhatsapp(shop.data[0].whatsapp)
 
-        const schedule = await api.get('/schedulebyidshop', {
+        /* const schedule = await api.get('/schedulebyidshop', {
             params: {
                 shop_id,
             }
         })
 
-        setSchedule(schedule.data);
+        setSchedule(schedule.data); */
     }
 
     async function searchItems(e: FormEvent) {
@@ -93,7 +93,7 @@ function ShopList() {
         setItems(response.data.items)
     }
 
-    function abrirSchedule() {
+    /* function abrirSchedule() {
         if(mostrarSchedule === 'none'){
             setMostrarSchedule('block')
             setArrowSchedule(<ArrowUp/>)
@@ -113,12 +113,12 @@ function ShopList() {
     }
 
     const [mostrarSchedule, setMostrarSchedule] = useState('none')
-    const [arrowSchedule, setArrowSchedule] = useState(<ArrowDown/>)
+    const [arrowSchedule, setArrowSchedule] = useState(<ArrowDown/>) */
 
     return (
         <div id="page-shop-list">
             <PageHeader title={shop_name}>
-            <a className="button-abrir" href="#page-shop-list" onClick={abrirSchedule}>
+            {/* <a className="button-abrir" href="#page-shop-list" onClick={abrirSchedule}>
                 <h4>Horários de funcionamento {arrowSchedule}</h4>
                     <div id="schedule-div" style = {{display: mostrarSchedule}} className="input-block">
                         <div id="schedule-title">
@@ -137,7 +137,7 @@ function ShopList() {
                             })
                         }                            
                     </div>
-                </a>
+                </a> */}
                 <h4>Pesquisar {<SearchIcon/>}</h4>
                 <form onSubmit={searchItems} id="search-itens">
                     <Input 

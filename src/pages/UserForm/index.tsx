@@ -96,7 +96,7 @@ function UserForm() {
         /* formData.append('shop_avatar', shop_avatar) */
         formData.append('shop_bio', shop_bio)
 
-        formData.append('schedule_JSON', JSON.stringify(scheduleItems))
+        /* formData.append('schedule_JSON', JSON.stringify(scheduleItems)) */
 
         api.post('/shops', formData, {
             headers: {
@@ -116,7 +116,7 @@ function UserForm() {
         })
     }
 
-    function setScheduleItemValue(position: number, field: string, value: string){
+  /*   function setScheduleItemValue(position: number, field: string, value: string){
         const newArray = scheduleItems.map((scheduleItem, index) => {
             if(index === position) {
                 return { ...scheduleItem, [field]: value }
@@ -125,7 +125,7 @@ function UserForm() {
             return scheduleItem
         })
         setScheduleItem(newArray)
-    }
+    } */
 
     return (
         <div id="page-user-form" className="container">
@@ -223,7 +223,7 @@ function UserForm() {
                                 onChange={(e)=>{setShopBio(e.target.value)}}>
                             </Textarea>
                         </fieldset>
-
+{/* 
                         <fieldset>
                             <legend>
                                 Horários disponíveis
@@ -275,7 +275,7 @@ function UserForm() {
                                     </div>
                                 );
                             })}
-                        </fieldset>
+                        </fieldset> */}
 
                         <footer>
                             <p>Importante! <br /> Preencha todos os dados.</p>
