@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import StoreContext from '../Store/Context'
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
 import './styles.css'
@@ -58,7 +58,7 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative } 
                             </>
                             
                         
-                        :   <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/' + whatsapp }>
+                        :   <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp }>
                                 <img src={whatsappIcon} alt="whatsapp"/>
                                 Entrar em contato
                             </a>

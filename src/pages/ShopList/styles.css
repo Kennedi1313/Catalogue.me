@@ -72,7 +72,8 @@
 }
 
 .input-block #schedule{
-    height: 4rem !important;
+    height: 2.5rem !important;
+    font:400 1.5rem Poppins !important;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -80,11 +81,14 @@
 
 .input-block #schedule input {
     border-radius: 0rem !important;
+    border: 1px solid   #709292;
+    height: 2.5rem !important;
+    font:400 1.4rem Poppins !important;
     transition: all .2s;
 }
 
 .input-block #schedule-title{
-    height: 4rem !important;
+    height: 3rem !important;
     margin-top: 0rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -94,6 +98,7 @@
 
 .input-block #schedule-title input {
     border-radius: 0rem !important;
+    height: 3rem !important;
     background-color: #709292;
 }
 h4 {

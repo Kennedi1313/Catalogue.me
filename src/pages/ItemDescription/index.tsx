@@ -6,7 +6,6 @@ import PageHeader from '../../components/PageHeader';
 import api from '../../services/api';
 
 import { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
 
 import './styles.css'
 import StoreContext from '../../components/Store/Context';
@@ -87,7 +86,7 @@ function ItemDescription(){
                                 <strong>R$ {price}</strong>
                             </p>
                             
-                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/' + whatsapp }>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp }>
                                 <img src={whatsappIcon} alt="whatsapp"/>
                                 Entrar em contato
                             </a>

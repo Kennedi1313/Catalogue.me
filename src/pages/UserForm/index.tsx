@@ -67,10 +67,10 @@ function UserForm() {
     }
 
     // cria e atualiza o estado do avatar com a imagem do usuario
-    const [shop_avatar, setShopAvatar] = useState('')
+    /* const [shop_avatar, setShopAvatar] = useState('')
     function onChangeHandler (event) {
         setShopAvatar(event.target.files[0])
-    }
+    } */
 
     function handleCreateShop(
         values:  
@@ -93,7 +93,7 @@ function UserForm() {
 
         formData.append('shop_name', values.shop_name)
         formData.append('shop_whatsapp', values.shop_whatsapp)
-        formData.append('shop_avatar', shop_avatar)
+        /* formData.append('shop_avatar', shop_avatar) */
         formData.append('shop_bio', shop_bio)
 
         formData.append('schedule_JSON', JSON.stringify(scheduleItems))
@@ -209,13 +209,13 @@ function UserForm() {
                                     render={()=><span className="error-submit">Telefone Inválido</span>}
                                 />
                             </div>
-                            <Input 
+                            {/* <Input 
                                 name="avatar" 
                                 label="Imagem de capa" 
                                 type="file" 
                                 className="imagem-avatar" 
                                 onChange={onChangeHandler}>
-                            </Input>
+                            </Input> */}
                             <Textarea 
                                 name="bio" 
                                 label="Biografia" 

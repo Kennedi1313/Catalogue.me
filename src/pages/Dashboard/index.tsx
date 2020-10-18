@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import './styles.css'
 import { Link, useParams } from 'react-router-dom'
 import AddItem from './AddItem copy'
 import ShopList from './ShopList copy'
 import StoreContext from '../../components/Store/Context'
-import api from '../../services/api'
 
 function deslogar() {
     localStorage.removeItem('token')

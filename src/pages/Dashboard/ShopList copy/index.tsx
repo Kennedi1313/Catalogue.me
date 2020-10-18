@@ -102,6 +102,7 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
                                                     onDelete={() => handleDeletar(item, index)}
                                                     onInative={() => hadleInativar(item, index)}
                                                 />)
+                                    else return ''
                                 }) }
 
                             </div>
