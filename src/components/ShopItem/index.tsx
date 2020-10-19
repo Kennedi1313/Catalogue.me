@@ -14,11 +14,13 @@ interface itemProps {
         shop_id: number,
     },
     whatsapp: string,
+    path: string,
     onDelete?,
-    onInative?
+    onInative?,
+    onAtive?
 }
 
-const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative } ) => {
+const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative, onAtive, path } ) => {
     const { user } = useContext(StoreContext)
     var avatar_url = ''
     var default_url = '/uploads/default.png'
@@ -50,15 +52,18 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative } 
                         <strong>R$ {item.price}</strong>
                     </p>
                     {
-                        !!user 
+                        path === "shopListDashboard"
                         ?    
                             <>
                                 <button type="button" className="deletar" onClick={onDelete}>Deletar</button>
                                 <button type="button" className="indisponivel" onClick={onInative}>Indisponível</button>
                             </>
                             
-                        
-                        :   <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/shop/'+item.shop_id+'/item/'+item.id }>
+                        : path === "inativos"
+                        ?
+                            <button type="button" className="indisponivel" onClick={onAtive}>Disponível</button>
+                        :   
+                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/shop/'+item.shop_id+'/item/'+item.id }>
                                 <img src={whatsappIcon} alt="whatsapp"/>
                                 Entrar em contato
                             </a>

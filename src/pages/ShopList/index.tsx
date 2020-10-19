@@ -184,7 +184,7 @@ function ShopList() {
                             <div className="container">
                                 {items.map((item: itemProps["item"]) => {
                                     if(item.category ===  category)
-                                        return ( <ShopItem key={item.id} whatsapp={whatsapp} item={item}/> )
+                                        return ( <ShopItem key={item.id} path="shopList" whatsapp={whatsapp} item={item}/> )
                                     else return ''
                                 }) }
 

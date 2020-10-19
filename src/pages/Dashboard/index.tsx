@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import './styles.css'
 import { Link, useParams } from 'react-router-dom'
-import AddItem from './AddItem copy'
-import ShopList from './ShopList copy'
+import AddItem from './AddItem-Dashboard'
+import ShopList from './ShopList-Dashboard'
+import ShopListInativos from './Indisponiveis-Dashboard'
 import StoreContext from '../../components/Store/Context'
 
 function deslogar() {
@@ -36,8 +37,8 @@ function Dashboard() {
                     <Link to="/dashboard/inicio">Inicio</Link>
                     <Link to="/dashboard/shop">Minha Loja</Link>
                     <Link to="/dashboard/add-item">Adicionar Itens</Link>
+                    <Link to="/dashboard/itens-inativos">Itens Indisponíveis</Link>
                     <Link to="#">Meu Perfil</Link>
-                    <Link to="#">Duvidas?</Link>
                     
                 </nav>
                 <div id="page-dashboard-content">
@@ -48,10 +49,14 @@ function Dashboard() {
                             <ShopList 
                                 shop_id={user.shop_id} 
                             />
+                        : page === 'itens-inativos' ? 
+                            <ShopListInativos 
+                                shop_id={user.shop_id} 
+                            />
                         : page === 'inicio' ?
                             <fieldset className="link-shop">
                                 <legend><h2>Copie esse link e envie para os seus clientes!</h2></legend>
-                                <input type="text" value={process.env.REACT_APP_URL+'/shop/'+user.shop_id}></input>
+                                <input type="text" readOnly value={process.env.REACT_APP_URL+'/shop/'+user.shop_id}></input>
                             </fieldset>
                         : ''
                     }

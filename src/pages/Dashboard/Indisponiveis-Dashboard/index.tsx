@@ -21,17 +21,17 @@ interface ParamProps {
     shop_id: string,
 }
 
-const ShopList: React.FC<ParamProps> = ({shop_id}) => {
+const ShopListInativos: React.FC<ParamProps> = ({shop_id}) => {
     const [items, setItems] = useState([]);
     const [categories, setCategories] = useState(['']);
     const [whatsapp, setWhatsapp] = useState('')
     
     useEffect(() => {
         searchAllItems();
-    });
+    }, []);
 
     async function searchAllItems(){
-        const item = await api.get('/items', {
+        const item = await api.get('/itemsIndisponiveis', {
             params: {
                 shop_id: shop_id,
             }
@@ -49,30 +49,13 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
         setWhatsapp(shop.data[0].whatsapp)
     }
 
-    function handleDeletar(item, index) {
-        api.post('/items', 
-                {item_id: item.id}, 
-             )
-            .then((res) => { 
-                alert('Item deletado com sucesso') 
-                const itensCopy = Array.from(items);
-                itensCopy.splice(index, 1);
-                setItems(itensCopy);
-                return res
-            })
-            .catch((err) => {
-                console.log({err}) 
-                return err
-            })
-    }
-
-    function hadleInativar(item, index){
-        item.ativo = false;
-        api.post('/itemsInative', 
+    function hadleAtivar(item, index){
+        item.ativo = true;
+        api.post('/itemsAtive', 
                     {item}, 
                 )
             .then((res) => { 
-                alert('Item Inativado com sucesso') 
+                alert('Item Ativado com sucesso') 
                 const itensCopy = Array.from(items);
                 itensCopy.splice(index, 1);
                 setItems(itensCopy);
@@ -99,8 +82,8 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
                                                     key={item.id} 
                                                     item={item} 
                                                     whatsapp={whatsapp}
-                                                    onDelete={() => handleDeletar(item, index)}
-                                                    onInative={() => hadleInativar(item, index)}
+                                                    path="inativos"
+                                                    onAtive={() => hadleAtivar(item, index)}
                                                 />)
                                     else return ''
                                 }) }
@@ -114,4 +97,4 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
     )
 }
 
-export default ShopList;
+export default ShopListInativos;
