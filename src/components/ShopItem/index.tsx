@@ -58,7 +58,7 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative } 
                             </>
                             
                         
-                        :   <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp }>
+                        :   <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/shop/'+item.shop_id+'/item/'+item.id }>
                                 <img src={whatsappIcon} alt="whatsapp"/>
                                 Entrar em contato
                             </a>
