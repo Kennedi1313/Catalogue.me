@@ -10,6 +10,7 @@
 #item-description {
     width: 100vw;
     height: 100%;
+    overflow-y: scroll;
 }
 .item {
     width: 100vw;
@@ -24,8 +25,9 @@
 
 .item header {
     padding: 1rem;
-    display: grid;
-    grid-template-rows: 20rem 1fr;
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: 
     "image"
     "info";
@@ -36,6 +38,7 @@
     justify-self: center;
     height: 100%;
     width: 100%;
+    object-fit: cover;
     margin: 1rem;
     grid-area: image;
 }
@@ -123,15 +126,17 @@
     .item header {
         padding: 2rem 2rem;
         display: grid;
-        grid-template-columns: 50% 1fr;
-        grid-template-rows: 40rem;
+        grid-template-columns: 50rem 1fr;
+        grid-template-rows: 50rem;
         grid-template-areas: 
         "image info";
+        column-gap: 3rem;
     }
 
     .item header img {
-        width: 90%;
-        height: 90%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         grid-area: image;
     }
     .item footer a {

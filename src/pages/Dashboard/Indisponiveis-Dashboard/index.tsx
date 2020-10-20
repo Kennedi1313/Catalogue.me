@@ -27,27 +27,26 @@ const ShopListInativos: React.FC<ParamProps> = ({shop_id}) => {
     const [whatsapp, setWhatsapp] = useState('')
     
     useEffect(() => {
+        async function searchAllItems(){
+            const item = await api.get('/itemsIndisponiveis', {
+                params: {
+                    shop_id: shop_id,
+                }
+            })
+    
+            setItems(item.data.items)
+            setCategories(item.data.categories)
+    
+            const shop = await api.get('/shopbyid', {
+                params: {
+                    shop_id,
+                }
+            })
+    
+            setWhatsapp(shop.data[0].whatsapp)
+        }
         searchAllItems();
-    }, []);
-
-    async function searchAllItems(){
-        const item = await api.get('/itemsIndisponiveis', {
-            params: {
-                shop_id: shop_id,
-            }
-        })
-
-        setItems(item.data.items)
-        setCategories(item.data.categories)
-
-        const shop = await api.get('/shopbyid', {
-            params: {
-                shop_id,
-            }
-        })
-
-        setWhatsapp(shop.data[0].whatsapp)
-    }
+    }, [shop_id]);
 
     function hadleAtivar(item, index){
         item.ativo = true;
@@ -70,7 +69,7 @@ const ShopListInativos: React.FC<ParamProps> = ({shop_id}) => {
     return (
         <div id="page-shop-list">
             <main>
-                <h1>Seus produtos</h1>
+                <h1></h1>
                     {categories.map((category: string) => {
                     return(
                         < div key={category}>

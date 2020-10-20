@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import StoreContext from '../Store/Context'
+import React from 'react'
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
 import './styles.css'
 
@@ -21,7 +20,6 @@ interface itemProps {
 }
 
 const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative, onAtive, path } ) => {
-    const { user } = useContext(StoreContext)
     var avatar_url = ''
     var default_url = '/uploads/default.png'
     var avatar_s3 = 'https://upload-catalogueme.'
@@ -36,13 +34,19 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative, o
         
     }
 
+    var nomeExibido = item.name;
+
+    if(nomeExibido.length > 30) {
+        nomeExibido = nomeExibido.substring(0, 30) + ' [...] ';
+    }
+
     return (
         <article className="shop-item">
             <a href={'/shop/'+item.shop_id+'/item/'+item.id}>
                 <header>
                 <img src={ isS3 ? item.avatar : ( item.avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>
                     <div>
-                        <strong>{item.name}</strong>
+                        <strong>{nomeExibido}</strong>
                     </div>
                 </header>
                 </a>

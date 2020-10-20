@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 
 import './styles.css'
 import PageHeader from '../../components/PageHeader'
-import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
-import Select from '../../components/Select';
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
@@ -50,7 +48,7 @@ function UserForm() {
     const history = useHistory();
 
     const [shop_bio, setShopBio] = useState('')
-
+    /*
     // cria e atualiza o status o schedule item
     const [scheduleItems, setScheduleItem] = useState([
         { week_day: 1, from: '08:00', to: '18:00'},
@@ -108,11 +106,6 @@ function UserForm() {
             history.push('/login')
         }).catch((e) => {
             alert('Erro no cadastro. Verifique se todos os campos foram preenchidos. ')
-        })
-
-        console.log({
-            formData,
-            scheduleItems
         })
     }
 
