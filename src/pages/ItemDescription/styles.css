@@ -14,7 +14,6 @@
 }
 .item {
     width: 100vw;
-    height: 100%;
     margin: 3.2rem auto;
     background-color: snow;
     border: 1px solid snow;
@@ -129,9 +128,12 @@
         overflow-y: visible;
     }
 
+    .item header .info {
+        width: 50%;
+    }
+
     .item header img {
-        width: 100%;
-        height: 100%;
+        width: 60%;
         object-fit: cover;
     }
     .item footer a {
