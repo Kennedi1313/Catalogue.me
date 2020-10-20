@@ -36,8 +36,8 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative, o
 
     var nomeExibido = item.name;
 
-    if(nomeExibido.length > 30) {
-        nomeExibido = nomeExibido.substring(0, 30) + ' [...] ';
+    if(nomeExibido.length > 35) {
+        nomeExibido = nomeExibido.substring(0, 35) + ' [...] ';
     }
 
     return (

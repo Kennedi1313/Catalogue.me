@@ -119,25 +119,20 @@
 
     .item {
         width: 90vw;
-        height: 70vh;
         margin-top: -4rem;
     }
 
     .item header {
         padding: 2rem 2rem;
-        display: grid;
-        grid-template-columns: 50rem 1fr;
-        grid-template-rows: 50rem;
-        grid-template-areas: 
-        "image info";
-        column-gap: 3rem;
+        display: flex;
+        flex-direction: row;
+        overflow-y: visible;
     }
 
     .item header img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        grid-area: image;
     }
     .item footer a {
         padding-right: 10rem;
