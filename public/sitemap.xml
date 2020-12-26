@@ -20,7 +20,7 @@
     <priority>1</priority>
 </url>
 <url>
-    <loc>https://catalogueme.herokuapp.com/dashboard/inicio</loc>
+    <loc>https://catalogueme.herokuapp.com/dashboard/</loc>
     <lastmod>2020-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
