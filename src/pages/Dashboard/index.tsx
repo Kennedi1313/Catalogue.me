@@ -5,6 +5,8 @@ import AddItem from './AddItem-Dashboard'
 import ShopList from './ShopList-Dashboard'
 import ShopListInativos from './Indisponiveis-Dashboard'
 import StoreContext from '../../components/Store/Context'
+import ItemDescription from './ItemDescription-Dashboard'
+import AddAvatar from './AddAvatar-Dashboard'
 
 function deslogar() {
     localStorage.removeItem('token')
@@ -37,9 +39,7 @@ function Dashboard() {
                     <Link to="/dashboard/inicio">Inicio</Link>
                     <Link to="/dashboard/shop">Minha Loja</Link>
                     <Link to="/dashboard/add-item">Adicionar Itens</Link>
-                    <Link to="/dashboard/itens-inativos">Itens Indisponíveis</Link>
-                    <Link to="#">Meu Perfil</Link>
-                    
+
                 </nav>
                 <div id="page-dashboard-content">
                     {
@@ -53,6 +53,10 @@ function Dashboard() {
                             <ShopListInativos 
                                 shop_id={user.shop_id} 
                             />
+                        : page === 'item' ? 
+                            <ItemDescription />
+                        : page === 'add-avatar' ? 
+                            <AddAvatar />
                         : page === 'inicio' ?
                             <fieldset className="link-shop">
                                 <legend><h2>Copie esse link e envie para os seus clientes!</h2></legend>

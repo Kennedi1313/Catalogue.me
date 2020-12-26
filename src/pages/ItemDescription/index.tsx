@@ -8,6 +8,7 @@ import api from '../../services/api';
 import { useContext } from 'react'
 
 import './styles.css'
+import {Carousel} from 'react-bootstrap'
 import StoreContext from '../../components/Store/Context';
 
 interface ParamProps {
@@ -19,7 +20,9 @@ function ItemDescription(){
     const { shop_id, item_id } = useParams<ParamProps>();
     const [shop_name, setShopName] = useState('');
     const [name, setName] = useState('')
-    const [avatar, setAvatar] = useState('')
+    const [avatar, setAvatar] = useState([
+        {avatar: "string"}
+    ])
     const [info, setInfo] = useState('')
     const [price, setPrice] = useState('')
     const [whatsapp, setWhatsapp] = useState('')
@@ -33,9 +36,13 @@ function ItemDescription(){
         })
 
         setName(res.data[0].name)
-        setAvatar(res.data[0].avatar)
         setInfo(res.data[0].info)
         setPrice(res.data[0].price)
+
+        const avatarData = await api.get('/itemavatarbyid', {
+            params: {item_id}
+        })
+        setAvatar(avatarData.data.itemsAvatar)
 
         const shop = await api.get('/shopbyid', {
             params: {
@@ -53,14 +60,15 @@ function ItemDescription(){
     var avatar_s3 = 'https://upload-catalogueme.'
     var isS3 = false
     
-    if(avatar) {
+    avatar.forEach(({avatar})=> {
+        
         if(avatar.substring(0, avatar_s3.length) === avatar_s3){
             isS3 = true
         } else {
             avatar_url = avatar.substring(6, avatar.length)
         }
         
-    }
+    });
     return (
         <div id="item-description">
             <PageHeader title={shop_name}>
@@ -70,7 +78,14 @@ function ItemDescription(){
             </PageHeader>
             <article className="item">
                 <header>
-                    <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>
+                <Carousel pause="hover" fade={true} interval={5000} keyboard={true}>
+                    {avatar.map(({avatar}) => {
+                        return (<Carousel.Item key={avatar} className="carousel-item-dashboard">
+                                    <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>  
+                                </Carousel.Item>)
+                    }) }
+                    
+                </Carousel>
                     <div className="info">
                         <h2>{name}</h2>
                         <p>

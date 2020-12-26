@@ -44,7 +44,7 @@ const AddItem: React.FC = () => {
         formData.append("avatar", avatar);
         formData.append("info", info);
 
-        api.post('/avatar', formData, {
+        api.post('/items', formData, {
             headers: {
                 "Content-Type": `multipart/form-data;`,
             }
@@ -53,7 +53,7 @@ const AddItem: React.FC = () => {
             alert('Cadastro realizado com sucesso. ')
             resetFormState();
         }).catch((e) => {
-            alert('Erro no cadastro. Verifique se todos os campos foram preenchidos. ')
+            alert([e, 'Erro no cadastro. Verifique se todos os campos foram preenchidos. '])
         })
     }
 
@@ -92,6 +92,7 @@ const AddItem: React.FC = () => {
                         name="avatar" 
                         label="Foto" 
                         type="file" 
+                        accept="image/x-png,image/gif,image/jpeg"
                         className="imagem-avatar" 
                         onChange={onChangeHandler}
                     />

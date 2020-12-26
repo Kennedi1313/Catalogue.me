@@ -28,7 +28,6 @@
     padding-top: 0;
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
 }
 #page-shop-list main .container {
     max-width: 800px;
@@ -114,7 +113,24 @@
     font: 400 2rem Poppins;
     justify-self: center;
 }
+#page-shop-list main .botao-alternar{
+    width: 80%;
+    height: 6rem;
+    padding: 1rem;
+    margin: 0 auto;
+    background-color: #2F4F4F;
+    color: antiquewhite;
+    border: 0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
 
+}
 #page-shop-list main div .categoria {
     color: #2F4F4F;
     font: 700 2.3rem Poppins;
@@ -122,6 +138,10 @@
 }
 
 @media(min-width: 800px) {
+    #page-shop-list main .botao-alternar{
+        width: 20%;
+        margin-left: 1rem;
+    }
     #page-shop-list {
         max-width: 100%;
     }

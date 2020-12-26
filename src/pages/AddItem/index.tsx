@@ -45,7 +45,7 @@ function AddItem() {
         formData.append("avatar", avatar);
         formData.append("info", info);
 
-        api.post('/avatar', formData, {
+        api.post('/items', formData, {
             headers: {
                 "Content-Type": `multipart/form-data;`,
             }

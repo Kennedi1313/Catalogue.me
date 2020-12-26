@@ -122,20 +122,21 @@
     }
 
     .item header {
+        width: 100%;
         padding: 2rem 2rem;
         display: flex;
         flex-direction: row;
-        overflow-y: visible;
+    }
+    .carousel-item-next, .carousel-item-prev, .carousel-item .active {
+        display: none !important;
+        transition: transform 0s ease, opacity .0s ease-out
     }
 
     .item header .info {
-        width: 50%;
+        width: 50% !important;
+        margin-left: 2rem;
     }
 
-    .item header img {
-        width: 60%;
-        object-fit: cover;
-    }
     .item footer a {
         padding-right: 10rem;
         font-size: 2rem;
@@ -143,6 +144,9 @@
 
     .item footer p strong {
         font-size: 3rem;
+    }
+    .item header div {
+        margin-top: 0;
     }
 
     .button-back {

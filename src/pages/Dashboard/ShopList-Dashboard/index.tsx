@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 
 import './styles.css'
 
-import ShopItem from '../../../components/ShopItem'
+import ShopItem from '../ShopItem-Dashboard'
 import api from '../../../services/api'
 
 interface itemProps {
     item : {
         name: string;
         price: number;
-        avatar: string;
+        avatar: string,
         info: string;
         category: string;
         id: string;
@@ -50,9 +50,14 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
 
     
 
-    function handleDeletar(item, index) {
-        api.post('/items', 
-                {item_id: item.id}, 
+    async function handleDeletar(item, index) {
+        const avatarData = await api.get('/itemavatarbyid', {
+            params: {item_id: item.id}
+        })
+
+        api.post('/itemsDelete', 
+                {item_id: item.id,
+                avatars: avatarData.data.itemsAvatar}, 
              )
             .then((res) => { 
                 alert('Item deletado com sucesso') 
@@ -88,7 +93,8 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
     return (
         <div id="page-shop-list">
             <main>
-                <h1></h1>
+                <h1>Itens disponíveis</h1>
+                <a className="botao-alternar" href={'/dashboard/itens-inativos'}>Ver itens indisponíveis</a>
                     {categories.map((category: string) => {
                     return(
                         < div key={category}>
@@ -100,7 +106,7 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
                                                     key={item.id} 
                                                     item={item} 
                                                     whatsapp={whatsapp}
-                                                    path="shopListDashboard"
+                                                    path="shopList"
                                                     onDelete={() => handleDeletar(item, index)}
                                                     onInative={() => hadleInativar(item, index)}
                                                 />)

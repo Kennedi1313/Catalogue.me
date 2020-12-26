@@ -17,6 +17,7 @@ body {
 }
 
 #page-dashboard main {
+    height: 100%;
     display: grid;
     grid-template-columns: 15% 85%;
 }
@@ -114,7 +115,6 @@ body {
         font-size: 25px;
         font-weight: bold;
         padding: 2px;
-        width: 100vw;
         height: 4rem;
         text-align: right;
         background-color: #121f1f;
@@ -160,6 +160,7 @@ body {
     }
     #chk:checked ~ #menu-icon{
         height: 100vh;
+        width: 100vw;
         background-color: rgb(28, 47, 47, .6);
     }
 }
