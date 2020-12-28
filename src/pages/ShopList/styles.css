@@ -1,6 +1,6 @@
 
 #page-shop-list {
-    width: 100vw;
+    width: 100%;
     height: 100%;
     background-color: antiquewhite;
     font: 700 3rem Rancho;
@@ -9,7 +9,7 @@
 #search-itens {
     margin-top: 0.3rem;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr;
     margin-bottom: 0.5rem;
 }
@@ -22,8 +22,13 @@
 
 #page-shop-list main {
     font: 400 1.4rem Poppins;
-    padding: 32px 0;
+    
     background-color: antiquewhite;
+    width: 100%;
+    max-width: 100%;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
 }
 #page-shop-list main .container {
     max-width: 800px;
@@ -33,74 +38,7 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 5px;
 }
-#page-shop-list form .input-block {
-    margin-top: 1rem;
-}
 
-#page-shop-list #search-itens button {
-    width: 100%;
-    height: 5.6rem;
-    background-color: #426f42;
-    color: antiquewhite;
-    border: 0;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    font: 700 1.6rem Poppins;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: background-color 0.2s;
-    margin-top: 2.9rem;
-}
-
-#page-shop-list #search-itens button:hover {
-    background-color:#2f4f2f;
-}
-
-#schedule-div {
-    width: 99.8%;
-    margin-left: 0.1%;
-}
-
-.input-block text{
-    background-color: snow;
-    color: #2f4f2f;
-    padding-left: 0.5rem;
-    font: 400 1.6rem Poppins;
-    
-}
-
-.input-block #schedule{
-    height: 2.5rem !important;
-    font:400 1.5rem Poppins !important;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-}
-
-.input-block #schedule input {
-    border-radius: 0rem !important;
-    border: 1px solid   #709292;
-    height: 2.5rem !important;
-    font:400 1.4rem Poppins !important;
-    transition: all .2s;
-}
-
-.input-block #schedule-title{
-    height: 3rem !important;
-    margin-top: 0rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    
-}
-
-.input-block #schedule-title input {
-    border-radius: 0rem !important;
-    height: 3rem !important;
-    background-color: #709292;
-}
 h4 {
     width: 100%;
     padding: 0.5rem;
@@ -118,17 +56,76 @@ h4 {
     text-align: center;
 }
 
+#page-shop-list main .pagination {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    align-content: space-between;
+    padding: 1rem;
+    font: 700 1.6rem Poppins;
+    margin: 0 auto;
+}
+#page-shop-list main .pagination .pagination-button {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    padding: 1rem;
+}
+
+#page-shop-list main .pagination .pagination-button button {
+
+    background-color: #426f42;
+    color: antiquewhite;
+    border: 0;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+#page-shop-list main .pagination .pagination-button .pagination-item {
+    padding: 1rem;
+    cursor: pointer;
+    border: 1px solid  #426f42;
+    border-radius: 0.8rem;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#page-shop-list main .pagination .pagination-button .pagination-item-selected {
+    padding: 1rem;
+    cursor: pointer;
+    border: 1px solid  #426f42;
+    border-radius: 0.8rem;
+    margin-left: 2px;
+    margin-right: 2px;
+    background-color:  #2f4f2fbd;
+}
 
 @media(min-width: 800px) {
+    
     #page-shop-list {
         max-width: 100vw;
     }
     #page-shop-list main div .container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-    
+    #page-shop-list #search-itens .input-block {
+        margin-top: 18px;
+    }
     #page-shop-list #search-itens {
-        grid-template-columns: 1fr 2fr 1fr;
+        justify-items: center;
+        align-items: center;
+        
+        grid-template-columns: 1fr 2fr;
         column-gap: 5px;
     }
     #search-itens .selects {

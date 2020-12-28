@@ -14,7 +14,7 @@ const AddItem: React.FC = () => {
 
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState('Produto')
     const [avatar, setAvatar] = useState('')
     const [info, setInfo] = useState('')
 

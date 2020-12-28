@@ -37,8 +37,6 @@ function ItemDescription(){
                 params: {item_id}
             })
             setAvatar(avatarData.data.itemsAvatar)
-
-            console.log(avatar)
         }
         getItem();
     }, [item_id, avatarInp]);
@@ -48,6 +46,7 @@ function ItemDescription(){
     }
 
     function handleCreate(e: FormEvent) {
+        e.preventDefault();
         const formData = new FormData();
         formData.append("item_id", item_id);
         formData.append("avatar", avatarInp);

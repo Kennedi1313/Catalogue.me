@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
@@ -29,31 +29,34 @@ function ItemDescription(){
 
     const { user } = useContext(StoreContext)
 
-    window.onload = getItem;
-    async function getItem() {
-        const res = await api.get('/itembyid', { 
-            params: { item_id } 
-        })
-
-        setName(res.data[0].name)
-        setInfo(res.data[0].info)
-        setPrice(res.data[0].price)
-
-        const avatarData = await api.get('/itemavatarbyid', {
-            params: {item_id}
-        })
-        setAvatar(avatarData.data.itemsAvatar)
-
-        const shop = await api.get('/shopbyid', {
-            params: {
-                shop_id,
-            }
-        })
-
-        setShopName(shop.data[0].name)
-        setWhatsapp(shop.data[0].whatsapp)
-        console.log(whatsapp)
-    }
+    useEffect(() => {
+        async function getItem() {
+            const res = await api.get('/itembyid', { 
+                params: { item_id } 
+            })
+    
+            setName(res.data[0].name)
+            setInfo(res.data[0].info)
+            setPrice(res.data[0].price)
+    
+            const avatarData = await api.get('/itemavatarbyid', {
+                params: {item_id}
+            })
+            setAvatar(avatarData.data.itemsAvatar)
+    
+            const shop = await api.get('/shopbyid', {
+                params: {
+                    shop_id,
+                }
+            })
+    
+            setShopName(shop.data[0].name)
+            setWhatsapp(shop.data[0].whatsapp)
+            console.log(whatsapp)
+        }
+        getItem();
+    }, [item_id, shop_id, whatsapp]);
+    
 
     var avatar_url = ''
     var default_url = '/uploads/default.png'
@@ -88,12 +91,12 @@ function ItemDescription(){
                 </Carousel>
                     <div className="info">
                         <h2>{name}</h2>
-                        <p>
+                        
                             <strong>Descrição</strong>
                             <p className="description">
                                 {info}
                             </p>
-                        </p>
+                        
                         
                         <footer>
                             <p>
@@ -101,7 +104,7 @@ function ItemDescription(){
                                 <strong>R$ {price}</strong>
                             </p>
                             
-                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/shop/'+shop_id+'/item/'+item_id }>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/shop/'+shop_id+'/item/'+item_id }>
                                 <img src={whatsappIcon} alt="whatsapp"/>
                                 Entrar em contato
                             </a>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
 import './styles.css'
 
@@ -42,14 +43,14 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative, o
 
     return (
         <article className="shop-item">
-            <a href={'/shop/'+item.shop_id+'/item/'+item.id}>
+            <Link to={'/shop/'+item.shop_id+'/item/'+item.id}>
                 <header>
                 <img src={ isS3 ? item.avatar : ( item.avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>
                     <div>
                         <strong>{nomeExibido}</strong>
                     </div>
                 </header>
-                </a>
+            </Link>
                 <footer>
                     <p>
                         Preço: 

@@ -1,65 +1,27 @@
 
-#page-shop-list {
+#page-shop-list-dash {
     width: 100%;
-    height: 100%;
     background-color: antiquewhite;
     font: 700 3rem Rancho;
+    min-height: 100vh;
 }
 
-#search-itens {
-    width: 100%;
-    margin-top: 0.3rem;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr;
-    margin-bottom: 0.5rem;
-}
-
-#search-itens .selects {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 5px;
-}
-
-#page-shop-list main {
+#page-shop-list-dash main {
     background-color: antiquewhite !important;
     width: 100%;
     max-width: 100%;
     padding-top: 0;
     display: flex;
     flex-direction: column;
+    font: 400 1.4rem Poppins;
 }
-#page-shop-list main .container {
+#page-shop-list-dash main .container {
     max-width: 800px;
     margin: 0rem auto;
     text-align: justify;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 5px;
-}
-#page-shop-list form .input-block {
-    margin-top: 1rem;
-}
-
-#page-shop-list #search-itens button {
-    width: 100%;
-    height: 5.6rem;
-    background-color: #426f42;
-    color: antiquewhite;
-    border: 0;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    font: 700 1.6rem Poppins;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: background-color 0.2s;
-    margin-top: 2.9rem;
-}
-
-#page-shop-list #search-itens button:hover {
-    background-color:#2f4f2f;
 }
 
 .page-header-dash {
@@ -102,7 +64,7 @@
     font: 400 1.6rem Poppins;
 }
 
-#page-shop-list main h1 {
+#page-shop-list-dash main h1 {
     margin-bottom: 2rem;
     margin-top: 0;
     text-align: center;
@@ -114,30 +76,18 @@
     justify-self: center;
 }
 
-#page-shop-list main div .categoria {
+#page-shop-list-dash main div .categoria {
     color: #2F4F4F;
     font: 700 2.3rem Poppins;
     text-align: center;
 }
 
 @media(min-width: 800px) {
-    #page-shop-list {
+    #page-shop-list-dash {
         max-width: 100%;
     }
-    #page-shop-list main div .container {
+    #page-shop-list-dash main div .container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    
-    #page-shop-list #search-itens {
-        grid-template-columns: 1fr 2fr 1fr;
-        column-gap: 5px;
-    }
-    #search-itens .selects {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    #search-itens {
-        height: 6rem;
     }
 
     .page-header-dash {

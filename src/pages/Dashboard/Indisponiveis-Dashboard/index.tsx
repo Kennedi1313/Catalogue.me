@@ -4,6 +4,7 @@ import './styles.css'
 
 import ShopItem from '../../../components/ShopItem'
 import api from '../../../services/api'
+import { Link } from 'react-router-dom'
 
 interface itemProps {
     item : {
@@ -67,10 +68,10 @@ const ShopListInativos: React.FC<ParamProps> = ({shop_id}) => {
     }
 
     return (
-        <div id="page-shop-list">
+        <div id="page-shop-list-dash">
             <main>
                 <h1>Itens Indisponiveis</h1>
-                    <a className="botao-alternar" href={'/dashboard/shop'}>Ver itens disponíveis</a>
+                    <Link className="botao-alternar" to={'/dashboard/shop'}>Ver itens disponíveis</Link>
                     {categories.map((category: string) => {
                     return(
                         < div key={category}>

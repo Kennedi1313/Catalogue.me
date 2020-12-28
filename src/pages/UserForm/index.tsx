@@ -21,11 +21,11 @@ function UserForm() {
         new_user_passwd: yup.string().oneOf([yup.ref('user_passwd')]).required(),
 
         shop_name: yup.string().max(80).required(),
-        shop_whatsapp: yup.string().required(),
+        shop_whatsapp: yup.string().min(11).required(),
     })
 
     function mascaraTelefone(input){
-        input.maxLength = 13;//propriedade maxlength adicionada ao campo por javascript
+        input.maxLength = 11;//propriedade maxlength adicionada ao campo por javascript
         setTimeout(//set timeout usado para atualização mais precisa
             function(){
                 input.value = formataTelefone(input.value);//atualização do campo com seu valor formatado em formataTelefone()
@@ -37,39 +37,13 @@ function UserForm() {
     function formataTelefone(value){
         value = value.replace(/\D/g,"");//Remove tudo o que não é dígito
         
-        value = value.replace(/^(\d\d)(\d)/g,"$1 $2");//Coloca parênteses em volta dos dois primeiros dígitos
-        
-        if(value.length < 11) value = value.replace(/(\d{4})(\d)/,"$1-$2");//Número com 8 dígitos. Formato: (99) 9999-9999
-        else value = value.replace(/(\d{5})(\d)/,"$1-$2");//Número com 9 dígitos. Formato: (99) 99999-9999
-        
+      
         return value;
     }
 
     const history = useHistory();
 
     const [shop_bio, setShopBio] = useState('')
-    /*
-    // cria e atualiza o status o schedule item
-    const [scheduleItems, setScheduleItem] = useState([
-        { week_day: 1, from: '08:00', to: '18:00'},
-        { week_day: 2, from: '08:00', to: '18:00'},
-        { week_day: 3, from: '08:00', to: '18:00'},
-        { week_day: 4, from: '08:00', to: '18:00'},
-        { week_day: 5, from: '08:00', to: '18:00'},
-    ]);
-    function addNewScheduleItem() {
-        setScheduleItem([
-            ...scheduleItems,
-            { week_day: 0, from: '08:00', to: '18:00'}
-        ]);
-    }
-
-    // cria e atualiza o estado do avatar com a imagem do usuario
-    /* const [shop_avatar, setShopAvatar] = useState('')
-    function onChangeHandler (event) {
-        setShopAvatar(event.target.files[0])
-    } */
-
     function handleCreateShop(
         values:  
         {
@@ -78,7 +52,6 @@ function UserForm() {
             user_email: string, 
             user_passwd: string,
             new_user_passwd: string,
-
             shop_name: string,
             shop_whatsapp: string,
         } ) {
@@ -91,10 +64,7 @@ function UserForm() {
 
         formData.append('shop_name', values.shop_name)
         formData.append('shop_whatsapp', values.shop_whatsapp)
-        /* formData.append('shop_avatar', shop_avatar) */
         formData.append('shop_bio', shop_bio)
-
-        /* formData.append('schedule_JSON', JSON.stringify(scheduleItems)) */
 
         api.post('/shops', formData, {
             headers: {
@@ -108,17 +78,6 @@ function UserForm() {
             alert('Erro no cadastro. Verifique se todos os campos foram preenchidos. ')
         })
     }
-
-  /*   function setScheduleItemValue(position: number, field: string, value: string){
-        const newArray = scheduleItems.map((scheduleItem, index) => {
-            if(index === position) {
-                return { ...scheduleItem, [field]: value }
-            }
-
-            return scheduleItem
-        })
-        setScheduleItem(newArray)
-    } */
 
     return (
         <div id="page-user-form" className="container">
@@ -202,13 +161,6 @@ function UserForm() {
                                     render={()=><span className="error-submit">Telefone Inválido</span>}
                                 />
                             </div>
-                            {/* <Input 
-                                name="avatar" 
-                                label="Imagem de capa" 
-                                type="file" 
-                                className="imagem-avatar" 
-                                onChange={onChangeHandler}>
-                            </Input> */}
                             <Textarea 
                                 name="bio" 
                                 label="Biografia" 
@@ -216,59 +168,6 @@ function UserForm() {
                                 onChange={(e)=>{setShopBio(e.target.value)}}>
                             </Textarea>
                         </fieldset>
-{/* 
-                        <fieldset>
-                            <legend>
-                                Horários disponíveis
-                                <button type="button" onClick={addNewScheduleItem}>
-                                    + novo horário
-                                </button>
-                                
-                            </legend>
-                            
-                            <span>Diga para os clientes em quais dias e horários você atende. </span>
-                            <br></br>
-                            <span>(Clique no botão acima para adicionar mais dias). </span>
-                            <br></br>
-                            <br></br>
-                            {scheduleItems.map((scheduleItem, index) => {
-                                return(
-                                    <div key={index} className="schedule-item">
-                                        <Select
-                                            name={`week_day `+ index}
-                                            label="Dia da semana" 
-                                            onChange={e => setScheduleItemValue(index, 'week_day', e.target.value)}
-                                            value={scheduleItem.week_day}
-                                            options={[
-                                                {value: '0', label: 'Domingo'},
-                                                {value: '1', label: 'Segunda'},
-                                                {value: '2', label: 'Terça'},
-                                                {value: '3', label: 'Quarta'},
-                                                {value: '4', label: 'Quinta'},
-                                                {value: '5', label: 'Sexta'},
-                                                {value: '6', label: 'Sábado'},
-                                            ]}
-                                        />
-                                        <Input 
-                                            name={`from `+ index}
-                                            label="Das" 
-                                            type="time" 
-                                            value={scheduleItem.from} 
-                                            onChange={e => setScheduleItemValue(index, 'from', e.target.value)}
-                                        >
-                                        </Input>
-                                        <Input 
-                                            name={`to `+ index}
-                                            label="Ate" 
-                                            type="time" 
-                                            value={scheduleItem.to} 
-                                            onChange={e => setScheduleItemValue(index, 'to', e.target.value)}
-                                        >
-                                        </Input>
-                                    </div>
-                                );
-                            })}
-                        </fieldset> */}
 
                         <footer>
                             <p>Importante! <br /> Preencha todos os dados.</p>

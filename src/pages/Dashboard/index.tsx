@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import './styles.css'
 import { Link, useParams } from 'react-router-dom'
 import AddItem from './AddItem-Dashboard'
@@ -17,11 +17,17 @@ interface ParamProps {
     page: string;
 }
 
-
-
 function Dashboard() {
     const { page } = useParams<ParamProps>();
     const { user } = useContext(StoreContext)
+    const textAreaRef = useRef(null);
+    function copyToClipboard(e) {
+        //@ts-ignore
+        textAreaRef.current.select();
+        document.execCommand('copy');
+        e.target.focus();
+        alert("Copiado com sucesso! Agora compartilhe esse link com seus clientes.");
+      };
 
     return (
         <div id="page-dashboard">
@@ -60,7 +66,9 @@ function Dashboard() {
                         : page === 'inicio' ?
                             <fieldset className="link-shop">
                                 <legend><h2>Copie esse link e envie para os seus clientes!</h2></legend>
-                                <input type="text" readOnly value={process.env.REACT_APP_URL+'/shop/'+user.shop_id}></input>
+                                <textarea ref={textAreaRef} id="url" readOnly value={process.env.REACT_APP_URL+'/shop/'+user.shop_id}></textarea>
+                                <button onClick={copyToClipboard}>Copiar o link da sua Loja Virtual</button> 
+                                
                             </fieldset>
                         : ''
                     }
