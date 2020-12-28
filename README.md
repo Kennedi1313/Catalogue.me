@@ -2,20 +2,20 @@ Projeto de catálogo virtual para pequenos e médios comercios feito em ReactJS 
 
 ## Funcionalidades
 
-##Cadastro de loja
+### Cadastro de loja
 Cada loja cadastrada é relacionada a um usuário cadastrado na mesma tela.
 
-##Dashboard
+### Dashboard
 No dashboard disponível para o dono da loja é possível realizar as seguintes ações:
-##Tela inicial
+#### Tela inicial
 Copiar o link da loja que é disponibilizado aos clientes
-##Minha loja
+#### Minha loja
 Deletar os itens da loja
 Indisponibilizar/disponibilizar os itens da loja
 Adicionar mais fotos aos itens da loja
-##Cadastro de produto 
+#### Cadastro de produto 
 Cada produto pode possuir uma ou mais imagens que são armazenadas no serviço Amazon S3
 
-##Visualização da loja
+### Visualização da loja
 Tela onde o cliente vê os produtos cadastrados na loja de um usuário do sistema.
 Nessa tela é possível usar filtros para localizar os itens e fazer o pedido do produto escolhido através do Whatsapp
