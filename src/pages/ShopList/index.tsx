@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import './styles.css'
-
+import Helmet from 'react-helmet'
 import ShopItem from '../../components/ShopItem'
 import Input from '../../components/Input'
 import PageHeader from '../../components/PageHeader'
@@ -78,6 +78,10 @@ function ShopList() {
     
     return (
         <div id="page-shop-list">
+            <Helmet>
+                <title>{shop_name} - Catálogo virtual by Catalogue.me</title>
+                <link rel="canonical" href={'https://catalogueme.herokuapp.com/shop/'+shop_id} />
+            </Helmet>
             <PageHeader title={shop_name}>
                 <h4>Pesquisar {<SearchIcon/>}</h4>
                 <form id="search-itens">

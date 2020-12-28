@@ -18,11 +18,11 @@ function Landing() {
             </div>
             <div id="page-landing-content">
                 <div className="landing">
-                    <h2 className="subtitle">O catálogo virtual perfeito para o seu comércio.</h2>
+                    <h2 className="subtitle">Crie seu catálogo virtual online e 100% grátis em menos de 5 minutos.</h2>
                     <br/>
                     <div className="buttons-area">
                         <p className="text" id="text3">
-                            Entre agora mesmo na plataforma, basta cadastrar seus produtos.
+                            Modernize sua loja virtual com o nosso catálogo, não precisa instalar nada! Faça login, cadastre seus produtos/serviços e compartilhe com seus clientes em tempo real.
                         </p>
                         <div className="buttons-container">
                             <Link to="/user-form" className="products">
@@ -38,7 +38,7 @@ function Landing() {
                         <img src={landingImg} className="hero-image" alt="landing"/>
                     </div>
                     <p className="text" id="text2">
-                        Cadastre seu comércio agora mesmo e comece a usar o Catalogue.me! É a praticidade que você estava procurando. 
+                        Modernize o seu comércio agora mesmo e comece a usar o Catalogue.me! É a praticidade que você estava procurando. 
                     </p>
                     
                 </div> 
