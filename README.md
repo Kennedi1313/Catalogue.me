@@ -1,5 +1,7 @@
 Projeto de catálogo virtual para pequenos e médios comercios feito em ReactJS + Typescript.
 
+### Hospedado em https://catalogueme.herokuapp.com
+
 ## Funcionalidades
 
 ### Cadastro de loja
