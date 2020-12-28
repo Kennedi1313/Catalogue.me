@@ -81,6 +81,7 @@ function ShopList() {
             <Helmet>
                 <title>{shop_name} - Catálogo virtual by Catalogue.me</title>
                 <link rel="canonical" href={'https://catalogueme.herokuapp.com/shop/'+shop_id} />
+                <meta name="description" content="Bem vindo(a) a minha loja virtual!" />
             </Helmet>
             <PageHeader title={shop_name}>
                 <h4>Pesquisar {<SearchIcon/>}</h4>
