@@ -42,9 +42,9 @@ function Dashboard() {
                 <label htmlFor="chk" id="menu-icon" className="menu-icon">&#9776;</label>
                 <nav id="side-menu" className="buttons-side-container">
                    
-                    <Link to="/dashboard/inicio">Inicio</Link>
-                    <Link to="/dashboard/shop">Minha Loja</Link>
-                    <Link to="/dashboard/add-item">Adicionar Itens</Link>
+                    <Link className="link" to="/dashboard/inicio">Inicio</Link>
+                    <Link className="link" to="/dashboard/shop">Minha Loja</Link>
+                    <Link className="link" to="/dashboard/add-item">Adicionar Itens</Link>
 
                 </nav>
                 <div id="page-dashboard-content">
