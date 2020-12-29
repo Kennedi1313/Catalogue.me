@@ -61,7 +61,7 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative, o
                         ?    
                             <>
                                 <button type="button" className="deletar" onClick={onDelete}>Deletar</button>
-                                <button type="button" className="indisponivel" onClick={onInative}>Indisponível</button>
+                                <button type="button" className="indisponivel" onClick={onInative}>Arquivar</button>
                             </>
                             
                         : path === "inativos"

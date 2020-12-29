@@ -165,6 +165,7 @@ function ShopList() {
             </main>
             <footer id="footer-shop">
                 <div className="contato">
+                    <p>Alguma dúvida sobre essa loja?</p>
                     <p>Fale com {shop_name} através do whatsapp: </p>
                     <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp }>
                         <img src={whatsappIcon} alt="whatsapp"/>
