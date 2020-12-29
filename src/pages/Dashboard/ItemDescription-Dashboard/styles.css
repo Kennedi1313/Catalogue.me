@@ -7,16 +7,27 @@ input[type='file'] {
 /* Aparência que terá o seletor de arquivo */
 fieldset #label-file {
     background-color: #3498db;
-    border-radius: 5px;
+    border-radius: 0.8rem;
     color: #fff;
     cursor: pointer;
     margin: 10px;
-    padding: 6px 20px
+    padding: 6px 20px;
+    width: 50%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+fieldset legend {
+    margin: 0 auto;
 }
 
 #item-description-dashboard {
     width: 100vw;
     height: 100%;
+    color: black;
     overflow-y: scroll;
 }
 .item-dashboard {
@@ -131,6 +142,11 @@ fieldset #label-file {
     align-items: center;
     justify-items: center;
     align-content: space-between;
+}
+
+.add-image legend {
+    margin: 2rem;
+    font: 700 1.8rem Poppins;
 }
 
 @media(min-width: 700px) {

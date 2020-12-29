@@ -114,12 +114,11 @@ function ItemDescription(){
                 <footer>
                     <fieldset className="add-image">
                         <legend>Adicionar nova imagem</legend>
-                        <label id="label-file" htmlFor='selecao-arquivo'>&#187; Selecionar imagem &#187;</label>
-                        <Input 
+                        <label id="label-file" htmlFor="arquivo">Selecionar imagem &#187;</label>
+                        <input 
                             name="avatar" 
-                            label=""
                             type="file" 
-                            id="selecao-arquivo"
+                            id="arquivo"
                             accept="image/x-png,image/gif,image/jpeg"
                             className="imagem-avatar" 
                             onChange={onChangeHandler}
