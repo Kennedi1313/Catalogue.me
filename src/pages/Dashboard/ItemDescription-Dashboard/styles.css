@@ -1,6 +1,6 @@
 
 /* Esconde o input */
-input[type='file'] {
+#arquivo {
     display: none
 }
 
