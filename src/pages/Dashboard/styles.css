@@ -151,8 +151,12 @@ body {
 
     #side-menu .link {
         height: 100%;
-        align-content: center;
+        justify-items: center;
         justify-content: center;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        
         margin: 0.1rem;
     }
     
