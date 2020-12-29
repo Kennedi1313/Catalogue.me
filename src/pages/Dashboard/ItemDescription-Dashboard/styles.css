@@ -1,10 +1,17 @@
-.button-back {
-    text-decoration: none;
-    color: antiquewhite;
-    float: right;
-    font: 700 1.6rem Poppins;
-    margin-right: 0.8rem;
-    margin-top: 0.4rem;
+
+/* Esconde o input */
+input[type='file'] {
+    display: none
+}
+
+/* Aparência que terá o seletor de arquivo */
+fieldset #label-file {
+    background-color: #3498db;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    padding: 6px 20px
 }
 
 #item-description-dashboard {
@@ -17,8 +24,6 @@
     margin: 3.2rem auto;
     background-color: snow;
     border: 1px solid snow;
-    color: black;
-    border-radius: 0.8rem;
     margin-top: 2.4rem;
 }
 
@@ -26,10 +31,6 @@
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-    "image"
-    "info";
 }
 
 .item-dashboard header img {
@@ -38,12 +39,6 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    margin: 1rem;
-    grid-area: image;
-}
-
-.item-dashboard header div {
-    margin-top: 2.4rem;
 }
 
 .item-dashboard header div strong {
@@ -192,5 +187,4 @@
     .item-dashboard header div {
         margin-top: 0;
     }
-
 }

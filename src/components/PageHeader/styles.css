@@ -27,6 +27,11 @@
     margin: 0.5rem auto;
     color: antiquewhite;
     font: 700 2rem Poppins;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 48px;
 }
 
 .page-header .header-content p {
@@ -49,7 +54,7 @@
         padding-bottom: 48px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: flex-start;
     }
 }

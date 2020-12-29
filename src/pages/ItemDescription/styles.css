@@ -1,35 +1,31 @@
 .button-back {
     text-decoration: none;
     color: antiquewhite;
-    float: right;
     font: 700 1.6rem Poppins;
-    margin-right: 0.8rem;
-    margin-top: 0.4rem;
 }
 
 #item-description {
-    width: 100vw;
-    height: 100%;
-    overflow-y: scroll;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: antiquewhite;
 }
+
 .item {
-    width: 100vw;
-    margin: 3.2rem auto;
+    width: 90vw;
+    margin-bottom: 30rem;
+    height: min-content;
+    margin: 0 auto;
+    margin-top: -2.5rem;
     background-color: snow;
     border: 1px solid snow;
     color: black;
-    border-radius: 0.8rem;
-    margin-top: 2.4rem;
 }
 
 .item header {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-    "image"
-    "info";
 }
 
 .item header img {
@@ -38,20 +34,6 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    margin: 1rem;
-    grid-area: image;
-}
-
-.item header div {
-    margin-top: 2.4rem;
-}
-
-.item header div strong {
-    display: block;
-}
-
-.item > p {
-    padding: 0 2rem;
 }
 
 .item p .description {
@@ -118,7 +100,7 @@
 
     .item {
         width: 90vw;
-        margin-top: -4rem;
+        margin-top: -2.5rem;
     }
 
     .item header {
@@ -149,10 +131,6 @@
     }
     .item header div {
         margin-top: 0;
-    }
-
-    .button-back {
-        float: right;
     }
 
     .button-back:hover {
