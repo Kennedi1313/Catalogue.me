@@ -7,8 +7,9 @@ import Input from '../../components/Input'
 import PageHeader from '../../components/PageHeader'
 import Select from '../../components/Select'
 import api from '../../services/api'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/SearchOutlined';
+import whatsappIcon from '../../assets/images/whatsappIcon.png'
 
 interface ParamProps {
     shop_id: string
@@ -162,6 +163,20 @@ function ShopList() {
                 </div>
                
             </main>
+            <footer id="footer-shop">
+                <div className="contato">
+                    <p>Fale com {shop_name} através do whatsapp: </p>
+                    <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp }>
+                        <img src={whatsappIcon} alt="whatsapp"/>
+                        Entrar em contato
+                    </a>
+                </div>
+                <div className="divulgue">
+                        <p>Gostou desse Catálogo Virtual? Ele é 100% online e grátis! Faça seu cadastro no botão abaixo e confira:</p>
+                        <Link to="/user-form"> Crie sua loja virtual </Link>
+                    </div>
+                
+            </footer>
         </div>
     )
 }

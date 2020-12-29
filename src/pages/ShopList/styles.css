@@ -109,8 +109,67 @@ h4 {
     margin-right: 2px;
     background-color:  #2f4f2fbd;
 }
+
+#footer-shop {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    color: antiquewhite;
+    padding: 4rem;
+    margin-top: 2rem !important;
+    font: 700 1.8rem Poppins !important;
+}
+
+#footer-shop .divulgue a {
+    padding: 1rem;
+    width: 100%;
+    height: 5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    border: 1px solid  #426f42;
+    border-radius: 0.8rem;
+    text-decoration: none;
+    color: antiquewhite;
+    background-color:  #2f4f2fbd;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: 0.2s;
+}
+
+#footer-shop .contato a {
+    width: 100%;
+    height: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color:  #2f4f2fbd;
+    color: antiquewhite;
+    border-radius: 0.8rem;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+#footer-shop .contato a img{
+    width: 4rem;
+}
+
 @media(min-width: 800px) {
-    
+    #footer-shop {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    #footer-shop .divulgue {
+        width: 40%;
+    }
+    #footer-shop .contato {
+        width: 40%;
+    }
     #page-shop-list {
         max-width: 100vw;
         display: flex;
