@@ -124,8 +124,10 @@
     .item header {
         width: 100%;
         padding: 2rem 2rem;
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        column-gap: 1rem;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr;
     }
     .carousel-item-next, .carousel-item-prev, .carousel-item .active {
         display: none !important;
@@ -133,7 +135,7 @@
     }
 
     .item header .info {
-        width: 50% !important;
+        width: 100% !important;
         margin-left: 2rem;
     }
 
@@ -150,6 +152,11 @@
     }
 
     .button-back {
-        margin-left: 45rem;
+        float: right;
+    }
+
+    .button-back:hover {
+        text-decoration: none;
+        color: snow;
     }
 }

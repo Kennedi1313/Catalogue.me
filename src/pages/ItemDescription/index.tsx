@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
 import PageHeader from '../../components/PageHeader';
@@ -75,9 +75,9 @@ function ItemDescription(){
     return (
         <div id="item-description">
             <PageHeader title={shop_name}>
-                <a className="button-back" href={!!user ? "/dashboard/shop/" : "/shop/" + shop_id}>
+                <Link className="button-back" to={!!user ? "/dashboard/shop/" : "/shop/" + shop_id}>
                     Voltar à loja
-                </a>
+                </Link>
             </PageHeader>
             <article className="item">
                 <header>
