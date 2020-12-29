@@ -12,7 +12,7 @@ fieldset #label-file {
     cursor: pointer;
     margin: 10px;
     padding: 6px 20px;
-    width: 50%;
+    width: 98%;
     height: 5rem;
     display: flex;
     align-items: center;
@@ -26,16 +26,16 @@ fieldset legend {
 
 #item-description-dashboard {
     width: 100vw;
-    height: 100%;
     color: black;
-    overflow-y: scroll;
+   
 }
 .item-dashboard {
-    width: 100vw;
-    margin: 3.2rem auto;
+    padding-bottom: 6rem;
+    width: 95vw;
+    margin: 1rem auto;
     background-color: snow;
     border: 1px solid snow;
-    margin-top: 2.4rem;
+
 }
 
 .item-dashboard header {
@@ -86,7 +86,7 @@ fieldset legend {
 }
 
 .item-dashboard footer button {
-    width: 100%;
+    width: 98%;
     height: 5rem;
     margin: 0 auto;
     background-color:  #426f42;
@@ -150,7 +150,7 @@ fieldset legend {
 }
 
 @media(min-width: 700px) {
-    .item-dashboard footer button {
+    .item-dashboard footer button, fieldset #label-file {
         width: 50%;
     }
     .add-image {
@@ -173,6 +173,7 @@ fieldset legend {
     }
     .item-dashboard {
         width: 90%;
+        padding-bottom: 0rem;
     }
 
     .item-dashboard header {
