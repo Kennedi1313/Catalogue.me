@@ -12,12 +12,12 @@ import {Carousel} from 'react-bootstrap'
 import StoreContext from '../../components/Store/Context';
 
 interface ParamProps {
-    shop_id: string,
+    shop_tag: string,
     item_id: string,
 }
 
 function ItemDescription(){
-    const { shop_id, item_id } = useParams<ParamProps>();
+    const { shop_tag, item_id } = useParams<ParamProps>();
     const [shop_name, setShopName] = useState('');
     const [name, setName] = useState('')
     const [avatar, setAvatar] = useState([
@@ -44,18 +44,17 @@ function ItemDescription(){
             })
             setAvatar(avatarData.data.itemsAvatar)
     
-            const shop = await api.get('/shopbyid', {
+            const shop = await api.get('/shopbytag', {
                 params: {
-                    shop_id,
+                    shop_tag,
                 }
             })
     
             setShopName(shop.data[0].name)
             setWhatsapp(shop.data[0].whatsapp)
-            console.log(whatsapp)
         }
         getItem();
-    }, [item_id, shop_id, whatsapp]);
+    }, [item_id, shop_tag, whatsapp]);
     
 
     var avatar_url = ''
@@ -75,7 +74,7 @@ function ItemDescription(){
     return (
         <div id="item-description">
             <PageHeader title={shop_name}>
-                <Link className="button-back" to={!!user ? "/dashboard/shop/" : "/shop/" + shop_id}>
+                <Link className="button-back" to={!!user ? "/dashboard/admin/shop" : "/" + shop_tag}>
                     Voltar à loja
                 </Link>
             </PageHeader>
@@ -104,7 +103,7 @@ function ItemDescription(){
                                 <strong>R$ {price}</strong>
                             </p>
                             
-                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/shop/'+shop_id+'/item/'+item_id }>
+                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/'+shop_tag+'/item/'+item_id }>
                                 <img src={whatsappIcon} alt="whatsapp"/>
                                 Entrar em contato
                             </a>

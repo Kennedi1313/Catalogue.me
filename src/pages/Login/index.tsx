@@ -25,7 +25,7 @@ const SignIn: React.FC = () => {
         if(token) {
           setToken(token);
           setUser(user);
-          return history.push('/dashboard/inicio')
+          return history.push('/dashboard/admin/inicio')
         }
       }).catch((err) => {
         setError('Credenciais inválidas. ')
@@ -61,7 +61,7 @@ const SignIn: React.FC = () => {
         <button type="submit" className="button-submit">
           Entrar
         </button>
-        <Link to="/user-form" className="button-cadastro">
+        <Link to="/user/form" className="button-cadastro">
           Fazer Cadastro
         </Link>
         </Form>

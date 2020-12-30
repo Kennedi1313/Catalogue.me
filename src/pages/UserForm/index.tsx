@@ -73,7 +73,7 @@ function UserForm() {
         }).then(() => {
             alert('Cadastro realizado com sucesso. ')
         }).then(() => {
-            history.push('/login')
+            history.push('/user/login')
         }).catch((e) => {
             alert('Erro no cadastro. Verifique se todos os campos foram preenchidos. ')
         })

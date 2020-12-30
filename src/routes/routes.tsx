@@ -19,13 +19,13 @@ function Routes() {
             <StoreProvider>
                 <Switch>
                     <Route exact path="/" component={Landing}/>
-                    <Route exact path="/shop/:shop_id" component={ShopList}/>
-                    <Route path="/user-form" component={UserForm}/>
-                    <Route exact path="/shop/:shop_id/item/:item_id" component={ItemDescription}/>
-                    <Route path="/login" component={Login} />
+                    <Route exact path="/:shop_tag" component={ShopList}/>
+                    <Route exact path="/user/form" component={UserForm}/>
+                    <Route exact path="/:shop_tag/item/:item_id" component={ItemDescription}/>
+                    <Route exact path="/user/login" component={Login} />
 
-                    <PrivateRoute path="/add-item" component={AddItem}/>
-                    <PrivateRoute path="/dashboard/:page/:item_id?" component={Dashboard} />
+                    <PrivateRoute path="/item/add" component={AddItem}/>
+                    <PrivateRoute path="/dashboard/admin/:page/:item_id?" component={Dashboard} />
                 </Switch>
             </StoreProvider>
         </BrowserRouter>

@@ -95,7 +95,7 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
         <div id="page-shop-list-dash">
             <main>
                 <h1>Itens disponíveis</h1>
-                <Link className="botao-alternar" to={'/dashboard/itens-inativos'}>Ver itens arquivados</Link>
+                <Link className="botao-alternar" to={'/dashboard/admin/itens-inativos'}>Ver itens arquivados</Link>
                     {categories.map((category: string) => {
                     return(
                         < div key={category}>

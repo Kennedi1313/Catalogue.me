@@ -71,7 +71,7 @@ const ShopListInativos: React.FC<ParamProps> = ({shop_id}) => {
         <div id="page-shop-list-dash">
             <main>
                 <h1>Itens Arquivados</h1>
-                    <Link className="botao-alternar" to={'/dashboard/shop'}>Ver itens disponíveis</Link>
+                    <Link className="botao-alternar" to={'/dashboard/admin/shop'}>Ver itens disponíveis</Link>
                     {categories.map((category: string) => {
                     return(
                         < div key={category}>
@@ -84,6 +84,7 @@ const ShopListInativos: React.FC<ParamProps> = ({shop_id}) => {
                                                     item={item} 
                                                     whatsapp={whatsapp}
                                                     path="inativos"
+                                                    shop_tag={''}
                                                     onAtive={() => hadleAtivar(item, index)}
                                                 />)
                                     else return ''

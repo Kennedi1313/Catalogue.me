@@ -12,7 +12,7 @@ import SearchIcon from '@material-ui/icons/SearchOutlined';
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
 
 interface ParamProps {
-    shop_id: string
+    shop_tag: string
 }
 
 interface itemProps{
@@ -28,7 +28,8 @@ interface itemProps{
 }
 
 function ShopList() {
-    const { shop_id } = useParams<ParamProps>();
+    const { shop_tag } = useParams<ParamProps>();
+    const [shopId, setShopId] = useState('');
     const [shop_name, setShopName] = useState('');
     const [items, setItems] = useState([]);
     const [name, setName] = useState('');
@@ -42,10 +43,25 @@ function ShopList() {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
+        async function searchShop(){
+            const shop = await api.get('/shopbytag', {
+                params: {
+                    shop_tag,
+                }
+            })
+            setShopId(shop.data[0].id)
+            setShopName(shop.data[0].name)
+            setWhatsapp(shop.data[0].whatsapp)
+        }
+        
+        searchShop();
+    }, [shop_tag]);
+
+    useEffect(() => {
         async function searchAllItems(){
             const item = await api.get('/items', {
                 params: {
-                    shop_id,
+                    shop_id: shopId,
                     name,
                     category,
                     price,
@@ -64,24 +80,16 @@ function ShopList() {
                 arrayPages.push(i);
             }
             setPages(arrayPages)
-
-            const shop = await api.get('/shopbyid', {
-                params: {
-                    shop_id,
-                }
-            })
-
-            setShopName(shop.data[0].name)
-            setWhatsapp(shop.data[0].whatsapp)
         }
+
         searchAllItems();
-    }, [currentPage, limit, shop_id, totalItens, category, name, price]);
+    }, [currentPage, limit, totalItens, category, name, price, shopId]);
     
     return (
         <div id="page-shop-list">
             <Helmet>
                 <title>{shop_name} - Catálogo virtual by Catalogue.me</title>
-                <link rel="canonical" href={'https://catalogueme.herokuapp.com/shop/'+shop_id} />
+                <link rel="canonical" href={'http://catalogueme.store/'+shopId} />
                 <meta name="description" content="Bem vindo(a) a minha loja virtual!" />
             </Helmet>
             <PageHeader title={shop_name}>
@@ -128,7 +136,7 @@ function ShopList() {
                             <div className="container">
                                 {items.map((item: itemProps["item"]) => {
                                     if(item.category ===  category)
-                                        return ( <ShopItem key={item.id} path="shopList" whatsapp={whatsapp} item={item}/> )
+                                        return ( <ShopItem key={item.id} shop_tag={shop_tag} path="shopList" whatsapp={whatsapp} item={item}/> )
                                     else return ''
                                 }) }
 
