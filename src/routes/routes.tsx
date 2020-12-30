@@ -18,7 +18,7 @@ function Routes() {
         <BrowserRouter>
             <StoreProvider>
                 <Switch>
-                    <Route exact path="/" component={Landing}/>
+                    <Route exact path="/" component={Landing} />
                     <Route exact path="/:shop_tag" component={ShopList}/>
                     <Route exact path="/user/form" component={UserForm}/>
                     <Route exact path="/:shop_tag/item/:item_id" component={ItemDescription}/>
