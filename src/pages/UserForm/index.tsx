@@ -154,7 +154,7 @@ function UserForm() {
                             </div>
                             <div className="input-block">
                                 <label htmlFor="whats" >Whatsapp</label>
-                                <Field name="shop_whatsapp" placeHolder="84 99999 9999" onKeyPress={(e) => mascaraTelefone(e.target)}/>
+                                <Field type="number" name="shop_whatsapp" placeHolder="84 99999 9999" onKeyPress={(e) => mascaraTelefone(e.target)}/>
                                 <ErrorMessage 
                                     component="span"  
                                     name="shop_whatsapp" 
