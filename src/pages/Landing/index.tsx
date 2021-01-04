@@ -68,7 +68,7 @@ function Landing() {
                                 return(
                                     <div className="shop-card">
                                         <div className="info">
-                                            <h3>{shops.name}</h3>
+                                            <h3>{shops.name.substring(0, 25)}</h3>
                                             <p>{shops.bio}</p>
                                         </div>
                                         <div className="buttons">
