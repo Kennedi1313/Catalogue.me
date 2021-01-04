@@ -68,8 +68,24 @@ function Landing() {
                                 return(
                                     <div className="shop-card">
                                         <div className="info">
-                                            <h3>{shops.name.substring(0, 25)}</h3>
-                                            <p>{shops.bio}</p>
+                                            <h3>
+                                                {
+                                                    shops.name.length < 25
+                                                    ?
+                                                    shops.name.substring(0, 25)
+                                                    :
+                                                    shops.name
+                                                }
+                                            </h3>
+                                            <p>
+                                                {
+                                                    shops.bio.length > 25 
+                                                    ?
+                                                    shops.bio.substring(0, 25) + '...'
+                                                    :
+                                                    shops.bio
+                                                }  
+                                            </p>
                                         </div>
                                         <div className="buttons">
                                             <a rel="noopener noreferrer" href={ process.env.REACT_APP_URL+'/'+shops.tag }>
