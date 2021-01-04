@@ -9,8 +9,6 @@
 }
 
 #page-landing-content {
-    margin-top: 5rem;
-
     background-color: #2F4F4F;
     width: 100%;
     padding: 2rem;
@@ -88,8 +86,6 @@
 .buttons-container {
     display: flex;
     justify-content: center;
-    margin: 3.2rem 0;
-    margin-bottom: 2rem;
 }
 
 .buttons-container a {
@@ -106,10 +102,6 @@
     color: #2F4F4F;
     background-color: antiquewhite;
     transition: background-color 0.2s;
-}
-
-.buttons-container a:first-child {
-    margin-right: 1.6rem;
 }
 
 .buttons-container a:hover {
@@ -157,27 +149,86 @@
     text-align: justify;
 }
 
+.landing-shops {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+}
+
+.landing-shops .shop-card {
+    background-color: antiquewhite;
+    color: #2F4F4F;
+    padding: 1rem;
+    min-width: 49.5% !important;
+    height: 22rem;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    justify-items: center;
+    border-radius: 0.8rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.landing-shops .shop-card a {
+    width: 100%;
+    height: 5rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color:  #2f4f2fbd;
+    color: antiquewhite;
+    border-radius: 0.8rem;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.landing-shops .shop-card a img{
+    width: 4rem;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0.8rem;
+    background-color: snow;
+}
+::-webkit-scrollbar {
+    border-radius: 0.8rem;
+    background: snow;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 0.8rem;
+    background: #1b2e2e;
+}
+
 @media (min-width: 800px) {
+    .landing-shops .shop-card {
+        min-width: 24.6% !important;
+    }
     #page-landing {
         display: flex;
         flex-direction: column;
     }
     #page-landing-content {
-        max-width: 1100px;
-        margin-top: 10rem;
+        max-width: 80vw;
         
     }
     .landing {
+        margin-bottom: 5rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 15% 48% 1fr;
+        grid-template-rows: 10% 18% 15% 2fr;
         grid-template-areas: 
-        "title hero"
-        "buttons hero"
-        "text1 hero"
-        "text2 hero";
-
-        column-gap: 3rem;
+        "title title"
+        "text3 text2"
+        "buttons buttons"
+        "hero hero"
+        ;
     }
     .subtitle {
         grid-area: title;
@@ -188,15 +239,27 @@
     #text2 {
         grid-area: text2;
     }
+    #text3 {
+        grid-area: text3;
+    }
     .buttons-area {
         grid-area: buttons;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         text-align: center;
-        display: flex;
-        flex-direction: column;
+        width: 40%;
+        margin: 0 auto;
+        align-self: center;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-self: center;
     }
     .buttons-area .buttons-container a  {
         padding: 2rem;
-        width: 30rem;
+        height: 7rem;
+        width: 100%;
+        
     }
     .landing-image {
         grid-area: hero;
