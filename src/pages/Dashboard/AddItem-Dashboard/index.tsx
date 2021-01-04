@@ -92,7 +92,7 @@ const AddItem: React.FC = () => {
                         name="avatar" 
                         label="Foto" 
                         type="file" 
-                        accept="image/*" capture="user"
+                        accept="image/*"
                         className="imagem-avatar" 
                         onChange={onChangeHandler}
                     />
