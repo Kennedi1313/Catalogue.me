@@ -160,8 +160,11 @@
     color: #2F4F4F;
     padding: 1rem;
     min-width: 49.5% !important;
-    height: 22rem;
-    justify-content: space-around;
+
+    height: 28rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     align-content: space-around;
     justify-items: center;
@@ -170,6 +173,9 @@
     margin-bottom: 0.5rem;
 }
 
+.landing-shops .shop-card .info {
+    font-size: 1.3rem;
+}
 
 .landing-shops .shop-card a {
     width: 100%;
@@ -210,6 +216,10 @@
     .landing-shops .shop-card {
         min-width: 24.6% !important;
     }
+    .landing-shops .shop-card .info {
+        font-size: 1.6rem;
+    }
+    
     #page-landing {
         display: flex;
         flex-direction: column;

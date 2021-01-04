@@ -70,18 +70,18 @@ function Landing() {
                                         <div className="info">
                                             <h3>
                                                 {
-                                                    shops.name.length < 25
+                                                    shops.name.length > 25
                                                     ?
-                                                    shops.name.substring(0, 25)
+                                                    shops.name.substring(0, 25) + '...'
                                                     :
                                                     shops.name
                                                 }
                                             </h3>
                                             <p>
                                                 {
-                                                    shops.bio.length > 25 
+                                                    shops.bio.length > 45
                                                     ?
-                                                    shops.bio.substring(0, 25) + '...'
+                                                    shops.bio.substring(0, 45) + '...'
                                                     :
                                                     shops.bio
                                                 }  
