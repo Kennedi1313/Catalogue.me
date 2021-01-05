@@ -2,7 +2,6 @@
     background-color: snow;
     border: 1px solid snow;
     color: black;
-    border-radius: 0.8rem;
     margin-top: 2.4rem;
     width: 100%;
     display: flex;
@@ -70,7 +69,6 @@
     height: 5rem;
     background-color:  #2F4F4F;
     color: white;
-    border-radius: 0.8rem;
     border: 0;
     cursor: pointer;
     display: flex;
@@ -84,7 +82,7 @@
 }
 
 .shop-item footer button:hover {
-    background-color: green;
+    background-color: #192b2b;
 }
 
 .shop-item footer .deletar {
@@ -107,7 +105,6 @@
     height: 5rem;
     background-color:  #2F4F4F;
     color: white;
-    border-radius: 0.8rem;
     border: 0;
     cursor: pointer;
     display: flex;
@@ -124,7 +121,7 @@
 }
 
 .shop-item footer a:hover {
-    background-color: green;
+    background-color: #192b2b;
 }
 @media(min-width: 800px) {
     .shop-item header, .shop-item footer {

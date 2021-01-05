@@ -1,6 +1,6 @@
 .button-back {
     text-decoration: none;
-    color: antiquewhite;
+    color: white;
     font: 700 1.6rem Poppins;
 }
 
@@ -8,7 +8,7 @@
     width: 100%;
     position: absolute;
     top: 0;
-    background-color: antiquewhite;
+    background-color: white;
 }
 
 .item {

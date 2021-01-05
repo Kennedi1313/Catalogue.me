@@ -1,13 +1,13 @@
 
 #page-shop-list-dash {
     width: 100%;
-    background-color: antiquewhite;
+    background-color: white;
     font: 700 3rem Rancho;
     min-height: 100vh;
 }
 
 #page-shop-list-dash main {
-    background-color: antiquewhite !important;
+    background-color: white !important;
     width: 100%;
     max-width: 100%;
     padding-top: 0;
@@ -42,7 +42,7 @@
 
 .page-header-dash .top-bar-container a {
     text-decoration: none;
-    color: antiquewhite;
+    color: white;
     font: 700 2.3rem Rancho;
 }
 
@@ -51,7 +51,7 @@
     margin: 0 auto;
     position: relative;
     margin: 0.5rem auto;
-    color: antiquewhite;
+    color: white;
     font: 700 2rem Poppins;
 }
 
@@ -60,7 +60,7 @@
     margin: 0 auto;
     position: relative;
     margin: 0.5rem auto;
-    color: antiquewhite;
+    color: white;
     font: 400 1.6rem Poppins;
 }
 
@@ -69,7 +69,7 @@
     margin-top: 0;
     text-align: center;
     background-color: #2F4F4F;
-    color: antiquewhite;
+    color: white;
     height: 8rem;
     width: 100%;
     font: 400 2rem Poppins;

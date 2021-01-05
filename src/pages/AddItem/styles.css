@@ -4,10 +4,9 @@
 }
 
 #page-item-form main {
-    background-color: antiquewhite;
+    background-color: white;
     width: 100%;
     max-width: 74rem;
-    border-radius: 0.8rem;
     margin: -3.2rem auto 3.2rem;
     padding-top: 6.3rem;
     overflow: hidden;
@@ -15,11 +14,10 @@
 
 #page-item-form main fieldset {
     background-color:  #2F4F4F;
-    color: antiquewhite;
+    color: white;
     border: 0;
     padding: 1rem;
     padding-bottom: 3rem;
-    border-radius: 0.8rem;
     margin: -3.2rem auto 3rem;
 }
 
@@ -57,7 +55,6 @@
     width: 100%;
     height: 10rem;
     margin-top: 0;
-    border-radius: 0.8rem;
     background-color: snow;
     border: 1px solid snow;
     outline: 0;
@@ -70,7 +67,6 @@
     width: 100%;
     height: 5.6rem;
     margin-top: 0;
-    border-radius: 0.8rem;
     color: #2F4F4F;
     background-color: snow;
     border: 1px solid snow;
@@ -89,7 +85,6 @@
     background-color: #2F4F4F;
     border-top: 1px solid snow;
     margin-top: 5rem;
-    border-radius: 0.8rem;
 }
 
 #page-item-form main footer p {
@@ -98,16 +93,15 @@
     justify-content: center;
     font-size: 1.4rem;
     line-height: 2.4rem;
-    color: antiquewhite;
+    color: white;
 }
 
 #page-item-form main footer button {
     width: 100%;
     height: 5.6rem;
     background-color: #426f42;
-    color: antiquewhite;
+    color: white;
     border: 0;
-    border-radius: 0.8rem;
     cursor: pointer;
     font: 700 1.6rem Poppins;
     display: flex;

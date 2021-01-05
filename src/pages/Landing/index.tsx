@@ -115,19 +115,14 @@ function Landing() {
             
             <div className="footer-container">
                 <div className="conections">
-                    <p>Conecte-se a nós</p>
-                    <a href="https://www.instagram.com/rodkennedi/">Instagram</a>
+                    <p>Conexões</p>
                     <a href="https://github.com/kennedi1313">GitHub</a>
                     <a href="https://www.linkedin.com/in/kennedi-rodrigues-b051ab176/">LinkedIn</a>
-                </div>
-                <div className="suport">
-                    <p>Suporte</p>
-                    <a href="/">Dúvidas</a>
-                    <a href="/">Documentos</a>
                 </div>
                 <div className="contact">
                     <p>Contato</p>
                     <a href="/">Tel: (84) 998594171</a>
+                    <a href="https://www.instagram.com/rodkennedi/">Instagram</a>
                 </div>
             </div>
         </div>

@@ -47,7 +47,7 @@ h4 {
 
 .button-abrir {
     text-decoration: none;
-    color: antiquewhite;
+    color: white;
 }
 
 #page-shop-list main div .categoria {
@@ -76,7 +76,7 @@ h4 {
 #page-shop-list main .pagination .pagination-button button {
 
     background-color: #426f42;
-    color: antiquewhite;
+    color: white;
     border: 0;
     padding: 1rem;
     border-radius: 0.8rem;
@@ -104,7 +104,6 @@ h4 {
     padding: 1rem;
     cursor: pointer;
     border: 1px solid  #426f42;
-    border-radius: 0.8rem;
     margin-left: 2px;
     margin-right: 2px;
     background-color:  #2f4f2fbd;
@@ -115,7 +114,7 @@ h4 {
     flex-direction: column;
     text-align: center;
     align-items: center;
-    color: antiquewhite;
+    color: white;
     padding: 4rem;
     margin-top: 2rem !important;
     font: 700 1.8rem Poppins !important;
@@ -127,10 +126,8 @@ h4 {
     height: 5rem;
     margin-top: 1rem;
     cursor: pointer;
-    border: 1px solid  #426f42;
-    border-radius: 0.8rem;
     text-decoration: none;
-    color: antiquewhite;
+    color: white;
     background-color:  #2f4f2fbd;
     display: flex;
     align-items: center;
@@ -144,8 +141,7 @@ h4 {
     margin-top: 1rem;
     margin-bottom: 1rem;
     background-color:  #2f4f2fbd;
-    color: antiquewhite;
-    border-radius: 0.8rem;
+    color: white;
     border: 0;
     cursor: pointer;
     display: flex;

@@ -12,7 +12,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    color: antiquewhite;
+    color: white;
     background-color: #2F4F4F;
 }
 
@@ -47,7 +47,7 @@ body {
     height: 4rem;
     background-color:  #121f1f;
     text-decoration: none;
-    color: antiquewhite;
+    color: white;
     padding: 1rem;
     font: 400 1.4rem Poppins;
 }
@@ -81,15 +81,11 @@ body {
 .link-shop .share .link {
     padding: 1rem;
     width: 50%;
-    border: 2px solid #253f3f;
-    border-radius: 0.8rem;
 }
 
 .link-shop .share .qrcode {
     padding: 1rem;
     width: 50%;
-    border: 2px solid #253f3f;
-    border-radius: 0.8rem;
 }
 
 .link-shop .share .qrcode canvas {

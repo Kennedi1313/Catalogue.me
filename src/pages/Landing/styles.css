@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: 100%;
     align-items: center;
-    color: antiquewhite;
+    color: white;
     background-color: #2F4F4F;
 }
 
@@ -32,7 +32,7 @@
     height: 5rem;
     width: 100%;
     text-align: right;
-    background-color: antiquewhite;
+    background-color: white;
     padding: 1rem;
     font: 500 1rem Poppins;
     position: fixed;
@@ -52,13 +52,12 @@
 .logo-container .nav a {
     height: 3.2rem;
     line-height: 3.2rem;
-    color: antiquewhite;
+    color: white;
     background-color: #2F4F4F;
     margin-left: 0.2rem;
     width: 8rem;
     text-align: center;
     border: 1px solid #2F4F4F;
-    border-radius: 0.5rem;
     transition: background-color 0.2s;
     transition: color 0.2s;
     
@@ -66,7 +65,7 @@
 
 .logo-container a:hover {
     color: #2F4F4F;
-    background-color: antiquewhite;
+    background-color: white;
 }
 
 .logo-container .logo {
@@ -74,7 +73,7 @@
     font: 500 2.5rem Rancho;
     border: none;
     color: #2F4F4F;
-    background-color: antiquewhite;
+    background-color: white;
 }
 
 .hero-image {
@@ -91,16 +90,14 @@
 .buttons-container a {
     width: 100%;
     height: 10.4rem;
-    border-radius: 0.8rem;
     font: 700 1.6rem Poppins;
-    
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     text-decoration: none;
     color: #2F4F4F;
-    background-color: antiquewhite;
+    background-color: white;
     transition: background-color 0.2s;
 }
 
@@ -109,7 +106,7 @@
 }
 
 .footer-container {
-    background-color: antiquewhite;
+    background-color: white;
     color: #2F4F4F;
     width: 100%;
     height: 12rem;
@@ -122,21 +119,13 @@
 .footer-container .conections {
     display: flex;
     flex-direction: column;
-    width: 33%;
-    border-right: 1px solid;
-    padding: 0.4rem;
-}
-.footer-container .suport {
-    display: flex;
-    flex-direction: column;
-    width: 33%;
-    border-right: 1px solid;
+    width: 50%;
     padding: 0.4rem;
 }
 .footer-container .contact {
     display: flex;
     flex-direction: column;
-    width: 33%;
+    width: 50%;
     padding: 0.4rem;
 }
 
@@ -154,7 +143,6 @@
     flex-direction: row;
     overflow-x: scroll;
     background-color: white;
-    
 }
 
 .landing-shops img {
@@ -163,9 +151,8 @@
 }
 
 .landing-shops .shop-card {
-    background-color: antiquewhite;
+    background-color: white;
     color: #2F4F4F;
-    padding: 1rem;
     min-width: 49.5% !important;
     display: flex;
     flex-direction: column;
@@ -173,9 +160,7 @@
     align-items: center;
     align-content: space-around;
     justify-items: center;
-    border-radius: 0.8rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+    padding: 0.5rem;
 }
 
 .landing-shops .shop-card .info {
@@ -186,11 +171,9 @@
     width: 100%;
     height: 5rem;
     padding: 1rem;
-    margin-top: 1rem;
     margin-bottom: 1rem;
-    background-color:  #2f4f2fbd;
-    color: antiquewhite;
-    border-radius: 0.8rem;
+    background-color:  #2F4F4F;
+    color: white;
     border: 0;
     cursor: pointer;
     display: flex;
@@ -205,15 +188,12 @@
 }
 
 ::-webkit-scrollbar-track {
-    border-radius: 0.8rem;
     background-color: snow;
 }
 ::-webkit-scrollbar {
-    border-radius: 0.8rem;
     background: snow;
 }
 ::-webkit-scrollbar-thumb {
-    border-radius: 0.8rem;
     background: #1b2e2e;
 }
 
