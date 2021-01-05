@@ -79,7 +79,7 @@ h4 {
     color: white;
     border: 0;
     padding: 1rem;
-    border-radius: 0.8rem;
+    ;
     cursor: pointer;
     font: 700 1.6rem Poppins;
     display: flex;
@@ -95,7 +95,7 @@ h4 {
     padding: 1rem;
     cursor: pointer;
     border: 1px solid  #426f42;
-    border-radius: 0.8rem;
+    ;
     margin-left: 2px;
     margin-right: 2px;
 }

@@ -7,7 +7,7 @@
 /* Aparência que terá o seletor de arquivo */
 fieldset #label-file {
     background-color: #3498db;
-    border-radius: 0.8rem;
+    ;
     color: #fff;
     cursor: pointer;
     margin: 10px;
@@ -91,7 +91,7 @@ fieldset legend {
     margin: 0 auto;
     background-color:  #426f42;
     color: white;
-    border-radius: 0.8rem;
+    ;
     border: 0;
     cursor: pointer;
     display: flex;
