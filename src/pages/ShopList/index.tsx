@@ -41,6 +41,7 @@ function ShopList() {
     const [limit, setLimit] = useState(8);
     const [pages, setPages] = useState([0]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function searchShop(){
@@ -80,6 +81,8 @@ function ShopList() {
                 arrayPages.push(i);
             }
             setPages(arrayPages)
+
+            setLoading(false);
         }
 
         searchAllItems();
@@ -129,7 +132,8 @@ function ShopList() {
 
             </PageHeader>
             <main>
-                {arrayCategory.map((category: string) => {
+                {!loading ? 
+                arrayCategory.map((category: string) => {
                     return(
                         <div key={category}>
                             <h2 className="categoria">{category}</h2>
@@ -143,7 +147,8 @@ function ShopList() {
                             </div>
                         </div>
                     )
-                }) }
+                }) 
+                : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />}
 
                 <div className="pagination">
                     Mostrando {limit} itens de {totalItens} 
@@ -182,7 +187,7 @@ function ShopList() {
                 </div>
                 <div className="divulgue">
                         <p>Gostou desse Catálogo Virtual? Ele é 100% online e grátis! Faça seu cadastro no botão abaixo e confira:</p>
-                        <Link to="/user-form"> Crie sua loja virtual </Link>
+                        <Link to="/user/form"> Crie sua loja virtual </Link>
                     </div>
                 
             </footer>

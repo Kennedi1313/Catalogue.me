@@ -22,7 +22,7 @@
 }
 
 #page-item-form main {
-    background-color: antiquewhite !important;
+    background-color: white !important;
     width: 100%;
     height: 100%;
     max-width: 100%;
@@ -130,10 +130,6 @@
     background-color:#2f4f2f;
 }
 
-#type-work:checked ~ #schedule {
-    display: inline;
-}
-
 #page-item-form main h1 {
     margin-bottom: 2rem;
     margin-top: 0;
@@ -144,6 +140,19 @@
     width: 100%;
     font: 400 2rem Poppins;
     justify-self: center;
+}
+
+#page-item-form main form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+#page-item-form main form img {
+    max-width: 80vw;
 }
 
 @media(max-width: 700px ){
@@ -172,7 +181,6 @@
         padding: 0 2rem;
         padding-bottom: 2rem;
         width: 100vw;
-        margin-left: 0;
     }
     #page-item-form main {
         height: 100%;
@@ -183,7 +191,6 @@
     #page-item-form main footer {
         height: 100%;
         width: 100vw;
-        margin-left: 0;
         display: flex;
         flex-direction: column;
     }

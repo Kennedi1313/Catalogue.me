@@ -18,6 +18,7 @@ interface ShopProps {
 function Landing() {
     const { token } = useContext(StoreContext);
     const [shops, setShops] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         function findAllShops() {
@@ -25,6 +26,7 @@ function Landing() {
             .then((response) => {
                 setShops(response.data);
             })
+            setLoading(false);
         }
 
         findAllShops()
@@ -63,7 +65,7 @@ function Landing() {
                     <h2>Lojas associadas</h2>
                         <div className="landing-shops">
                             
-                            {
+                            {!loading ? 
                             shops.map((shops: ShopProps["shop"]) => {
                                 return(
                                     <div className="shop-card">
@@ -100,7 +102,7 @@ function Landing() {
                                     </div>
                                 );
                             })
-                            }
+                            :  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />}
                         </div>
                     </div>
                     <p className="text" id="text2">

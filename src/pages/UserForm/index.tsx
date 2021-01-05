@@ -12,7 +12,7 @@ import { ErrorMessage, Formik, Form, Field } from 'formik';
 
 function UserForm() {
 
-
+    const [loading, setLoading] = useState(false);
     // validações dos campos do formulario
     const validations = yup.object().shape({
         user_name: yup.string().max(80).required(),
@@ -55,6 +55,7 @@ function UserForm() {
             shop_name: string,
             shop_whatsapp: string,
         } ) {
+        setLoading(true);
 
         const formData = new FormData();
         formData.append('user_name', values.user_name)
@@ -71,10 +72,12 @@ function UserForm() {
                 "Content-Type": `multipart/form-data;`,
             }
         }).then(() => {
+            setLoading(false);
             alert('Cadastro realizado com sucesso. ')
         }).then(() => {
             history.push('/user/login')
         }).catch((e) => {
+            setLoading(false);
             alert('Erro no cadastro. Verifique se todos os campos foram preenchidos. ')
         })
     }
@@ -168,11 +171,12 @@ function UserForm() {
                                 onChange={(e)=>{setShopBio(e.target.value)}}>
                             </Textarea>
                         </fieldset>
-
+                        {!loading ?
                         <footer>
                             <p>Importante! <br /> Preencha todos os dados.</p>
                             <button type="submit">Salvar</button>
                         </footer>
+                        : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />}
                     </Form>
                 </Formik>
             </main>

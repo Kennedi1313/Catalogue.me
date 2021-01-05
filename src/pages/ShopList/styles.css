@@ -2,7 +2,7 @@
 #page-shop-list {
     width: 100%;
     height: 100%;
-    background-color: antiquewhite;
+    background-color: white;
     font: 700 3rem Rancho;
 }
 
@@ -23,7 +23,7 @@
 #page-shop-list main {
     font: 400 1.4rem Poppins;
     
-    background-color: antiquewhite;
+    background-color: white;
     width: 100%;
     max-width: 100%;
     padding-top: 0;
@@ -160,6 +160,10 @@ h4 {
 }
 
 @media(min-width: 800px) {
+    #page-shop-list main img {
+        max-width: 100%;
+        margin: 0 auto;
+    }
     #footer-shop {
         flex-direction: row;
         justify-content: space-around;

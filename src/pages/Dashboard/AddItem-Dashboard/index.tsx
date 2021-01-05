@@ -11,7 +11,7 @@ import StoreContext from '../../../components/Store/Context';
 
 const AddItem: React.FC = () => {
     const { user } = useContext(StoreContext);
-
+    const [loading, setLoading] = useState(false);
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [category, setCategory] = useState('Produto')
@@ -21,7 +21,6 @@ const AddItem: React.FC = () => {
     function resetFormState() {
         setName('');
         setPrice('');
-        setCategory('');
         setAvatar('');
         setInfo('');
     }
@@ -32,6 +31,7 @@ const AddItem: React.FC = () => {
 
     function handleCreate(e: FormEvent) {
         e.preventDefault();
+        setLoading(true);
         
         const user_id = user.id
 
@@ -50,17 +50,21 @@ const AddItem: React.FC = () => {
             }
         }).then((res) => {
             console.log(res)
+            setLoading(false);
             alert('Cadastro realizado com sucesso. ')
             resetFormState();
         }).catch((e) => {
-            alert([e, 'Erro no cadastro. Verifique se todos os campos foram preenchidos. '])
+            setLoading(false);
+            alert(['Erro no cadastro. Verifique se todos os campos foram preenchidos. '])
         })
     }
 
     return (
+         
         <div id="page-item-form" >
             <main>
                 <h1>Cadastro de Item</h1>
+                
                 <form onSubmit={handleCreate}>
                 <fieldset className="add-item">
                     <legend>Dados do Item</legend>
@@ -103,14 +107,17 @@ const AddItem: React.FC = () => {
                         onChange={(e) => {setInfo(e.target.value)}}
                     />
                 </fieldset>
-
+                {!loading ?
                 <footer>
                     <p>Importante! <br /> Preencha todos os dados.</p>
                     <button>Salvar</button>
                 </footer>
+                : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />}
                 </form>
+                
             </main>
-        </div>
+        </div> 
+        
     )
 }
 
