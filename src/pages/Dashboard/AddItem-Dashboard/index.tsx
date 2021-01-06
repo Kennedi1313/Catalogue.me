@@ -17,6 +17,7 @@ const AddItem: React.FC = () => {
     const [category, setCategory] = useState('Produto')
     const [avatar, setAvatar] = useState('')
     const [info, setInfo] = useState('')
+    const [infoLength, setInfoLength] = useState(600);
 
     function resetFormState() {
         setName('');
@@ -102,10 +103,12 @@ const AddItem: React.FC = () => {
                     />
                     <Textarea 
                         name="info" 
-                        label="Descrição" 
+                        label={'Descrição (caracteres restantes: '+ infoLength +')'} 
                         value={info}
-                        onChange={(e) => {setInfo(e.target.value)}}
+                        maxLength={600}
+                        onChange={(e) => {setInfo(e.target.value); setInfoLength(600 - info.length)}}
                     />
+                    
                 </fieldset>
                 {!loading ?
                 <footer>
