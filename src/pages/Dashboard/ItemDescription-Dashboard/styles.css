@@ -6,7 +6,7 @@
 
 /* Aparência que terá o seletor de arquivo */
 fieldset #label-file {
-    background-color: #3498db;
+    background-color: #166296;
     color: #fff;
     cursor: pointer;
     margin: 10px;
@@ -26,19 +26,21 @@ fieldset legend {
 #item-description-dashboard {
     width: 100vw;
     color: black;
-   
+    background-color: white;
+    padding-top: 0;
+    margin-top: 0;
+    min-height: 100vh;
 }
 .item-dashboard {
     padding-bottom: 6rem;
     width: 95vw;
-    margin: 1rem auto;
+    margin: 0rem auto;
     background-color: snow;
     border: 1px solid snow;
 
 }
 
 .item-dashboard header {
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -85,21 +87,19 @@ fieldset legend {
     display: inline;
 }
 
-.item-dashboard footer button {
+.item-dashboard fieldset button {
+    background-color: #426f42;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    padding: 6px 20px;
     width: 98%;
     height: 5rem;
-    margin: 0 auto;
-    background-color:  #426f42;
-    color: white;
-    border: 0;
-    cursor: pointer;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
-    transition: 0.2s;
-    padding-right: 4rem;
-    text-decoration: none;
+    border: 0;
 }
 
 .item-dashboard header fieldset button {
@@ -152,24 +152,62 @@ fieldset legend {
 }
 
 .add-image {
+    background-color: #2F4F4F;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-items: center;
     align-content: space-between;
+    padding: 1rem;
 }
 
 .add-image legend {
-    margin: 2rem;
+    padding-top: 3rem;
     font: 700 1.8rem Poppins;
+    color: white;
 }
 
 .select-block label, .textarea-block label {
     color: white;
 }
 
+.carousel-item-dashboard button {
+    width: 50%;
+    height: 5rem;
+    border: 0;
+}
+
+.carousel-item-dashboard .deletar-avatar {
+    background-color: #4f2f2f;
+    color: white;
+}
+
+.carousel-item-dashboard .mudar-avatar {
+    background-color: #166296;
+    color: white;
+}
+
+#item-description-dashboard h1 {
+    margin-bottom: 2rem;
+    margin-top: 0;
+    text-align: center;
+    background-color: #2F4F4F;
+    color: white;
+    height: 8rem;
+    width: 100%;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
 @media(min-width: 700px) {
-    .item-dashboard footer button, fieldset #label-file {
+    .carousel {
+        max-width: 70%;
+    }
+    .item-dashboard fieldset button, fieldset #label-file {
         width: 50%;
     }
     .add-image {
@@ -196,6 +234,7 @@ fieldset legend {
     }
 
     .item-dashboard header {
+        background-color: #2F4F4F;
         width: 100%;
         padding: 2rem 2rem;
         display: flex;
@@ -209,7 +248,7 @@ fieldset legend {
 
     .carousel-item-next, .carousel-item-prev, .carousel-item .active {
         display: none !important;
-        transition: transform 0s ease, opacity .0s ease-out
+        transition: transform 0s ease, opacity .0s ease-out;
     }
 
     .item-dashboard footer a {

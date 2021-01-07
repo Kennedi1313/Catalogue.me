@@ -17,11 +17,16 @@ function ItemDescription(){
     const { user } = useContext(StoreContext);
     const [name, setName] = useState('');
     const [avatar, setAvatar] = useState([
-        {avatar: "string"}
+        {
+            id: 0,
+            avatar: "string",
+            item_id: 0
+        }
     ]);
     const [category, setCategory] = useState('Produto');
     const [info, setInfo] = useState('');
     const [price, setPrice] = useState('');
+    const [itemAvatar, setItemAvatar] = useState('');
     const [avatarInp, setAvatarInp] = useState('');
     const [infoLength, setInfoLength] = useState(600);
     const [loading, setLoading] = useState(false);
@@ -33,7 +38,6 @@ function ItemDescription(){
 
     useEffect(() => {
         async function getItem() {
-            console.log(item_id)
             const res = await api.get('/itembyid', { 
                 params: { item_id } 
             })
@@ -41,6 +45,7 @@ function ItemDescription(){
             setInfo(res.data[0].info)
             setPrice(res.data[0].price)
             setCategory(res.data[0].category)
+            setItemAvatar(res.data[0].avatar)
 
             const avatarData = await api.get('/itemavatarbyid', {
                 params: {item_id}
@@ -53,6 +58,36 @@ function ItemDescription(){
     function onChangeHandler (event) {
         setAvatarInp(event.target.files[0])
         setLabelInput(event.target.files[0].name)
+    }
+
+    function handlerMudarAvatar(item_id, avatar) {
+        api.post('avatar-change', {
+            avatar,
+            item_id
+        }).then((res) => { 
+            setAvatarInp("mudado");
+            resetFormState();
+            window.location.reload(); 
+            alert('Essa imagem agora é a capa do item!') 
+        })
+        .catch((err) => {
+            alert('Opa, algo deu errado.')
+        })
+    }
+
+    function handlerDeletarAvatar(id, avatar) {
+        api.post('avatar-delete', {
+            avatar,
+            id
+        }).then((res) => { 
+            setAvatarInp("deletado");
+            resetFormState();
+            window.location.reload(); 
+            alert('Deletada com sucesso!') 
+        })
+        .catch((err) => {
+            alert('Opa, algo deu errado.')
+        })
     }
 
     function handleEdit(e: FormEvent) {
@@ -120,15 +155,20 @@ function ItemDescription(){
     });
     return (
         <div id="item-description-dashboard">
-            
+            <h1>Gerenciar Item</h1>
             <article className="item-dashboard">
-            
+                
                 <header>
                     <Carousel pause="hover" fade={true} interval={5000} keyboard={true}>
-                        {avatar.map(({avatar}) => {
-                            return (<Carousel.Item key={avatar} className="carousel-item-dashboard">
+                        {avatar.map(({avatar, id, item_id}) => {
+                            return (
+                                    <Carousel.Item key={avatar} className="carousel-item-dashboard">
+                                        <button disabled={avatar === itemAvatar} onClick={() => handlerMudarAvatar(item_id, avatar)} className="mudar-avatar">{avatar !== itemAvatar ? "Tornar Capa" : "Capa"}</button>
+                                        <button onClick={() => handlerDeletarAvatar(id, avatar)} className="deletar-avatar">Deletar</button>
                                         <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>  
-                                    </Carousel.Item>)
+                                        
+                                    </Carousel.Item>
+                                )
                         }) }
                         
                     </Carousel>
@@ -183,23 +223,23 @@ function ItemDescription(){
                         </form>
                     </div>
                 </header>
-                <footer>
-                    <form onSubmit={handleCreate}>
-                        <fieldset className="add-image">
-                            <legend>Adicionar nova imagem</legend>
-                            <label id="label-file" htmlFor="arquivo">{labelInput ? labelInput : 'Selecionar imagem'}</label>
-                            <input 
-                                name="avatar" 
-                                type="file" 
-                                id="arquivo"
-                                accept="image/x-png,image/gif,image/jpeg"
-                                className="imagem-avatar" 
-                                onChange={onChangeHandler}
-                            />
-                            <button>Adicionar</button>
-                        </fieldset>
-                    </form>
-                </footer>
+                
+                <form onSubmit={handleCreate}>
+                    <fieldset className="add-image">
+                        <legend>Adicionar nova imagem</legend>
+                        <label id="label-file" htmlFor="arquivo">{labelInput ? labelInput : 'Selecionar imagem'}</label>
+                        <input 
+                            name="avatar" 
+                            type="file" 
+                            id="arquivo"
+                            accept="image/x-png,image/gif,image/jpeg"
+                            className="imagem-avatar" 
+                            onChange={onChangeHandler}
+                        />
+                        <button>Adicionar</button>
+                    </fieldset>
+                </form>
+                
                 
             </article>
         </div>
