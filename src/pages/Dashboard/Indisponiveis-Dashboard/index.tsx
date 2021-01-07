@@ -68,10 +68,10 @@ const ShopListInativos: React.FC<ParamProps> = ({shop_id}) => {
     }
 
     return (
-        <div id="page-shop-list-dash">
+        <div id="page-indisp-dash">
             <main>
                 <h1>Itens Arquivados</h1>
-                    <Link className="botao-alternar" to={'/dashboard/admin/shop'}>Ver itens disponíveis</Link>
+                    <Link className="botao-alternar" to={'/dashboard/admin/itens-ativos'}>Ver itens disponíveis</Link>
                     {categories.map((category: string) => {
                     return(
                         < div key={category}>

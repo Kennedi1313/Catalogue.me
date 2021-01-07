@@ -1,12 +1,12 @@
 
-#page-shop-list-dash {
+#page-indisp-dash {
     width: 100%;
     background-color: white;
     font: 700 3rem Rancho;
     min-height: 100vh;
 }
 
-#page-shop-list-dash main {
+#page-indisp-dash main {
     background-color: white !important;
     width: 100%;
     max-width: 100%;
@@ -15,7 +15,7 @@
     flex-direction: column;
     font: 400 1.4rem Poppins;
 }
-#page-shop-list-dash main .container {
+#page-indisp-dash main .container {
     max-width: 800px;
     margin: 0rem auto;
     text-align: justify;
@@ -24,47 +24,7 @@
     column-gap: 5px;
 }
 
-.page-header-dash {
-    display: flex;
-    flex-direction: column;
-    background-color: #2F4F4F;
-}
-
-.page-header-dash .top-bar-container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: floralwhite;
-    padding: 1.6rem 0;
-}
-
-.page-header-dash .top-bar-container a {
-    text-decoration: none;
-    color: white;
-    font: 700 2.3rem Rancho;
-}
-
-.page-header-dash .header-content {
-    width: 96%;
-    margin: 0 auto;
-    position: relative;
-    margin: 0.5rem auto;
-    color: white;
-    font: 700 2rem Poppins;
-}
-
-.page-header-dash .header-content p {
-    width: 96%;
-    margin: 0 auto;
-    position: relative;
-    margin: 0.5rem auto;
-    color: white;
-    font: 400 1.6rem Poppins;
-}
-
-#page-shop-list-dash main h1 {
+#page-indisp-dash main h1 {
     margin-bottom: 2rem;
     margin-top: 0;
     text-align: center;
@@ -72,21 +32,74 @@
     color: white;
     height: 8rem;
     width: 100%;
-    font: 400 2rem Poppins;
-    justify-self: center;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#page-indisp-dash main .botao-alternar{
+    width: 80%;
+    height: 6rem;
+    padding: 1rem;
+    margin: 0 auto;
+    background-color: #2F4F4F;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+#page-indisp-dash main .botao-aba-esq {
+    width: 50%;
+    padding: 1rem;
+    margin: 0 auto;
+    background-color: #1b2e2e;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
 }
 
-#page-shop-list-dash main div .categoria {
+#page-indisp-dash main .botao-aba-dir {
+    width: 50%;
+    padding: 1rem;
+    margin: 0 auto;
+    background-color: #2F4F4F;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+#page-indisp-dash main div .categoria {
     color: #2F4F4F;
     font: 700 2.3rem Poppins;
     text-align: center;
 }
 
 @media(min-width: 800px) {
-    #page-shop-list-dash {
+    #page-indisp-dash main .botao-alternar{
+        width: 20%;
+        margin-left: 1rem;
+    }
+    #page-indisp-dash {
         max-width: 100%;
     }
-    #page-shop-list-dash main div .container {
+    #page-indisp-dash main div .container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
