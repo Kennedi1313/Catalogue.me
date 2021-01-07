@@ -12,7 +12,6 @@ interface itemProps {
         id: string,
         shop_id: number,
     },
-    whatsapp: string,
     path: string,
     onDelete?,
     onInative?,

@@ -6,6 +6,7 @@ import ShopList from './ShopList-Dashboard'
 import ShopListInativos from './Indisponiveis-Dashboard'
 import StoreContext from '../../components/Store/Context'
 import ItemDescription from './ItemDescription-Dashboard'
+import EditShopForm from './UserForm-Dashboard'
 import AddAvatar from './AddAvatar-Dashboard'
 import api from '../../services/api'
 import QRCode from 'qrcode.react'
@@ -74,7 +75,7 @@ function Dashboard() {
                 <nav id="side-menu" className="buttons-side-container">
                    
                     <Link className="link" to="/dashboard/admin/inicio">Inicio</Link>
-                    <Link className="link" to="/dashboard/admin/shop">Minha Loja</Link>
+                    <Link className="link" to="/dashboard/admin/itens-ativos">Minha Loja</Link>
                     <Link className="link" to="/dashboard/admin/add-item">Adicionar Itens</Link>
 
                 </nav>
@@ -82,9 +83,13 @@ function Dashboard() {
                     {
                         page === 'add-item' ? 
                             <AddItem></AddItem> 
-                        : page === 'shop' ? 
+                        : page === 'itens-ativos' ? 
                             <ShopList 
                                 shop_id={user.shop_id} 
+                            />
+                        : page === 'shop' ? 
+                            <EditShopForm
+                                shop_id={user.shop_id}
                             />
                         : page === 'itens-inativos' ? 
                             <ShopListInativos 
@@ -101,7 +106,7 @@ function Dashboard() {
                                     <div className="link">
                                         <h2>Copie esse link e envie para os seus clientes</h2>
                                         <textarea ref={textAreaRef} id="url" readOnly value={process.env.REACT_APP_URL+'/'+shopTag}></textarea>
-                                        <a onClick={copyToClipboard}>Copiar o link da sua Loja Virtual</a> 
+                                        <a href="/dashboard/admin/inicio" onClick={copyToClipboard}>Copiar o link da sua Loja Virtual</a> 
                                     </div>
                                     
                                     <div className="qrcode">
@@ -114,7 +119,7 @@ function Dashboard() {
                                             includeMargin={true}
                                         />
                                         <br/>
-                                        <a onClick={downloadQR}> Download QR </a>
+                                        <a href="/dashboard/admin/inicio" onClick={downloadQR}> Download QR </a>
                                     </div>
                                 </div>
                                 

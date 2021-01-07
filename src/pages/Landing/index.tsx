@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './styles.css'
 import { Link } from 'react-router-dom'
-import landingImg from '../../assets/images/catalogo.jpg';
 import StoreContext from '../../components/Store/Context';
 import api from '../../services/api';
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
@@ -68,7 +67,7 @@ function Landing() {
                             {!loading ? 
                             shops.map((shops: ShopProps["shop"]) => {
                                 return(
-                                    <div className="shop-card">
+                                    <div key={shops.tag} className="shop-card">
                                         <div className="info">
                                             <h3>
                                                 {
@@ -102,7 +101,7 @@ function Landing() {
                                     </div>
                                 );
                             })
-                            :  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />}
+                            :  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading"/>}
                         </div>
                     </div>
                     <p className="text" id="text2">

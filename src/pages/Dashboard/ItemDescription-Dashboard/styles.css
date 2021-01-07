@@ -7,7 +7,6 @@
 /* Aparência que terá o seletor de arquivo */
 fieldset #label-file {
     background-color: #3498db;
-    ;
     color: #fff;
     cursor: pointer;
     margin: 10px;
@@ -42,6 +41,7 @@ fieldset legend {
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 }
 
 .item-dashboard header img {
@@ -91,7 +91,23 @@ fieldset legend {
     margin: 0 auto;
     background-color:  #426f42;
     color: white;
-    ;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    transition: 0.2s;
+    padding-right: 4rem;
+    text-decoration: none;
+}
+
+.item-dashboard header fieldset button {
+    width: 100%;
+    height: 5rem;
+    margin: 0 auto;
+    background-color:  #426f42;
+    color: white;
     border: 0;
     cursor: pointer;
     display: flex;
@@ -123,7 +139,6 @@ fieldset legend {
 .item-dashboard header .info fieldset {
     background-color: #2F4F4F;
     padding: 1rem;
-    border-radius: 1rem;
 }
 .item-dashboard header .info fieldset legend {
     font: 700 2.4rem Poppins;

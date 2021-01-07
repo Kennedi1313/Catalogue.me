@@ -176,7 +176,7 @@ function UserForm() {
                             <p>Importante! <br /> Preencha todos os dados.</p>
                             <button type="submit">Salvar</button>
                         </footer>
-                        : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />}
+                        : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading"/>}
                     </Form>
                 </Formik>
             </main>

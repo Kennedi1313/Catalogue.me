@@ -53,7 +53,11 @@ function ShopList() {
             setShopId(shop.data[0].id)
             setShopName(shop.data[0].name)
             setWhatsapp(shop.data[0].whatsapp)
+
+            
         }
+        
+        setLimit(8);
         
         searchShop();
     }, [shop_tag]);
@@ -96,6 +100,7 @@ function ShopList() {
                 <meta name="description" content="Bem vindo(a) a minha loja virtual!" />
             </Helmet>
             <PageHeader title={shop_name}>
+                {console.log("id" + shopId + " nome" + shop_name + " whatsapp" +whatsapp)}
                 <h4>Pesquisar {<SearchIcon/>}</h4>
                 <form id="search-itens">
                     <Input 
@@ -148,7 +153,7 @@ function ShopList() {
                         </div>
                     )
                 }) 
-                : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />}
+                : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading" />}
 
                 <div className="pagination">
                     Mostrando {limit} itens de {totalItens} 

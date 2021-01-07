@@ -1,9 +1,12 @@
-import React, { FormEvent, useEffect, useState } from 'react'
+import React, { FormEvent, useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import api from '../../../services/api';
 import './styles.css'
 import {Carousel} from 'react-bootstrap'
+import Textarea from '../../../components/Textarea';
 import Input from '../../../components/Input';
+import Select from '../../../components/Select';
+import StoreContext from '../../../components/Store/Context';
 
 interface ParamProps {
     item_id: string,
@@ -11,13 +14,18 @@ interface ParamProps {
 
 function ItemDescription(){
     const { item_id } = useParams<ParamProps>();
-    const [name, setName] = useState('')
+    const { user } = useContext(StoreContext);
+    const [name, setName] = useState('');
     const [avatar, setAvatar] = useState([
         {avatar: "string"}
-    ])
-    const [info, setInfo] = useState('')
-    const [price, setPrice] = useState('')
-    const [avatarInp, setAvatarInp] = useState('')
+    ]);
+    const [category, setCategory] = useState('Produto');
+    const [info, setInfo] = useState('');
+    const [price, setPrice] = useState('');
+    const [avatarInp, setAvatarInp] = useState('');
+    const [infoLength, setInfoLength] = useState(600);
+    const [loading, setLoading] = useState(false);
+    const [labelInput, setLabelInput] = useState('');
 
     function resetFormState() {
         setAvatarInp('');
@@ -32,6 +40,7 @@ function ItemDescription(){
             setName(res.data[0].name)
             setInfo(res.data[0].info)
             setPrice(res.data[0].price)
+            setCategory(res.data[0].category)
 
             const avatarData = await api.get('/itemavatarbyid', {
                 params: {item_id}
@@ -43,6 +52,36 @@ function ItemDescription(){
 
     function onChangeHandler (event) {
         setAvatarInp(event.target.files[0])
+        setLabelInput(event.target.files[0].name)
+    }
+
+    function handleEdit(e: FormEvent) {
+        e.preventDefault();
+        setLoading(true);
+
+        const user_id = user.id
+
+        const formData = new FormData();
+        formData.append("item_id", item_id);
+        formData.append("user_id", user_id);
+        formData.append("name", name);
+        formData.append("price", price);
+        formData.append("category", category);
+        formData.append("info", info);
+
+        api.post('/items-edit', formData, {
+            headers: {
+                "Content-Type": `multipart/form-data;`,
+            }
+        }).then((res) => {
+            console.log(res)
+            setLoading(false);
+            alert('Atualizado com sucesso. ')
+            resetFormState();
+        }).catch((e) => {
+            setLoading(false);
+            alert(['Erro no cadastro. Verifique se todos os campos foram preenchidos. '])
+        })
     }
 
     function handleCreate(e: FormEvent) {
@@ -83,51 +122,85 @@ function ItemDescription(){
         <div id="item-description-dashboard">
             
             <article className="item-dashboard">
-            <form onSubmit={handleCreate}>
+            
                 <header>
-    
-                <Carousel pause="hover" fade={true} interval={5000} keyboard={true}>
-                    {avatar.map(({avatar}) => {
-                        return (<Carousel.Item key={avatar} className="carousel-item-dashboard">
-                                    <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>  
-                                </Carousel.Item>)
-                    }) }
-                    
-                </Carousel>
+                    <Carousel pause="hover" fade={true} interval={5000} keyboard={true}>
+                        {avatar.map(({avatar}) => {
+                            return (<Carousel.Item key={avatar} className="carousel-item-dashboard">
+                                        <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>  
+                                    </Carousel.Item>)
+                        }) }
+                        
+                    </Carousel>
                     <div className="info">
-                        <h2>{name}</h2>
-                        
-                        <strong>Descrição</strong>
-                        <p className="description">
-                            {info}
-                        </p>
-                        
-                        
-                        <footer>
-                            <p>
-                                Preço: 
-                                <strong>R$ {price}</strong>
-                            </p>
-                        </footer>
+                        <form onSubmit={handleEdit}>
+
+                            <fieldset>
+                                <Input 
+                                    name="name" 
+                                    label="Nome" 
+                                    type="text" 
+                                    value={name}
+                                    onChange={(e) => {setName(e.target.value)}}
+                                />
+
+                                <Select 
+                                    name="category" 
+                                    label="Categoria" 
+                                    value={category}
+                                    onChange={(e) => {setCategory(e.target.value)}}
+                                    options={[
+                                        {value: 'Produto', label: 'Produto'},
+                                        {value: 'Serviço', label: 'Serviço'},
+                                    ]} 
+                                />
+
+                                <Textarea 
+                                    name="info" 
+                                    label={'Descrição (caracteres restantes: '+ infoLength +')'} 
+                                    value={info}
+                                    maxLength={600}
+                                    onChange={(e) => {setInfo(e.target.value); setInfoLength(600 - info.length)}}
+                                />
+                                
+                                <footer>
+                                    <Input 
+                                        name="price" 
+                                        label="Preço" 
+                                        type="number" 
+                                        value={price}
+                                        onChange={(e) => {setPrice(e.target.value)}}
+                                    />
+                                </footer>
+
+                                {!loading ?
+                            
+                                    <button type="submit">Salvar</button>
+                                
+                                : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading" />}
+                            </fieldset>
+                           
+                        </form>
                     </div>
                 </header>
                 <footer>
-                    <fieldset className="add-image">
-                        <legend>Adicionar nova imagem</legend>
-                        <label id="label-file" htmlFor="arquivo">Selecionar imagem &#187;</label>
-                        <input 
-                            name="avatar" 
-                            type="file" 
-                            id="arquivo"
-                            accept="image/x-png,image/gif,image/jpeg"
-                            className="imagem-avatar" 
-                            onChange={onChangeHandler}
-                        />
-                        <button>Adicionar</button>
-                    </fieldset>
-                
+                    <form onSubmit={handleCreate}>
+                        <fieldset className="add-image">
+                            <legend>Adicionar nova imagem</legend>
+                            <label id="label-file" htmlFor="arquivo">{labelInput ? labelInput : 'Selecionar imagem'}</label>
+                            <input 
+                                name="avatar" 
+                                type="file" 
+                                id="arquivo"
+                                accept="image/x-png,image/gif,image/jpeg"
+                                className="imagem-avatar" 
+                                onChange={onChangeHandler}
+                            />
+                            <button>Adicionar</button>
+                        </fieldset>
+                    </form>
                 </footer>
-                </form>
+                
             </article>
         </div>
     )

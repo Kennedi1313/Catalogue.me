@@ -24,46 +24,6 @@
     column-gap: 5px;
 }
 
-.page-header-dash {
-    display: flex;
-    flex-direction: column;
-    background-color: #2F4F4F;
-}
-
-.page-header-dash .top-bar-container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: floralwhite;
-    padding: 1.6rem 0;
-}
-
-.page-header-dash .top-bar-container a {
-    text-decoration: none;
-    color: white;
-    font: 700 2.3rem Rancho;
-}
-
-.page-header-dash .header-content {
-    width: 96%;
-    margin: 0 auto;
-    position: relative;
-    margin: 0.5rem auto;
-    color: white;
-    font: 700 2rem Poppins;
-}
-
-.page-header-dash .header-content p {
-    width: 96%;
-    margin: 0 auto;
-    position: relative;
-    margin: 0.5rem auto;
-    color: white;
-    font: 400 1.6rem Poppins;
-}
-
 #page-shop-list-dash main h1 {
     margin-bottom: 2rem;
     margin-top: 0;
@@ -74,6 +34,8 @@
     width: 100%;
     font: 400 2rem Poppins;
     justify-self: center;
+    display: flex;
+    flex-direction: row;
 }
 #page-shop-list-dash main .botao-alternar{
     width: 80%;
@@ -83,7 +45,6 @@
     background-color: #2F4F4F;
     color: white;
     border: 0;
-    ;
     cursor: pointer;
     font: 700 1.6rem Poppins;
     display: flex;
@@ -91,8 +52,39 @@
     justify-content: center;
     text-decoration: none;
     transition: background-color 0.2s;
-
 }
+#page-shop-list-dash main .botao-aba-esq {
+    width: 50%;
+    padding: 1rem;
+    margin: 0 auto;
+    background-color: #1b2e2e;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+#page-shop-list-dash main .botao-aba-dir {
+    width: 50%;
+    padding: 1rem;
+    margin: 0 auto;
+    background-color: #2F4F4F;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    font: 700 1.6rem Poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
 #page-shop-list-dash main div .categoria {
     color: #2F4F4F;
     font: 700 2.3rem Poppins;

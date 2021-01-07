@@ -25,7 +25,6 @@ interface ParamProps {
 const ShopList: React.FC<ParamProps> = ({shop_id}) => {
     const [items, setItems] = useState([]);
     const [categories, setCategories] = useState(['']);
-    const [whatsapp, setWhatsapp] = useState('')
     
     useEffect(() => {
         async function searchAllItems(){
@@ -37,14 +36,6 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
     
             setItems(item.data.items)
             setCategories(item.data.categories)
-    
-            const shop = await api.get('/shopbyid', {
-                params: {
-                    shop_id,
-                }
-            })
-    
-            setWhatsapp(shop.data[0].whatsapp)
         }
         searchAllItems();
     }, [shop_id]);
@@ -94,7 +85,12 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
     return (
         <div id="page-shop-list-dash">
             <main>
-                <h1>Itens disponíveis</h1>
+                <h1> 
+                    
+                    <Link className="botao-aba-esq" to={'/dashboard/admin/itens-ativos'}> Itens disponíveis </Link>
+                    <Link className="botao-aba-dir" to={'/dashboard/admin/shop'}> Editar loja </Link>
+                
+                </h1>
                 <Link className="botao-alternar" to={'/dashboard/admin/itens-inativos'}>Ver itens arquivados</Link>
                     {categories.map((category: string) => {
                     return(
@@ -106,7 +102,6 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
                                         return ( <ShopItem 
                                                     key={item.id} 
                                                     item={item} 
-                                                    whatsapp={whatsapp}
                                                     path="shopList"
                                                     onDelete={() => handleDeletar(item, index)}
                                                     onInative={() => hadleInativar(item, index)}
