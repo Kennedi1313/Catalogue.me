@@ -164,6 +164,10 @@ fieldset legend {
     font: 700 1.8rem Poppins;
 }
 
+.select-block label, .textarea-block label {
+    color: white;
+}
+
 @media(min-width: 700px) {
     .item-dashboard footer button, fieldset #label-file {
         width: 50%;
