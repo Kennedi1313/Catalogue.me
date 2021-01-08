@@ -5,6 +5,7 @@ import Textarea from '../../../components/Textarea';
 import api from '../../../services/api';
 import { Link } from 'react-router-dom';
 import Input from '../../../components/Input';
+import PageHeader from '../../../components/PageHeader';
 
 
 
@@ -18,6 +19,9 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
     const [whatsapp, setWhatsapp] = useState('');
     const [name, setName] = useState('');
     const [bio, setBio] = useState('');
+    const [logo, setLogo] = useState('');
+    const [labelInput, setLabelInput] = useState('');
+    const [logoInput, setLogoInputInp] = useState('');
 
     useEffect(() => {
         async function searchShop(){
@@ -33,10 +37,10 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
             setName(shop.data[0].name);
             setBio(shop.data[0].bio);
             setWhatsapp(shop.data[0].whatsapp);
-
+            setLogo(shop.data[0].logo);
         }
         searchShop();
-    }, [shop_id]);
+    }, [shop_id, logoInput]);
 
     function mascaraTelefone(input){
         input.maxLength = 11;//propriedade maxlength adicionada ao campo por javascript
@@ -51,6 +55,38 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
     function formataTelefone(value){
         value = value.replace(/\D/g,"");//Remove tudo o que não é dígito
         return value;
+    }
+
+    function resetFormState() {
+        setLogoInputInp('');
+        setLabelInput('');
+    }
+
+    function handleMudarLogo(e: FormEvent) {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("shop_id", shop_id);
+        formData.append("logo", logoInput);
+
+        api.post('/logo', formData, {
+            headers: {
+                "Content-Type": `multipart/form-data;`,
+            }
+        }).then((res) => {
+            console.log(res)
+            resetFormState();
+            alert('Cadastro realizado com sucesso. ')
+            
+        }).catch((e) => {
+            alert('Erro no cadastro. Verifique se todos os campos foram preenchidos. ')
+        })
+        
+    }
+
+    function onChangeHandler (event) {
+        setLogoInputInp(event.target.files[0])
+        setLabelInput(event.target.files[0].name)
     }
 
     function handleCreateShop(e: FormEvent) {
@@ -72,8 +108,23 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
             alert('Atualizado com sucesso. ')
         }).catch((e) => {
             setLoading(false);
-            alert('Erro no cadastro. Verifique se todos os campos foram preenchidos. ')
+            alert([e, 'Erro no cadastro. Verifique se todos os campos foram preenchidos. '])
         })
+    }
+
+
+    var logo_url = ''
+    var default_url = '/uploads/default.png'
+    var logo_s3 = 'https://upload-catalogueme.'
+    var isS3 = false
+    
+    if(logo) {
+        console.log(logo)
+        if(logo.match(logo_s3)){
+            isS3 = true
+        } else {
+            logo_url = logo.substring(6, logo.length)
+        }
     }
 
     return (
@@ -86,8 +137,27 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
                 
                 </h1>
                 
-                    <form onSubmit={handleCreateShop}>
+                    <form onSubmit={handleMudarLogo}>
 
+                        <fieldset>
+                            <legend>Cabeçalho da loja</legend>
+                            <PageHeader title={name} description={bio} logo={ isS3 ? logo : ( logo !== '' ? process.env.REACT_APP_API_URL + logo_url : process.env.REACT_APP_API_URL + default_url)}>
+                            </PageHeader>
+                            <footer>
+                                <label id="label-file" htmlFor="arquivo">{labelInput ? labelInput : 'Selecionar imagem'}</label>
+                                <input 
+                                    name="avatar" 
+                                    type="file" 
+                                    id="arquivo"
+                                    accept="image/x-png,image/gif,image/jpeg"
+                                    className="imagem-avatar" 
+                                    onChange={onChangeHandler}
+                                />
+                                <button>Trocar Logo</button>
+                            </footer>
+                        </fieldset>
+                    </form>
+                    <form onSubmit={handleCreateShop}>
                         <fieldset>
                             <legend>Sobre seu trabalho</legend>
                             

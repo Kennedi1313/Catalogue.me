@@ -5,20 +5,26 @@ import './styles.css'
 interface PageHeaderProps {
     title: String;
     description?: String;
+    logo?: string;
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
     return (
-        <header className="page-header">
+        
+        <header className="page-header" >
             <div className="top-bar-container">
                 <Link to="/">
                     Catalogue.me
                 </Link>
             </div>
             <div className="header-content">
-                <h2><strong>{props.title}</strong></h2>
+                <div className="header">
+                    
+                    {props.logo && <img src={props.logo} alt="logo"/>}
+                    <h2><strong>{props.title}</strong></h2>
+                    {props.description && <p>{props.description}</p>}
+                </div>
                 {props.children}
-                {props.description && <p>{props.description}</p>}
             </div>
         </header>
     )

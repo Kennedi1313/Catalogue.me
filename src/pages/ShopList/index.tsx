@@ -31,6 +31,8 @@ function ShopList() {
     const { shop_tag } = useParams<ParamProps>();
     const [shopId, setShopId] = useState('');
     const [shop_name, setShopName] = useState('');
+    const [shopBio, setShopBio] = useState('');
+    const [shopLogo, setShopLogo] = useState('');
     const [items, setItems] = useState([]);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -53,7 +55,8 @@ function ShopList() {
             setShopId(shop.data[0].id)
             setShopName(shop.data[0].name)
             setWhatsapp(shop.data[0].whatsapp)
-
+            setShopBio(shop.data[0].bio)
+            setShopLogo(shop.data[0].logo)
             
         }
         
@@ -99,7 +102,7 @@ function ShopList() {
                 <link rel="canonical" href={'http://catalogueme.store/'+shopId} />
                 <meta name="description" content="Bem vindo(a) a minha loja virtual!" />
             </Helmet>
-            <PageHeader title={shop_name}>
+            <PageHeader title={shop_name} description={shopBio} logo={shopLogo && shopLogo}>
                 {console.log("id" + shopId + " nome" + shop_name + " whatsapp" +whatsapp)}
                 <h4>Pesquisar {<SearchIcon/>}</h4>
                 <form id="search-itens">

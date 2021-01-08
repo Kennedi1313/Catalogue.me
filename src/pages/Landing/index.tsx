@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import StoreContext from '../../components/Store/Context';
 import api from '../../services/api';
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
+import PageHeader from '../../components/PageHeader';
 
 interface ShopProps {
     shop: {
@@ -11,6 +12,7 @@ interface ShopProps {
         bio: string,
         whatsapp: string,
         tag: string,
+        logo: string,
     }
 }
 
@@ -66,27 +68,38 @@ function Landing() {
                             
                             {!loading ? 
                             shops.map((shops: ShopProps["shop"]) => {
+                                var logo_url = ''
+                                var logo_s3 = 'https://upload-catalogueme.'
+                                var isS3 = false
+                                
+                                if(shops.logo) {
+                                    console.log(shops.logo)
+                                    if(shops.logo.match(logo_s3)){
+                                        isS3 = true
+                                    } else {
+                                        logo_url = shops.logo.substring(6, shops.logo.length)
+                                    }
+                                }
                                 return(
                                     <div key={shops.tag} className="shop-card">
                                         <div className="info">
-                                            <h3>
-                                                {
+                                            <PageHeader 
+                                                title={
                                                     shops.name.length > 25
                                                     ?
                                                     shops.name.substring(0, 25) + '...'
                                                     :
                                                     shops.name
-                                                }
-                                            </h3>
-                                            <p>
-                                                {
+                                                } 
+                                                description={
                                                     shops.bio.length > 45
                                                     ?
                                                     shops.bio.substring(0, 45) + '...'
                                                     :
                                                     shops.bio
-                                                }  
-                                            </p>
+                                                } 
+                                                logo={ shops.logo && isS3 ? shops.logo : ( shops.logo !== '' ? process.env.REACT_APP_API_URL + logo_url : '')}>
+                                            </PageHeader>
                                         </div>
                                         <div className="buttons">
                                             <a rel="noopener noreferrer" href={ process.env.REACT_APP_URL+'/'+shops.tag }>
@@ -94,9 +107,10 @@ function Landing() {
                                                 Visitar a loja
                                             </a>
                                             <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + shops.whatsapp }>
-                                            <img src={whatsappIcon} alt="whatsapp"/>
+                                                <img src={whatsappIcon} alt="whatsapp"/>
                                                 Entrar em contato
                                             </a>
+
                                         </div>
                                     </div>
                                 );

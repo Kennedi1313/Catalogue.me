@@ -34,6 +34,7 @@ function ItemDescription(){
 
     function resetFormState() {
         setAvatarInp('');
+        setLabelInput('');
     }
 
     useEffect(() => {

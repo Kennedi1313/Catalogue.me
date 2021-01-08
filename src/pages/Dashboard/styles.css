@@ -72,38 +72,33 @@ body {
 .link-shop .share {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-items: center;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 4rem;
 }
 
 .link-shop .share .link {
-    padding: 1rem;
-    width: 50%;
+    width: 100%;
+    display: flex;
+    padding: 4px;
+    flex-direction: row;
+    background-color: #121f1f;
 }
 
-.link-shop .share .qrcode {
-    padding: 1rem;
-    width: 50%;
-}
-
-.link-shop .share .qrcode canvas {
-    margin-bottom: 1rem;
+.link-shop .share .link #url {
+    border: 0;
 }
 
 .link-shop .share .link a {
-    background-color: snow;
-    color: black;
+    background-color: #121f1f;
+    color: white;
     padding: 1rem;
     cursor: pointer;
-}
-
-.link-shop .share .qrcode a {
-    background-color: snow;
-    color: black;
-    padding: 1rem;
-    cursor: pointer;
+    height: 100%;
+    border: 0;
+    text-decoration: none;
+    text-align: center;
 }
 
 #page-dashboard main .link-shop {
@@ -114,7 +109,6 @@ body {
 }
 
 #page-dashboard-content .link-shop textarea{
-    margin-bottom: 1rem;
     width: 100%;
 }
 

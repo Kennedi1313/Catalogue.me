@@ -9,7 +9,6 @@ import ItemDescription from './ItemDescription-Dashboard'
 import EditShopForm from './UserForm-Dashboard'
 import AddAvatar from './AddAvatar-Dashboard'
 import api from '../../services/api'
-import QRCode from 'qrcode.react'
 
 function deslogar() {
     localStorage.removeItem('token')
@@ -46,20 +45,6 @@ function Dashboard() {
         }
         searchTag();
     },[user.shop_id]);
-
-    const downloadQR = () => {
-        const canvas = document.getElementById("qrcode") as HTMLCanvasElement;
-        /*@ts-ignore*/
-        const pngUrl = canvas
-          .toDataURL("image/png")
-          .replace("image/png", "image/octet-stream");
-        let downloadLink = document.createElement("a");
-        downloadLink.href = pngUrl;
-        downloadLink.download = "qrcode.png";
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-      };
 
     return (
         <div id="page-dashboard">
@@ -101,25 +86,12 @@ function Dashboard() {
                             <AddAvatar />
                         : page === 'inicio' ?
                             <fieldset className="link-shop">
-                                <legend>Bem vindo a area administrativa da sua loja! Você possui essas duas formas abaixo para compartilhar sua loja com seus clientes, mas antes gerencie seus itens no menu.</legend>
+                                <legend>Bem vindo a area administrativa da sua loja. Gerencie seus itens no menu e compartilhe sua loja!</legend>
                                 <div className="share">
+                                    <h2>Copie esse link e envie para os seus clientes</h2>
                                     <div className="link">
-                                        <h2>Copie esse link e envie para os seus clientes</h2>
                                         <textarea ref={textAreaRef} id="url" readOnly value={process.env.REACT_APP_URL+'/'+shopTag}></textarea>
-                                        <a href="/dashboard/admin/inicio" onClick={copyToClipboard}>Copiar o link da sua Loja Virtual</a> 
-                                    </div>
-                                    
-                                    <div className="qrcode">
-                                        <h2>Ou compartilhe o seu QRCode</h2>
-                                        <QRCode
-                                            id="qrcode"
-                                            value={process.env.REACT_APP_URL+'/'+shopTag}
-                                            size={290}
-                                            level={"H"}
-                                            includeMargin={true}
-                                        />
-                                        <br/>
-                                        <a href="/dashboard/admin/inicio" onClick={downloadQR}> Download QR </a>
+                                        <a href="/dashboard/admin/inicio" onClick={copyToClipboard}>Copiar</a> 
                                     </div>
                                 </div>
                                 

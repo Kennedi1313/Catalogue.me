@@ -1,17 +1,19 @@
+
 #page-landing {
-    width: 100vw;
-    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
     display: grid;
     grid-template-columns: 100%;
     align-items: center;
-    color: white;
-    background-color: #2F4F4F;
+    color: #1b2e2e;
+    background-color: white;
 }
 
 #page-landing-content {
-    background-color: #2F4F4F;
+    background-color: white;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
     flex-direction: column;
     justify-content: center;
 }
@@ -97,23 +99,25 @@
     text-align: center;
     text-decoration: none;
     color: #2F4F4F;
-    background-color: white;
+    background-color: rgb(180, 180, 180);
     transition: background-color 0.2s;
 }
 
 .buttons-container a:hover {
-    background-color: rgb(161, 160, 159);
+    background-color: rgb(122, 122, 122);
 }
 
 .footer-container {
-    background-color: white;
-    color: #2F4F4F;
+    background-color: #2F4F4F;
+    color: white;
     width: 100%;
-    height: 12rem;
+    height: 20rem;
     display: flex;
     flex-direction: row;
     font: 400 1.4rem Poppins;
     text-align: center;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .footer-container .conections {
@@ -131,7 +135,7 @@
 
 .footer-container a {
     text-decoration: none;
-    color: #2F4F4F;
+    color: white;
 }
 
 #page-landing-content .landing .text {
@@ -145,15 +149,10 @@
     background-color: white;
 }
 
-.landing-shops img {
-    max-width: 80%;
-    margin: 0 auto;
-}
-
 .landing-shops .shop-card {
     background-color: white;
     color: #2F4F4F;
-    min-width: 49.5% !important;
+    min-width: 100% !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -165,21 +164,35 @@
 
 .landing-shops .shop-card .info {
     font-size: 1.3rem;
+    height: 30rem;
+    width: 100%;
+    height: 38rem;
+}
+
+.landing-shops .shop-card .info .page-header {
+    height: 37rem !important;
+}
+
+.landing-shops .shop-card .info .page-header .header-content {
+    padding-bottom: 0 !important;
+}
+
+.landing-shops .buttons {
+    width: 100%;
 }
 
 .landing-shops .shop-card a {
     width: 100%;
     height: 5rem;
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.1rem;
     background-color:  #2F4F4F;
     color: white;
     border: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    transition: 0.2s;
+    justify-content: space-around;
     text-decoration: none;
 }
 
@@ -198,8 +211,11 @@
 }
 
 @media (min-width: 800px) {
+    .landing-shops {
+        margin-bottom: 10rem;
+    }
     .landing-shops .shop-card {
-        min-width: 24.6% !important;
+        min-width: 33.3% !important;
     }
     .landing-shops .shop-card .info {
         font-size: 1.6rem;
@@ -211,13 +227,12 @@
     }
     #page-landing-content {
         max-width: 80vw;
-        
     }
     .landing {
         margin-bottom: 5rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 10% 18% 15% 2fr;
+        grid-template-rows: 10% 15% 15% 60%;
         grid-template-areas: 
         "title title"
         "text3 text2"
