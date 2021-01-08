@@ -119,7 +119,7 @@ function Landing() {
                         </div>
                     </div>
                     <p className="text" id="text2">
-                        Comece a usar o Catalogue.me agora mesmo clicando no botão abaixo! É a praticidade que você estava procurando. 
+                        Comece a usar o Catalogue.me agora mesmo! É a praticidade que você estava procurando. 
                     </p>
                     
                 </div> 

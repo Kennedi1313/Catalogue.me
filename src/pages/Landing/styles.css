@@ -253,12 +253,15 @@
     }
     #text1 {
         grid-area: text1;
+        padding: 1rem;
     }
     #text2 {
         grid-area: text2;
+        padding: 1rem;
     }
     #text3 {
         grid-area: text3;
+        padding: 1rem;
     }
     .buttons-area {
         grid-area: buttons;
