@@ -19,6 +19,7 @@
 }
 
 .landing p {
+    text-align: justify;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
@@ -27,6 +28,7 @@
     display: block;
     text-align: center;
     font-size: 2.2rem;
+    text-align: center;
 }
 
 .logo-container {
@@ -93,18 +95,20 @@
     width: 100%;
     height: 10.4rem;
     font: 700 1.6rem Poppins;
+    padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     text-decoration: none;
     color: #2F4F4F;
-    background-color: rgb(180, 180, 180);
+    box-shadow: 0 0 0.5rem #2F4F4F;
+    background-color: rgb(255, 255, 255);
     transition: background-color 0.2s;
 }
 
 .buttons-container a:hover {
-    background-color: rgb(122, 122, 122);
+    background-color: rgb(156, 156, 156);
 }
 
 .footer-container {
