@@ -13,6 +13,7 @@ interface ShopProps {
         whatsapp: string,
         tag: string,
         logo: string,
+        color: string,
     }
 }
 
@@ -98,6 +99,7 @@ function Landing() {
                                                     :
                                                     shops.bio
                                                 } 
+                                                color={shops.color}
                                                 logo={ shops.logo && isS3 ? shops.logo : ( shops.logo !== '' ? process.env.REACT_APP_API_URL + logo_url : '')}>
                                             </PageHeader>
                                         </div>
@@ -106,7 +108,7 @@ function Landing() {
                                             
                                                 Visitar a loja
                                             </a>
-                                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + shops.whatsapp }>
+                                            <a className="button-contato" target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + shops.whatsapp }>
                                                 <img src={whatsappIcon} alt="whatsapp"/>
                                                 Entrar em contato
                                             </a>

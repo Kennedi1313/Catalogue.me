@@ -1,7 +1,6 @@
 .page-header {
     display: flex;
     flex-direction: column;
-    background-color: #2F4F4F;
 }
 
 .page-header .top-bar-container {

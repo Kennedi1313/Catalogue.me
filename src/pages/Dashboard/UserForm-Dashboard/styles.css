@@ -120,7 +120,7 @@
 
 #page-user-form-dash main footer button, #page-user-form-dash main form button {
     width: 100%;
-    height: 5.6rem;
+    height: 5rem;
     background-color: #426f42;
     color: white;
     border: 0;
@@ -206,10 +206,52 @@
     justify-content: center;
 }
 
+.color-picker-palette {
+    position: absolute;
+    z-index: 100;
+}
+
+
+
+.footer-simula-header {
+    display: flex;
+    flex-direction: column !important;
+}
+
+.footer-simula-header form {
+    width: 100%;
+}
+
+.footer-simula-header form .trocar-logo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1rem;
+}
+
+.footer-simula-header form .trocar-cor {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.footer-simula-header .color-picker-container {
+    width: 100%;
+}
+
+.footer-simula-header .color-picker-container .color-picker-text {
+    width: 100%;
+}
+
 @media(min-width: 700px ){
     #page-user-form-dash fieldset #label-file, #page-user-form-dash main form button {
         width: 50%;
         height: 5rem;
+    }
+
+    .footer-simula-header .color-picker-container {
+        width: 50%;
     }
 
     #page-user-form-dash {

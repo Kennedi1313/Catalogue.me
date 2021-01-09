@@ -19,13 +19,16 @@ interface ParamProps {
 function ItemDescription(){
     const { shop_tag, item_id } = useParams<ParamProps>();
     const [shop_name, setShopName] = useState('');
-    const [name, setName] = useState('')
+    const [shop_bio, setShopBio] = useState('');
+    const [shop_logo, setShopLogo] = useState('');
+    const [shop_color, setShopColor] = useState('');
+    const [name, setName] = useState('');
     const [avatar, setAvatar] = useState([
         {avatar: "string"}
-    ])
-    const [info, setInfo] = useState('')
-    const [price, setPrice] = useState('')
-    const [whatsapp, setWhatsapp] = useState('')
+    ]);
+    const [info, setInfo] = useState('');
+    const [price, setPrice] = useState('');
+    const [whatsapp, setWhatsapp] = useState('');
 
     const { user } = useContext(StoreContext)
 
@@ -33,25 +36,28 @@ function ItemDescription(){
         async function getItem() {
             const res = await api.get('/itembyid', { 
                 params: { item_id } 
-            })
+            });
     
-            setName(res.data[0].name)
-            setInfo(res.data[0].info)
-            setPrice(res.data[0].price)
+            setName(res.data[0].name);
+            setInfo(res.data[0].info);
+            setPrice(res.data[0].price);
     
             const avatarData = await api.get('/itemavatarbyid', {
                 params: {item_id}
             })
-            setAvatar(avatarData.data.itemsAvatar)
+            setAvatar(avatarData.data.itemsAvatar);
     
             const shop = await api.get('/shopbytag', {
                 params: {
                     shop_tag,
                 }
-            })
+            });
     
-            setShopName(shop.data[0].name)
-            setWhatsapp(shop.data[0].whatsapp)
+            setShopName(shop.data[0].name);
+            setShopBio(shop.data[0].bio);
+            setShopLogo(shop.data[0].logo);
+            setWhatsapp(shop.data[0].whatsapp);
+            setShopColor(shop.data[0].color);
         }
         getItem();
     }, [item_id, shop_tag, whatsapp]);
@@ -73,7 +79,7 @@ function ItemDescription(){
     });
     return (
         <div id="item-description">
-            <PageHeader title={shop_name}>
+            <PageHeader title={shop_name} description={shop_bio} color={shop_color} logo={shop_logo && shop_logo}>
                 <Link className="button-back" to={!!user ? "/dashboard/admin/shop" : "/" + shop_tag}>
                     Voltar à loja
                 </Link>

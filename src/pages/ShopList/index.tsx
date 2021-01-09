@@ -33,6 +33,7 @@ function ShopList() {
     const [shop_name, setShopName] = useState('');
     const [shopBio, setShopBio] = useState('');
     const [shopLogo, setShopLogo] = useState('');
+    const [shopColor, setShopColor] = useState('');
     const [items, setItems] = useState([]);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -51,12 +52,13 @@ function ShopList() {
                 params: {
                     shop_tag,
                 }
-            })
-            setShopId(shop.data[0].id)
-            setShopName(shop.data[0].name)
-            setWhatsapp(shop.data[0].whatsapp)
-            setShopBio(shop.data[0].bio)
-            setShopLogo(shop.data[0].logo)
+            });
+            setShopId(shop.data[0].id);
+            setShopName(shop.data[0].name);
+            setWhatsapp(shop.data[0].whatsapp);
+            setShopBio(shop.data[0].bio);
+            setShopLogo(shop.data[0].logo);
+            setShopColor(shop.data[0].color);
             
         }
         
@@ -102,8 +104,7 @@ function ShopList() {
                 <link rel="canonical" href={'http://catalogueme.store/'+shopId} />
                 <meta name="description" content="Bem vindo(a) a minha loja virtual!" />
             </Helmet>
-            <PageHeader title={shop_name} description={shopBio} logo={shopLogo && shopLogo}>
-                {console.log("id" + shopId + " nome" + shop_name + " whatsapp" +whatsapp)}
+            <PageHeader title={shop_name} description={shopBio} color={shopColor} logo={shopLogo && shopLogo}>
                 <h4>Pesquisar {<SearchIcon/>}</h4>
                 <form id="search-itens">
                     <Input 

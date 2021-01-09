@@ -6,6 +6,7 @@ import api from '../../../services/api';
 import { Link } from 'react-router-dom';
 import Input from '../../../components/Input';
 import PageHeader from '../../../components/PageHeader';
+import { ChromePicker } from "react-color";
 
 
 
@@ -20,8 +21,31 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
     const [name, setName] = useState('');
     const [bio, setBio] = useState('');
     const [logo, setLogo] = useState('');
+    const [shopColor, setShopColor] = useState('');
     const [labelInput, setLabelInput] = useState('');
     const [logoInput, setLogoInputInp] = useState('');
+    const [displayColorPicker, setDisplayColorPicker] = useState(false);
+    const [changeColor, setChangeColor] = useState("#999");
+    const [color, setColor] = useState({
+        r: 0,
+        g: 9,
+        b: 153,
+        a: 1
+    });
+
+    const styles = {
+        title: "Selecionar cor da loja",
+        labelStyle: {
+          paddingBottom: "7px",
+          fontSize: "11px"
+        },
+        colorTextBoxStyle: {
+          height: "35px",
+          border: "none",
+          borderBottom: "1px solid lightgray",
+          paddingLeft: "35px"
+        }
+    };
 
     useEffect(() => {
         async function searchShop(){
@@ -38,6 +62,7 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
             setBio(shop.data[0].bio);
             setWhatsapp(shop.data[0].whatsapp);
             setLogo(shop.data[0].logo);
+            setShopColor(shop.data[0].color);
         }
         searchShop();
     }, [shop_id, logoInput]);
@@ -75,6 +100,24 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
             }
         }).then((res) => {
             console.log(res)
+            resetFormState();
+            alert('Cadastro realizado com sucesso. ')
+            
+        }).catch((e) => {
+            alert('Erro no cadastro. Verifique se todos os campos foram preenchidos. ')
+        })
+        
+    }
+
+    function handleMudarCor(e: FormEvent) {
+        e.preventDefault();
+
+        api.post('/color', {
+            shop_id,
+            color: changeColor
+        }).then((res) => {
+            console.log(res)
+            setLogoInputInp(res.headers)
             resetFormState();
             alert('Cadastro realizado com sucesso. ')
             
@@ -136,14 +179,13 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
                     <Link className="botao-aba-dir" to={'/dashboard/admin/shop'}> Editar loja </Link>
                 
                 </h1>
-                
-                    <form onSubmit={handleMudarLogo}>
-
-                        <fieldset>
-                            <legend>Cabeçalho da loja</legend>
-                            <PageHeader title={name} description={bio} logo={ isS3 ? logo : ( logo !== '' ? process.env.REACT_APP_API_URL + logo_url : process.env.REACT_APP_API_URL + default_url)}>
-                            </PageHeader>
-                            <footer>
+                <fieldset>
+                    <legend>Cabeçalho da loja</legend>
+                    <PageHeader title={name} description={bio} color={shopColor} logo={ isS3 ? logo : ( logo !== '' ? process.env.REACT_APP_API_URL + logo_url : process.env.REACT_APP_API_URL + default_url)}>
+                    </PageHeader>
+                    <footer className="footer-simula-header">
+                        <form onSubmit={handleMudarLogo}>
+                            <div className="trocar-logo">
                                 <label id="label-file" htmlFor="arquivo">{labelInput ? labelInput : 'Selecionar imagem'}</label>
                                 <input 
                                     name="avatar" 
@@ -153,10 +195,44 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
                                     className="imagem-avatar" 
                                     onChange={onChangeHandler}
                                 />
-                                <button>Trocar Logo</button>
-                            </footer>
-                        </fieldset>
-                    </form>
+                                <button>Confirmar</button>
+                            </div>
+                        </form>
+                        <form onSubmit={handleMudarCor}>
+                            <div className="trocar-cor">
+                                <div className="color-picker-container">
+                                    <label>{styles.title}</label>
+                                    <div style={styles.labelStyle}/>
+                                    <div className="color-picker-color-background"
+                                        style={{backgroundColor: changeColor}}
+                                    >
+                                        &nbsp;
+                                    </div>
+                                    <input 
+                                        readOnly
+                                        style={styles.colorTextBoxStyle}
+                                        type="text"
+                                        className="color-picker-text"
+                                        value={changeColor}
+                                        onClick={() => setDisplayColorPicker(true)}
+                                    />
+                                    {displayColorPicker && (
+                                        <div className="color-picker-palette">
+                                            <div className="color-picker-cover" onClick={() => setDisplayColorPicker(false)}>
+                                                <ChromePicker
+                                                    color={color}
+                                                    //@ts-ignore
+                                                    onChange={(color) => {setColor(color.rgb); setChangeColor(color.hex)} }
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                                <button>Confirmar</button>
+                            </div>
+                        </form>
+                    </footer>
+                </fieldset>
                     <form onSubmit={handleCreateShop}>
                         <fieldset>
                             <legend>Sobre seu trabalho</legend>

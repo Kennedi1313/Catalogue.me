@@ -6,12 +6,15 @@ interface PageHeaderProps {
     title: String;
     description?: String;
     logo?: string;
+    color?: string;
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
+    const style = {
+        backgroundColor: props.color ? props.color : "#2F4F4F"
+    }
     return (
-        
-        <header className="page-header" >
+        <header className="page-header" style={style}>
             <div className="top-bar-container">
                 <Link to="/">
                     Catalogue.me
