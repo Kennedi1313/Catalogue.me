@@ -96,20 +96,17 @@ function ItemDescription(){
         setLoading(true);
 
         const user_id = user.id
+        console.log(user_id)
 
-        const formData = new FormData();
-        formData.append("item_id", item_id);
-        formData.append("user_id", user_id);
-        formData.append("name", name);
-        formData.append("price", price);
-        formData.append("category", category);
-        formData.append("info", info);
-
-        api.post('/items-edit', formData, {
-            headers: {
-                "Content-Type": `multipart/form-data;`,
-            }
-        }).then((res) => {
+        api.post('/items-edit',{
+                item_id,
+                user_id,
+                name,
+                price,
+                category,
+                info, 
+            } 
+        ).then((res) => {
             console.log(res)
             setLoading(false);
             alert('Atualizado com sucesso. ')
