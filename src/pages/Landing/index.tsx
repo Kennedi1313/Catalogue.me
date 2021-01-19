@@ -5,6 +5,7 @@ import StoreContext from '../../components/Store/Context';
 import api from '../../services/api';
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
 import PageHeader from '../../components/PageHeader';
+import capa from '../../assets/images/capa.jpeg';
 
 interface ShopProps {
     shop: {
@@ -35,36 +36,71 @@ function Landing() {
     }, []);
     return (
         <div id="page-landing">
-            <div className="logo-container">
+            <div className="logo-container-main">
                 <a href="/" className="logo">Catalogue.me</a>
                 <div className="nav">
-                    <Link to={token ? "/dashboard/admin/inicio" : "/user/login"}>{token ? "Loja" : "Login"}</Link>
-                    {token ? "" : <Link to="/user/form">Cadastro</Link>}
+                    <Link to={token ? "/dashboard/admin/inicio" : "/user/login"}>{token ? "Loja" : "Entrar"}</Link>
+                    {token ? "" : <Link className="cadastro" to="/user/form">Criar conta gratuita</Link>}
                 </div>
             </div>
             <div id="page-landing-content">
                 <div className="landing">
-                    <h2 className="subtitle">Crie seu catálogo virtual online e 100% grátis em menos de 5 minutos.</h2>
+                   
+                    <h2 className="subtitle">Crie seu catálogo virtual ou loja online.</h2>
                     
                     <p id="text3">
-                        Modernize sua loja virtual com o nosso catálogo, não precisa instalar nada! Faça login, cadastre seus produtos/serviços e compartilhe com seus clientes em tempo real.
+                        Modernize sua loja virtual com o nosso catálogo, não precisa instalar nada! Faça o cadastro gratuito e cadastre seus produtos/serviços..
                     </p>
-                    
-                    
+
                     <div className="buttons-area">
                         <div className="buttons-container">
                             <Link to="/user/form" className="products">
-                                Cadastre o seu catálogo virtual agora clicando aqui.
+                                Cadastre o seu catálogo virtual.
                             </Link>
                         </div>
                     </div>
-                
-                    
-                    <div className="landing-image">
-                    <p className="text" id="text1">
-                        Veja abaixo algumas lojas que já aderiram ao Catalogue.me
+                    <p className="text" id="text2">
+                        Comece a usar o Catalogue.me agora mesmo! É a praticidade que você estava procurando. 
                     </p>
-                    <h2>Lojas associadas</h2>
+                    
+                    <img src={capa} className="capa" alt="capa"/>
+                   
+                </div> 
+                <div className="info-3">
+                    <h1>Totalmente integrado com o Whatsapp <br></br> <img src={whatsappIcon} alt="whatsapp"/></h1>
+                    <ul>
+                        <li>
+                            Sem mensagens desnecessárias
+                        </li>
+                        <li>
+                            O cliente é enviado diretamente ao seu Whatsapp
+                        </li>
+                        <li>
+                            Link do produto clicado incluso na mensagem 
+                        </li>
+                        <li>
+                            Mensagem pronta para o cliente usar
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            Nenhum dado é salvo durante o processo de compra
+                        </li>
+                        <li>
+                            Nenhuma taxa é cobrada sobre suas vendas
+                        </li>
+                        <li>
+                            A compra é finalizada através do Whatsapp
+                        </li>
+                        <li>
+                            Número de vendas ilimitadas inclusive no plano grátis
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div className="landing-image">
+                    <h1>Lojas que já usam o Catalogueme</h1>
                         <div className="landing-shops">
                             
                             {!loading ? 
@@ -82,8 +118,10 @@ function Landing() {
                                     }
                                 }
                                 return(
-                                    <div key={shops.tag} className="shop-card">
+                                    <a key={shops.tag} className="shop-card" rel="noopener noreferrer" href={ process.env.REACT_APP_URL+'/'+shops.tag }>
+                                   
                                         <div className="info">
+                                        
                                             <PageHeader 
                                                 title={
                                                     shops.name.length > 25
@@ -102,30 +140,41 @@ function Landing() {
                                                 color={shops.color}
                                                 logo={ shops.logo && isS3 ? shops.logo : ( shops.logo !== '' ? process.env.REACT_APP_API_URL + logo_url : '')}>
                                             </PageHeader>
-                                        </div>
-                                        <div className="buttons">
-                                            <a rel="noopener noreferrer" href={ process.env.REACT_APP_URL+'/'+shops.tag }>
                                             
-                                                Visitar a loja
-                                            </a>
-                                            <a className="button-contato" target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + shops.whatsapp }>
-                                                <img src={whatsappIcon} alt="whatsapp"/>
-                                                Entrar em contato
-                                            </a>
-
                                         </div>
-                                    </div>
+                                    </a>
                                 );
                             })
                             :  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading"/>}
                         </div>
-                    </div>
-                    <p className="text" id="text2">
-                        Comece a usar o Catalogue.me agora mesmo! É a praticidade que você estava procurando. 
-                    </p>
-                    
-                </div> 
-                
+                </div>
+                <div className="info-3">
+                    <h1>Todo o poder da sua loja na palma da sua mão</h1>
+                    <ul>
+                        <li>
+                            Traga seus clientes para a sua loja virtual
+                        </li> 
+                        <li>
+                            Promova a sua loja nas suas redes sociais compartilhando o seu link exclusivo
+                        </li> 
+                        <li>
+                            Reúna os clientes de todos os lugares em uma loja única, facilitando a administração
+                        </li> 
+                        <li>
+                            Compartilhe sua loja virtual com seus clientes e os deixe por dentro dos seus produtos
+                        </li> 
+                    </ul>
+                </div>
+            </div>
+
+            <div className="chamada">
+                <h1>Crie sua loja online agora mesmo</h1>
+                O que está esperando para se cadastrar? É 100% grátis!
+                <div className="buttons-container">
+                    <Link to="/user/form" className="products">
+                        Cadastre o seu catálogo virtual.
+                    </Link>
+                </div>
             </div>
             
             <div className="footer-container">
