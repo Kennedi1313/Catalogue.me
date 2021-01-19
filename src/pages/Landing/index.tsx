@@ -49,7 +49,7 @@ function Landing() {
                     <h2 className="subtitle">Crie seu catálogo virtual ou loja online.</h2>
                     
                     <p id="text3">
-                        Modernize sua loja virtual com o nosso catálogo, não precisa instalar nada! Faça o cadastro gratuito e cadastre seus produtos/serviços..
+                        Modernize sua loja virtual com o nosso catálogo, não precisa instalar nada! Faça o cadastro gratuito e cadastre seus produtos/serviços.
                     </p>
 
                     <div className="buttons-area">
@@ -62,7 +62,7 @@ function Landing() {
                     <p className="text" id="text2">
                         Comece a usar o Catalogue.me agora mesmo! É a praticidade que você estava procurando. 
                     </p>
-                    
+
                     <img src={capa} className="capa" alt="capa"/>
                    
                 </div> 
@@ -76,10 +76,10 @@ function Landing() {
                             O cliente é enviado diretamente ao seu Whatsapp
                         </li>
                         <li>
-                            Link do produto clicado incluso na mensagem 
+                            Mensagem pronta para o cliente usar
                         </li>
                         <li>
-                            Mensagem pronta para o cliente usar
+                            Link do produto selecionado incluso na mensagem 
                         </li>
                     </ul>
                     <ul>
@@ -161,7 +161,7 @@ function Landing() {
                             Reúna os clientes de todos os lugares em uma loja única, facilitando a administração
                         </li> 
                         <li>
-                            Compartilhe sua loja virtual com seus clientes e os deixe por dentro dos seus produtos
+                            Compartilhe sua loja virtual com seus clientes e os deixe por dentro dos seus produtos e serviços
                         </li> 
                     </ul>
                 </div>
