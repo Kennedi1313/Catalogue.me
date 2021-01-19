@@ -259,6 +259,14 @@ li:before {
     color: #2F4F4F;
 }
 
+.landing-image {
+    width: 100%;
+    padding-top: 8rem;
+    margin-top: 1rem;
+    padding-bottom: 5rem;
+    text-align: left;
+}
+
 @media (min-width: 1100px) {
 
     .logo-container-main {
