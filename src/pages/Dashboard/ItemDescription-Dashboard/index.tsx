@@ -12,6 +12,11 @@ interface ParamProps {
     item_id: string,
 }
 
+interface ParamLabel {
+    value: string,
+    label: string,
+}
+
 function ItemDescription(){
     const { item_id } = useParams<ParamProps>();
     const { user } = useContext(StoreContext);
@@ -31,6 +36,7 @@ function ItemDescription(){
     const [infoLength, setInfoLength] = useState(600);
     const [loading, setLoading] = useState(false);
     const [labelInput, setLabelInput] = useState('');
+    const [labelCategories, setLabelCategories] = useState<ParamLabel[]>([])
 
     function resetFormState() {
         setAvatarInp('');
@@ -54,8 +60,31 @@ function ItemDescription(){
             setAvatar(avatarData.data.itemsAvatar)
         }
         getItem();
+        
     }, [item_id, avatarInp]);
 
+    useEffect(() => {
+        async function getCategories() {
+            
+            const categories = await api.get('/shops-categories', {
+                params: {
+                    shop_id: user.shop_id
+                }
+            });
+
+            let newlabel = labelCategories;
+            
+            categories.data.map(({category}) => {
+                newlabel.push({value: category, label: category})
+            })
+
+            setLabelCategories(newlabel)
+        }
+        if (labelCategories !== []) {
+            getCategories();
+        }
+    }, [labelCategories, user.shop_id])
+    
     function onChangeHandler (event) {
         setAvatarInp(event.target.files[0])
         setLabelInput(event.target.files[0].name)
@@ -154,6 +183,8 @@ function ItemDescription(){
     return (
         <div id="item-description-dashboard">
             <h1>Gerenciar Item</h1>
+            <label htmlFor="dica" className="dica-label">O que essa tela faz?</label>
+            <p className="dica" id="dica">Edite as informações do item, adicione ou delete imagens, torne uma das imagens a capa desse item.</p>
             <article className="item-dashboard">
                 
                 <header>
@@ -187,10 +218,7 @@ function ItemDescription(){
                                     label="Categoria" 
                                     value={category}
                                     onChange={(e) => {setCategory(e.target.value)}}
-                                    options={[
-                                        {value: 'Produto', label: 'Produto'},
-                                        {value: 'Serviço', label: 'Serviço'},
-                                    ]} 
+                                    options={labelCategories} 
                                 />
 
                                 <Textarea 

@@ -34,11 +34,12 @@ function ShopList() {
     const [shopBio, setShopBio] = useState('');
     const [shopLogo, setShopLogo] = useState('');
     const [shopColor, setShopColor] = useState('');
+    const [shopTextColor, setShopTextColor] = useState('');
     const [items, setItems] = useState([]);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [whatsapp, setWhatsapp] = useState('')
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState('all');
     const [arrayCategory, setArrayCategory] = useState(['Produto', 'Serviço']);
     const [totalItens, setTotalItens] = useState(0);
     const [limit, setLimit] = useState(8);
@@ -59,7 +60,7 @@ function ShopList() {
             setShopBio(shop.data[0].bio);
             setShopLogo(shop.data[0].logo);
             setShopColor(shop.data[0].color);
-            
+            setShopTextColor(shop.data[0].color_text);
         }
         
         setLimit(8);
@@ -69,6 +70,11 @@ function ShopList() {
 
     useEffect(() => {
         async function searchAllItems(){
+
+            const categories = await api.get('/categories', {params: {shop_id: shopId}})
+
+            setArrayCategory(categories.data)
+
             const item = await api.get('/items', {
                 params: {
                     shop_id: shopId,
@@ -80,20 +86,16 @@ function ShopList() {
                 }
             })
             setTotalItens(parseInt(item.headers["x-content-length"]));
-            setArrayCategory(item.data.categories)
             setItems(item.data.items)
 
             const totalPages = Math.ceil(totalItens / limit);
-            
             var arrayPages: number[] = [];
             for(let i = 1; i <= totalPages; i++ ){
                 arrayPages.push(i);
             }
             setPages(arrayPages)
-
             setLoading(false);
         }
-
         searchAllItems();
     }, [currentPage, limit, totalItens, category, name, price, shopId]);
     
@@ -104,7 +106,7 @@ function ShopList() {
                 <link rel="canonical" href={'http://catalogueme.store/'+shopId} />
                 <meta name="description" content="Bem vindo(a) a minha loja virtual!" />
             </Helmet>
-            <PageHeader title={shop_name} description={shopBio} color={shopColor} logo={shopLogo && shopLogo}>
+            <PageHeader title={shop_name} description={shopBio} color={shopColor} colorText={shopTextColor} logo={shopLogo && shopLogo}>
                 <h4>Pesquisar {<SearchIcon/>}</h4>
                 <form id="search-itens">
                     <Input 
@@ -115,17 +117,7 @@ function ShopList() {
                         onChange={(e) => {setName(e.target.value)}}
                     />
                     <div className="selects">
-                        <Select 
-                            name="category" 
-                            label="Categoria" 
-                            value={category}
-                            onChange={(e) => { setCategory(e.target.value)}}
-                            options={[
-                                {value: 'all', label: 'Todas'},
-                                {value: 'Produto', label: 'Produto'},
-                                {value: 'Serviço', label: 'Serviço'},
-                            ]} 
-                        />
+                        
                         <Select 
                             name="price" 
                             label="Preço" 
@@ -137,30 +129,39 @@ function ShopList() {
                             ]} 
                         />
                     </div>
+
+                    
                 </form>
 
-            </PageHeader>
-            <main>
-                {!loading ? 
-                arrayCategory.map((category: string) => {
-                    return(
-                        <div key={category}>
-                            <h2 className="categoria">{category}</h2>
-                            <div className="container">
-                                {items.map((item: itemProps["item"]) => {
-                                    if(item.category ===  category)
-                                        return ( <ShopItem key={item.id} shop_tag={shop_tag} path="shopList" whatsapp={whatsapp} item={item}/> )
-                                    else return ''
-                                }) }
 
-                            </div>
+            </PageHeader>
+            
+            <main>
+                
+                {!loading ? 
+                    <>
+                        {arrayCategory.length > 1 ?
+                        <div className="category">
+                            <a onClick={() => {setCategory('all'); setCurrentPage(1)}} style={category === 'all' ? {backgroundColor: 'grey'} : {}} >Todas</a>
+                            {arrayCategory.map((categoryButton) => {
+                                return(
+                                    <a key={categoryButton} onClick={() => {setCategory(categoryButton); setCurrentPage(1)}} style={categoryButton === category ? {backgroundColor: 'grey'} : {}} >{categoryButton}</a>  
+                                )
+                            })}
+                        </div> : ''}
+                        <h2 className="categoria">{category !== 'all' ? category : ''}</h2>
+                        <div className="container">
+                            {items.map((item: itemProps["item"]) => {
+                                return ( <ShopItem key={item.id} shop_tag={shop_tag} path="shopList" whatsapp={whatsapp} item={item}/> )
+                            }) }
+
                         </div>
-                    )
-                }) 
+                    </>
+                    
                 : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading" />}
 
                 <div className="pagination">
-                    Mostrando {limit} itens de {totalItens} 
+                    Foram encontrados {totalItens} itens
                     
                     <div className="pagination-button">
                         {currentPage > 1 && (

@@ -33,17 +33,6 @@
     margin: -3.2rem auto 3rem;
 }
 
-#page-user-form main fieldset legend button {
-    background: none;
-    border: 0;
-    float: right;
-    font: 700 1.6rem Poppins;
-    cursor: pointer;
-    color: #426f42;
-    transition: color 0.2s;
-    width: 15%;
-}
-
 #page-user-form main .schedule-item {
     display: flex;
     width: 100%;
@@ -59,10 +48,6 @@
 
 #page-user-form main .schedule-item .input-block + .input-block {
     margin-left: 0.1rem;
-}
-
-#page-user-form main fieldset legend button:hover {
-    color: #2f4f2f;
 }
 
 #page-user-form main fieldset + fieldset {

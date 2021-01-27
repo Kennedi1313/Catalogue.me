@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import whatsappIcon from '../../assets/images/whatsappIcon.png'
 import './styles.css'
 
 interface itemProps {
@@ -57,23 +56,6 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative, o
                         Preço: 
                         <strong>R$ {item.price}</strong>
                     </p>
-                    {
-                        path === "shopListDashboard"
-                        ?    
-                            <>
-                                <button type="button" className="deletar" onClick={onDelete}>Deletar</button>
-                                <button type="button" className="indisponivel" onClick={onInative}>Arquivar</button>
-                            </>
-                            
-                        : path === "inativos"
-                        ?
-                            <button type="button" className="indisponivel" onClick={onAtive}>Disponível</button>
-                        :   
-                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/+55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/'+shop_tag+'/item/'+item.id }>
-                                <img src={whatsappIcon} alt="whatsapp"/>
-                                Entrar em contato
-                            </a>
-                    }
                 </footer>
         </article>
     )

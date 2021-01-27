@@ -21,6 +21,7 @@
     background-color: snow;
     border: 1px solid snow;
     color: black;
+    border-radius: 0.4rem;
 }
 
 .item header {
@@ -74,6 +75,7 @@
     transition: 0.2s;
     padding-right: 4rem;
     text-decoration: none;
+    border-radius: 0.4rem;
 }
 
 .item footer a img{
@@ -89,6 +91,17 @@
     margin-left: 1.6rem;
 }
 
+.input-block {
+    color: unset !important;
+}
+
+.select-block label, .textarea-block label {
+    color: unset !important;
+}
+
+.button-back {
+    color: unset;
+}
 
 @media(min-width: 700px) {
     .button-back {
@@ -140,6 +153,6 @@
 
     .button-back:hover {
         text-decoration: none;
-        color: snow;
+        color: unset;
     }
 }

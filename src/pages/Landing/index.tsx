@@ -15,6 +15,7 @@ interface ShopProps {
         tag: string,
         logo: string,
         color: string,
+        color_text: string,
     }
 }
 
@@ -62,9 +63,9 @@ function Landing() {
                     <p className="text" id="text2">
                         Comece a usar o Catalogue.me agora mesmo! É a praticidade que você estava procurando. 
                     </p>
-
-                    <img src={capa} className="capa" alt="capa"/>
-                   
+                    <div className="capa">
+                        <img src={capa} alt="capa"/>
+                    </div>
                 </div> 
                 <div className="info-3">
                     <h1>Totalmente integrado com o Whatsapp <br></br> <img src={whatsappIcon} alt="whatsapp"/></h1>
@@ -100,7 +101,7 @@ function Landing() {
 
                 </div>
                 <div className="landing-image">
-                    <h1>Lojas que já usam o Catalogueme</h1>
+                    <h1>Lojas que já usam o Catalogue.me</h1>
                         <div className="landing-shops">
                             
                             {!loading ? 
@@ -123,6 +124,7 @@ function Landing() {
                                         <div className="info">
                                         
                                             <PageHeader 
+                                                landing={true}
                                                 title={
                                                     shops.name.length > 25
                                                     ?
@@ -138,6 +140,7 @@ function Landing() {
                                                     shops.bio
                                                 } 
                                                 color={shops.color}
+                                                colorText={shops.color_text}
                                                 logo={ shops.logo && isS3 ? shops.logo : ( shops.logo !== '' ? process.env.REACT_APP_API_URL + logo_url : '')}>
                                             </PageHeader>
                                             

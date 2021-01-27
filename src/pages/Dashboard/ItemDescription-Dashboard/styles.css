@@ -69,7 +69,6 @@ fieldset legend {
 .item-dashboard footer {
     padding: 0rem;
     border-top: 1px solid #2F4F4F;
-    margin-top: 2rem;
     display: flex;
     align-items: left;
     justify-content: center;
@@ -119,10 +118,6 @@ fieldset legend {
     text-decoration: none;
 }
 
-.item-dashboard footer Input, .item-dashboard footer Input label {
-    color: black !important;
-}
-
 .item-dashboard footer a img{
     width: 4rem;
     height: 4rem;
@@ -139,6 +134,7 @@ fieldset legend {
 .item-dashboard header .info fieldset {
     background-color: #2F4F4F;
     padding: 1rem;
+    color: white;
 }
 .item-dashboard header .info fieldset legend {
     font: 700 2.4rem Poppins;

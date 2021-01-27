@@ -19,11 +19,18 @@ interface ParamProps {
     page: string;
 }
 
+interface ParamLabel {
+    value: string,
+    label: string,
+}
+
 function Dashboard() {
     const { page } = useParams<ParamProps>();
     const { user } = useContext(StoreContext)
     const [shopTag, setShopTag] = useState('')
     const textAreaRef = useRef(null);
+    const [labelCategories, setLabelCategories] = useState<ParamLabel[]>([])
+
     function copyToClipboard(e) {
         //@ts-ignore
         textAreaRef.current.select();
@@ -46,6 +53,24 @@ function Dashboard() {
         searchTag();
     },[user.shop_id]);
 
+    function getCategories() { 
+        setLabelCategories([])
+
+        api.get('/shops-categories', {
+            params: {
+                shop_id: user.shop_id
+            }
+        }).then((categories) => {
+            let newlabel = new Array();
+            
+            categories.data.map(({category}) => {
+                newlabel.push({value: category, label: category})
+            })
+
+            setLabelCategories(newlabel)
+        })
+    }
+
     return (
         <div id="page-dashboard">
             <div className="logo-container">
@@ -61,13 +86,13 @@ function Dashboard() {
                    
                     <Link className="link" to="/dashboard/admin/inicio">Inicio</Link>
                     <Link className="link" to="/dashboard/admin/itens-ativos">Minha Loja</Link>
-                    <Link className="link" to="/dashboard/admin/add-item">Adicionar Itens</Link>
+                    <Link className="link" onClick={() => getCategories()} to="/dashboard/admin/add-item">Adicionar Itens</Link>
 
                 </nav>
                 <div id="page-dashboard-content">
                     {
                         page === 'add-item' ? 
-                            <AddItem></AddItem> 
+                            <AddItem categories={labelCategories}></AddItem> 
                         : page === 'itens-ativos' ? 
                             <ShopList 
                                 shop_id={user.shop_id} 

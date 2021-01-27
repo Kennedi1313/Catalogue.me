@@ -108,7 +108,7 @@ function UserForm() {
                             <legend>Seus dados</legend>
                             <div className="input-block">
                                 <label htmlFor="name" >Nome</label>
-                                <Field name="user_name" placeHolder="seu nome"/>
+                                <Field name="user_name" placeholder="seu nome"/>
                                 <ErrorMessage 
                                     component="span"  
                                     name="user_name" 
@@ -117,7 +117,7 @@ function UserForm() {
                             </div>
                             <div className="input-block">
                                 <label htmlFor="email">Email</label>
-                                <Field  name="user_email" placeHolder="email@mail.com"/>
+                                <Field  name="user_email" placeholder="email@mail.com"/>
                                 <ErrorMessage 
                                     component="span"  
                                     name="user_email" 
@@ -148,7 +148,7 @@ function UserForm() {
                             <legend>Sobre seu trabalho</legend>
                             <div className="input-block">
                                 <label htmlFor="nomeloja" >Nome da Loja</label>
-                                <Field name="shop_name" placeHolder="nome da loja"/>
+                                <Field name="shop_name" placeholder="nome da loja"/>
                                 <ErrorMessage 
                                     component="span"  
                                     name="shop_name" 
@@ -157,7 +157,7 @@ function UserForm() {
                             </div>
                             <div className="input-block">
                                 <label htmlFor="whats" >Whatsapp</label>
-                                <Field type="number" name="shop_whatsapp" placeHolder="84 99999 9999" onKeyPress={(e) => mascaraTelefone(e.target)}/>
+                                <Field type="number" name="shop_whatsapp" placeholder="84 99999 9999" onKeyPress={(e) => mascaraTelefone(e.target)}/>
                                 <ErrorMessage 
                                     component="span"  
                                     name="shop_whatsapp" 

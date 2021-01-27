@@ -11,8 +11,9 @@
     width: 100%;
     height: 5.6rem;
     margin-top: 0;
-    background-color: snow;
-    border: 1px solid snow;
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    border-radius: 0.8rem;
     outline: 0;
     padding: 0 1.6rem;
     font: 1.6rem;

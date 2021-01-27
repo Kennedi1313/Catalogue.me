@@ -132,6 +132,10 @@
     justify-items: center;
 }
 
+#page-item-form main form .select-block {
+    margin-bottom: 10px;
+}
+
 #page-item-form main form img {
     max-width: 80vw;
 }

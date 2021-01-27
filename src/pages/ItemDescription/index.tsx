@@ -22,6 +22,7 @@ function ItemDescription(){
     const [shop_bio, setShopBio] = useState('');
     const [shop_logo, setShopLogo] = useState('');
     const [shop_color, setShopColor] = useState('');
+    const [shopTextColor, setShopTextColor] = useState('');
     const [name, setName] = useState('');
     const [avatar, setAvatar] = useState([
         {avatar: "string"}
@@ -58,6 +59,7 @@ function ItemDescription(){
             setShopLogo(shop.data[0].logo);
             setWhatsapp(shop.data[0].whatsapp);
             setShopColor(shop.data[0].color);
+            setShopTextColor(shop.data[0].color_text);
         }
         getItem();
     }, [item_id, shop_tag, whatsapp]);
@@ -79,7 +81,7 @@ function ItemDescription(){
     });
     return (
         <div id="item-description">
-            <PageHeader title={shop_name} description={shop_bio} color={shop_color} logo={shop_logo && shop_logo}>
+            <PageHeader title={shop_name} description={shop_bio} color={shop_color} colorText={shopTextColor} logo={shop_logo && shop_logo}>
                 <Link className="button-back" to={!!user ? "/dashboard/admin/shop" : "/" + shop_tag}>
                     Voltar à loja
                 </Link>

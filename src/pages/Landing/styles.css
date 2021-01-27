@@ -10,7 +10,6 @@
 }
 
 #page-landing-content {
-    padding: 1rem;
     margin-top: 10rem;  
 }
 
@@ -31,7 +30,6 @@
 }
 
 .logo-container-main {
-    padding: 1rem;
     align-content: space-between;
     z-index: 100;
     width: 100%;
@@ -76,7 +74,7 @@
     text-align: center;
     text-decoration: none;
     color: white;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 1rem;
     background-color:  #2F4F4F;
 }
@@ -121,10 +119,10 @@
     flex-direction: row;
     overflow-x: scroll;
     background-color: white;
+    width: 100%;
 }
 
 .landing-shops .shop-card {
-    background-color: white;
     color: #2F4F4F;
     min-width: 100% !important;
     display: flex;
@@ -142,11 +140,13 @@
     height: 30rem;
     width: 100%;
     height: 38rem;
+
 }
 
 .landing-shops .shop-card .info .page-header {
     height: 37rem !important;
     border-radius: 1rem;
+    box-shadow: 0px 0px 5px grey;
 }
 
 .landing-shops .shop-card .info .page-header .header-content {
@@ -189,25 +189,32 @@ h1 img {
 
 .chamada {
     padding: 5rem;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
+    height: 50vh;
 }
 
 .chamada a {
     margin: 2rem auto;
-    
 }
 
 .landing {
     height: 190vh;
+    padding: 1rem;
 }
 
 .capa {
+    display: flex;
+    justify-content: center;
+}
+
+.capa img {
+    box-shadow: 0px 0px 5px grey;
     border-radius: 2rem;
-    width: 80%;
     justify-self: center;
-    margin: 0 10%;
-    overflow: hidden;
-    box-shadow: 0px 0px 5px rgb(182, 182, 182);
+    height: 90vh;
 }
 
 ul {
@@ -229,42 +236,48 @@ li:before {
 .buttons-area .buttons-container a{
     margin: 2rem auto;
     width: 100%;
-    height: 7vh;
+    padding: 2rem;
 }
 
 .subtitle {
-    align-self: flex-end;
+    padding-top: 8rem;
     margin: 1rem;
-    height: 30vh;
+    height: 45vh;
 }
 #text1 {
     margin: 1rem;
     height: 30vh;
 }
 #text2 {
-    height: 35vh;
+    height: 15vh;
 }
 
 .info-3 {
     margin: 0 auto;
-    background-color: whitesmoke;
+    background-color:whitesmoke;
+    box-shadow: 0px 0px 5px 5pxwhitesmoke;
     display: flex;
     flex-direction: column;
     column-gap: 2rem;
-    padding-top: 8rem;
-    margin-top: 1rem;
-    padding-bottom: 8rem;
-    box-shadow: 0px 0px 5px 5px whitesmoke;
     font: 400 1.8rem Poppins;
     color: #2F4F4F;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
 }
 
 .landing-image {
     width: 100%;
-    padding-top: 8rem;
-    margin-top: 1rem;
-    padding-bottom: 5rem;
     text-align: left;
+    padding: 1rem;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 @media (min-width: 1100px) {
@@ -273,7 +286,6 @@ li:before {
         z-index: 100;
         width: 100%;
         background-color: white;
-        padding: 1rem;
         font: 500 1rem Poppins;
         position: fixed !important;
         display: flex;
@@ -293,9 +305,6 @@ li:before {
         border-radius: 1rem;
     }
 
-    .landing-shops {
-        margin-bottom: 10rem;
-    }
     .landing-shops .shop-card {
         min-width: 33.3% !important;
     }
@@ -322,7 +331,7 @@ li:before {
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 1.5fr;
-        grid-template-rows: 30% 18% 13% 15%;
+        grid-template-rows: 40% 15% 15% 15%;
         grid-template-areas: 
         "title capa"
         "text3 capa"
@@ -362,25 +371,23 @@ li:before {
     }
     .landing-image {
         width: 100%;
-        padding-left: 10%;
-        padding-right: 10%;
-        padding-top: 8rem;
-        margin-top: 1rem;
-        padding-bottom: 3rem;
-        text-align: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 5%;
+        padding-right: 5%;
     }
     .info-3 {
         margin: 0 auto;
-        background-color: whitesmoke;
+        background-color:whitesmoke;
         display: flex;
         flex-direction: row;
         column-gap: 2rem;
-        padding-left: 10%;
-        padding-right: 10%;
-        padding-top: 10rem;
-        margin-top: 1rem;
-        padding-bottom: 10rem;
-        box-shadow: 0px 0px 5px 5px whitesmoke;
+        padding-left: 5%;
+        padding-right: 5%;
+        box-shadow: 0px 0px 5px 5pxwhitesmoke;
         font: 400 1.8rem Poppins;
         color: #2F4F4F;
     }

@@ -12,8 +12,9 @@
     height: 16rem;
     min-height: 8rem;
     margin-top: 0;
-    background-color: snow;
-    border: 1px solid snow;
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    border-radius: 0.8rem;
     outline: 0;
     resize: vertical;
     padding: 0 1.6rem;

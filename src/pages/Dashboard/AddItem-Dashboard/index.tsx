@@ -7,9 +7,14 @@ import Select from '../../../components/Select';
 import api from '../../../services/api';
 import StoreContext from '../../../components/Store/Context';
 
+interface Props {
+    categories: {
+        value: string,
+        label: string,
+    }[]
+}
 
-
-const AddItem: React.FC = () => {
+const AddItem: React.FC<Props> = ({categories}) => {
     const { user } = useContext(StoreContext);
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState('')
@@ -81,10 +86,7 @@ const AddItem: React.FC = () => {
                         label="Categoria" 
                         value={category}
                         onChange={(e) => {setCategory(e.target.value)}}
-                        options={[
-                            {value: 'Produto', label: 'Produto'},
-                            {value: 'Serviço', label: 'Serviço'},
-                        ]} 
+                        options={categories} 
                     />
                     <Input 
                         name="price" 
@@ -95,7 +97,7 @@ const AddItem: React.FC = () => {
                     />
                     <Input 
                         name="avatar" 
-                        label="Foto" 
+                        label="Imagem de Capa (mais imagens poderão ser adicionadas após a criação do item)" 
                         type="file" 
                         accept="image/*"
                         className="imagem-avatar" 

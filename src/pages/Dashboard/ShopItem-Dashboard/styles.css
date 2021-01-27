@@ -1,5 +1,5 @@
 .shop-item {
-    background-color: snow;
+    background-color: white;
     border: 1px solid snow;
     color: black;
     margin-top: 2.4rem;
@@ -20,7 +20,7 @@
 
 .shop-item header {
     padding: 0;
-    height: 25rem;
+    height: 26rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -75,6 +75,7 @@
     align-items: center;
     justify-content: space-evenly;
     transition: 0.2s;
+    border-radius: 0.4rem;
 }
 
 .shop-item footer button img{

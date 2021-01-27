@@ -7,25 +7,36 @@ interface PageHeaderProps {
     description?: String;
     logo?: string;
     color?: string;
+    colorText?: string;
+    landing?: boolean;
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
     const style = {
-        backgroundColor: props.color ? props.color : "#2F4F4F"
+        header: {
+            backgroundColor: props.color ? props.color : "white",
+        },
+        text: {
+            color: props.colorText ? props.colorText : "black",
+        }
     }
     return (
-        <header className="page-header" style={style}>
+        <header className="page-header" style={style.header}>
+            
             <div className="top-bar-container">
-                <Link to="/">
-                    Catalogue.me
-                </Link>
+                {!props.landing &&
+                    <Link style={style.text} to="/">
+                        Catalogue.me
+                    </Link>
+                }
             </div>
-            <div className="header-content">
+            
+            <div className="header-content" style={style.text}>
                 <div className="header">
                     
                     {props.logo && <img src={props.logo} alt="logo"/>}
-                    <h2><strong>{props.title}</strong></h2>
-                    {props.description && <p>{props.description}</p>}
+                    <h2 style={style.text}><strong>{props.title}</strong></h2>
+                    {props.description && <p style={style.text}>{props.description}</p>}
                 </div>
                 {props.children}
             </div>
