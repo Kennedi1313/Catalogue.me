@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import './styles.css'
 
-import ShopItem from '../../../components/ShopItem'
+import ShopItem from '../ShopItem-Dashboard'
 import api from '../../../services/api'
 import { Link } from 'react-router-dom'
 
@@ -82,9 +82,7 @@ const ShopListInativos: React.FC<ParamProps> = ({shop_id}) => {
                                         return ( <ShopItem 
                                                     key={item.id} 
                                                     item={item} 
-                                                    whatsapp={whatsapp}
                                                     path="inativos"
-                                                    shop_tag={''}
                                                     onAtive={() => hadleAtivar(item, index)}
                                                 />)
                                     else return ''
