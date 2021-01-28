@@ -20,6 +20,7 @@
     "@types/yup": "^0.29.7",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.3",
+    "compress.js": "^1.1.2",
     "formik": "^2.1.7",
     "js-cookie": "^2.2.1",
     "qrcode.react": "^1.0.1",

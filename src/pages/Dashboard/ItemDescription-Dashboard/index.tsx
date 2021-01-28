@@ -7,6 +7,7 @@ import Textarea from '../../../components/Textarea';
 import Input from '../../../components/Input';
 import Select from '../../../components/Select';
 import StoreContext from '../../../components/Store/Context';
+import Compress from 'compress.js';
 
 interface ParamProps {
     item_id: string,
@@ -85,9 +86,29 @@ function ItemDescription(){
         }
     }, [labelCategories, user.shop_id])
     
-    function onChangeHandler (event) {
-        setAvatarInp(event.target.files[0])
+    const compress = new Compress()
+
+    async function resizeImageFn(file) {
+
+        const resizedImage = await compress.compress([file], {
+          size: 2, // the max size in MB, defaults to 2MB
+          quality: 1, // the quality of the image, max is 1,
+          maxWidth: 500, // the max width of the output image, defaults to 1920px
+          maxHeight: 500, // the max height of the output image, defaults to 1920px
+          resize: true // defaults to true, set false if you do not want to resize the image width and height
+        })
+        const img = resizedImage[0];
+        const base64str = img.data
+        const imgExt = img.ext
+        const resizedFiile = Compress.convertBase64ToFile(base64str, imgExt)
+        
+        return resizedFiile;
+    }
+
+    async function onChangeHandler (event) {
         setLabelInput(event.target.files[0].name)
+        const image = await resizeImageFn(event.target.files[0])
+        setAvatarInp(image)
     }
 
     function handlerMudarAvatar(item_id, avatar) {
