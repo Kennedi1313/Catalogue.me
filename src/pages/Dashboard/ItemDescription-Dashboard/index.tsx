@@ -7,7 +7,7 @@ import Textarea from '../../../components/Textarea';
 import Input from '../../../components/Input';
 import Select from '../../../components/Select';
 import StoreContext from '../../../components/Store/Context';
-import Compress from 'compress.js';
+import imageCompression from 'browser-image-compression';
 
 interface ParamProps {
     item_id: string,
@@ -33,15 +33,14 @@ function ItemDescription(){
     const [info, setInfo] = useState('');
     const [price, setPrice] = useState('');
     const [itemAvatar, setItemAvatar] = useState('');
-    const [avatarInp, setAvatarInp] = useState('');
+    const [avatarInp, setAvatarInp] = useState<File>();
     const [infoLength, setInfoLength] = useState(600);
     const [loading, setLoading] = useState(false);
-    const [labelInput, setLabelInput] = useState('');
+    const [labelInput, setLabelInput] = useState('')
     const [labelCategories, setLabelCategories] = useState<ParamLabel[]>([])
 
     function resetFormState() {
-        setAvatarInp('');
-        setLabelInput('');
+        setLabelInput('')
     }
 
     useEffect(() => {
@@ -62,7 +61,7 @@ function ItemDescription(){
         }
         getItem();
         
-    }, [item_id, avatarInp]);
+    }, [item_id, labelInput]);
 
     useEffect(() => {
         async function getCategories() {
@@ -86,29 +85,27 @@ function ItemDescription(){
         }
     }, [labelCategories, user.shop_id])
     
-    const compress = new Compress()
-
-    async function resizeImageFn(file) {
-
-        const resizedImage = await compress.compress([file], {
-          size: 2, // the max size in MB, defaults to 2MB
-          quality: 1, // the quality of the image, max is 1,
-          maxWidth: 500, // the max width of the output image, defaults to 1920px
-          maxHeight: 500, // the max height of the output image, defaults to 1920px
-          resize: true // defaults to true, set false if you do not want to resize the image width and height
-        })
-        const img = resizedImage[0];
-        const base64str = img.data
-        const imgExt = img.ext
-        const resizedFiile = Compress.convertBase64ToFile(base64str, imgExt)
-        
-        return resizedFiile;
-    }
-
-    async function onChangeHandler (event) {
+    async function onChangeHandler(event) {
         setLabelInput(event.target.files[0].name)
-        const image = await resizeImageFn(event.target.files[0])
-        setAvatarInp(image)
+        const imageFile = event.target.files[0];
+        console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+        console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+      
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true
+        }
+        try {
+          const compressedFile = await imageCompression(imageFile, options);
+          console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+          console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+      
+          setAvatarInp(compressedFile)
+        } catch (error) {
+          console.log(error);
+        }
+      
     }
 
     function handlerMudarAvatar(item_id, avatar) {
@@ -116,7 +113,6 @@ function ItemDescription(){
             avatar,
             item_id
         }).then((res) => { 
-            setAvatarInp("mudado");
             resetFormState();
             window.location.reload(); 
             alert('Essa imagem agora é a capa do item!') 
@@ -131,7 +127,6 @@ function ItemDescription(){
             avatar,
             id
         }).then((res) => { 
-            setAvatarInp("deletado");
             resetFormState();
             window.location.reload(); 
             alert('Deletada com sucesso!') 
@@ -171,7 +166,7 @@ function ItemDescription(){
         e.preventDefault();
         const formData = new FormData();
         formData.append("item_id", item_id);
-        formData.append("avatar", avatarInp);
+        formData.append("avatar", avatarInp as File);
 
         api.post('/avatar', formData, {
             headers: {

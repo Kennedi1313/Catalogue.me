@@ -5,7 +5,7 @@ import Textarea from '../../../components/Textarea';
 import Select from '../../../components/Select';
 import api from '../../../services/api';
 import StoreContext from '../../../components/Store/Context';
-import Compress from 'compress.js'
+import imageCompression from 'browser-image-compression';
 
 interface Props {
     categories: {
@@ -20,39 +20,36 @@ const AddItem: React.FC<Props> = ({categories}) => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [category, setCategory] = useState('Produto')
-    const [avatar, setAvatar] = useState('')
+    const [avatar, setAvatar] = useState<File>()
     const [info, setInfo] = useState('')
     const [infoLength, setInfoLength] = useState(600);
 
     function resetFormState() {
         setName('');
         setPrice('');
-        setAvatar('');
         setInfo('');
     }
 
-    const compress = new Compress()
-
-    async function resizeImageFn(file) {
-
-        const resizedImage = await compress.compress([file], {
-          size: 2, // the max size in MB, defaults to 2MB
-          quality: 1, // the quality of the image, max is 1,
-          maxWidth: 500, // the max width of the output image, defaults to 1920px
-          maxHeight: 500, // the max height of the output image, defaults to 1920px
-          resize: true // defaults to true, set false if you do not want to resize the image width and height
-        })
-        const img = resizedImage[0];
-        const base64str = img.data
-        const imgExt = img.ext
-        const resizedFiile = Compress.convertBase64ToFile(base64str, imgExt)
-        
-        return resizedFiile;
-    }
-
-    async function onChangeHandler (event) {
-        const image = await resizeImageFn(event.target.files[0])
-        setAvatar(image)
+    async function onChangeHandler(event) {
+        const imageFile = event.target.files[0];
+        console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+        console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+      
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true
+        }
+        try {
+          const compressedFile = await imageCompression(imageFile, options);
+          console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+          console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+      
+          setAvatar(compressedFile)
+        } catch (error) {
+          console.log(error);
+        }
+      
     }
 
     function handleCreate(e: FormEvent) {
@@ -67,7 +64,7 @@ const AddItem: React.FC<Props> = ({categories}) => {
         formData.append("name", name);
         formData.append("price", price);
         formData.append("category", category);
-        formData.append("avatar", avatar);
+        formData.append("avatar", avatar as File);
         formData.append("info", info);
 
         api.post('/items', formData, {
