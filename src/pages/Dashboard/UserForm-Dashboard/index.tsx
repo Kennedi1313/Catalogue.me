@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Input from '../../../components/Input';
 import PageHeader from '../../../components/PageHeader';
 import { SwatchesPicker } from "react-color";
+import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 
 
 
@@ -258,7 +259,7 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
             <main>
                 <h1> 
                     
-                    <Link className="botao-aba-esq" to={'/dashboard/admin/itens-ativos'}> Itens disponíveis </Link>
+                    <Link className="botao-aba-esq" to={'/dashboard/admin/itens-ativos'}> Meus Itens </Link>
                     <Link className="botao-aba-dir" to={'/dashboard/admin/shop'}> Editar loja </Link>
                 
                 </h1>
@@ -378,7 +379,7 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
                                             <h3  className="category">
                                                 {category.category}
                                             </h3>
-                                            <button onClick={() => setCategoryDeleted(category.category)}>X</button>
+                                            <button onClick={() => setCategoryDeleted(category.category)}><DeleteIcon fontSize="large"/></button>
                                         </div>
                                     )
                                 })

@@ -1,6 +1,8 @@
+import { Switch } from '@material-ui/core'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './styles.css'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 interface itemProps {
     item: {
@@ -11,6 +13,7 @@ interface itemProps {
         category: string,
         id: string,
         shop_id: number,
+        ativo: boolean,
     },
     path: string,
     onDelete?,
@@ -18,7 +21,7 @@ interface itemProps {
     onAtive?
 }
 
-const ShopItem: React.FC<itemProps> = ( { item, onDelete, onInative, onAtive, path } ) => {
+const ShopItem: React.FC<itemProps> = ( { item, onDelete, onInative } ) => {
     var avatar_url = ''
     var default_url = '/uploads/default.png'
     var avatar_s3 = 'https://upload-catalogueme.'
@@ -54,19 +57,11 @@ const ShopItem: React.FC<itemProps> = ( { item, onDelete, onInative, onAtive, pa
                         Preço: 
                         <strong>R$ {item.price}</strong>
                     </p>
-                    {
-                        path === "shopList"
-                        ?    
-                            <>
-                                <button type="button" className="deletar" onClick={onDelete}>Deletar</button>
-                                <button type="button" className="indisponivel" onClick={onInative}>Arquivar</button>
-                            </>
-                            
-                        : path === "inativos"
-                        ?
-                            <button type="button" className="indisponivel" onClick={onAtive}>Disponível</button>
-                        : '' 
-                            
+                    {   
+                        <div className="buttons">
+                            <Switch className="indisponivel" color="primary" checked={item.ativo} onClick={onInative}></Switch>
+                            <button type="button" className="deletar" onClick={onDelete}><DeleteIcon style={{fontSize: 30, color: '#f44336'}} /></button>
+                        </div>   
                     }
                 </footer>
         </article>

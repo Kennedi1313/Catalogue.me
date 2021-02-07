@@ -15,6 +15,7 @@ interface itemProps {
         category: string;
         id: string;
         shop_id: number;
+        ativo: boolean;
     }
 }
 
@@ -25,10 +26,11 @@ interface ParamProps {
 const ShopList: React.FC<ParamProps> = ({shop_id}) => {
     const [items, setItems] = useState([]);
     const [categories, setCategories] = useState(['']);
+    const [reload, setReload] = useState('');
     
     useEffect(() => {
         async function searchAllItems(){
-            const item = await api.get('/items', {
+            const item = await api.get('/all-items', {
                 params: {
                     shop_id: shop_id,
                 }
@@ -38,7 +40,7 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
             setCategories(item.data.categories)
         }
         searchAllItems();
-    }, [shop_id]);
+    }, [shop_id, reload]);
 
     
 
@@ -47,7 +49,7 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
             params: {item_id: item.id}
         })
 
-        api.post('/itemsDelete', 
+        api.post('/itemsDelete',     
                 {item_id: item.id,
                 avatars: avatarData.data.itemsAvatar}, 
              )
@@ -65,15 +67,11 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
     }
 
     function hadleInativar(item, index){
-        item.ativo = false;
         api.post('/itemsInative', 
                     {item}, 
                 )
             .then((res) => { 
-                alert('Item Inativado com sucesso') 
-                const itensCopy = Array.from(items);
-                itensCopy.splice(index, 1);
-                setItems(itensCopy);
+                setReload(new Date().toString())
                 return res
             })
             .catch((err) => {
@@ -87,11 +85,10 @@ const ShopList: React.FC<ParamProps> = ({shop_id}) => {
             <main>
                 <h1> 
                     
-                    <Link className="botao-aba-esq" to={'/dashboard/admin/itens-ativos'}> Itens disponíveis </Link>
+                    <Link className="botao-aba-esq" to={'/dashboard/admin/itens-ativos'}> Meus Itens </Link>
                     <Link className="botao-aba-dir" to={'/dashboard/admin/shop'}> Editar loja </Link>
                 
                 </h1>
-                <Link className="botao-alternar" to={'/dashboard/admin/itens-inativos'}>Ver itens arquivados</Link>
                     {categories.map((category: string) => {
                     return(
                         < div key={category}>

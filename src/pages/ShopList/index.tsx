@@ -24,6 +24,7 @@ interface itemProps{
         category: string;
         id: string;
         shop_id: number;
+        ativo: boolean;
     }
 }
 

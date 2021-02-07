@@ -101,10 +101,6 @@ function Dashboard() {
                             <EditShopForm
                                 shop_id={user.shop_id}
                             />
-                        : page === 'itens-inativos' ? 
-                            <ShopListInativos 
-                                shop_id={user.shop_id} 
-                            />
                         : page === 'item' ? 
                             <ItemDescription />
                         : page === 'add-avatar' ? 
