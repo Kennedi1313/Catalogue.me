@@ -116,8 +116,6 @@ const AddItem: React.FC<Props> = ({categories}) => {
                         name="avatar" 
                         label="Imagem de Capa (mais imagens poderão ser adicionadas após a criação do item)" 
                         type="file" 
-                        accept="image/*"
-                        capture
                         className="imagem-avatar" 
                         onChange={onChangeHandler}
                     />
