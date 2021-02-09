@@ -41,7 +41,7 @@ function ShopList() {
     const [price, setPrice] = useState('');
     const [whatsapp, setWhatsapp] = useState('')
     const [category, setCategory] = useState('all');
-    const [arrayCategory, setArrayCategory] = useState(['Produto', 'Serviço']);
+    const [arrayCategory, setArrayCategory] = useState(['']);
     const [totalItens, setTotalItens] = useState(0);
     const [limit, setLimit] = useState(8);
     const [pages, setPages] = useState([0]);

@@ -29,7 +29,7 @@ function ItemDescription(){
             item_id: 0
         }
     ]);
-    const [category, setCategory] = useState('Produto');
+    const [category, setCategory] = useState('');
     const [info, setInfo] = useState('');
     const [price, setPrice] = useState('');
     const [itemAvatar, setItemAvatar] = useState('');

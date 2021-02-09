@@ -51,19 +51,23 @@ h4 {
 }
 
 #page-shop-list .category {
+    width: 100%;
     padding: 1rem;
     margin: 1rem auto;
     display: flex;
     flex-direction: row;
     column-gap: 2px;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 #page-shop-list .category a {
     border-radius: 0.4rem;
     padding: 1rem;
+    min-width: fit-content;
     border: 1px solid grey;
     cursor: pointer;
-    height: fit-content;
+    height: 4rem;
 }
 
 #page-shop-list main .pagination {
@@ -164,6 +168,11 @@ h4 {
 }
 
 @media(min-width: 800px) {
+    #page-shop-list .category {
+        overflow-y: hidden;
+        overflow-x: hidden;
+        width: unset;
+    }
     #page-shop-list main img {
         max-width: 100%;
         margin: 0 auto;

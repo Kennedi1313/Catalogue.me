@@ -19,7 +19,7 @@ const AddItem: React.FC<Props> = ({categories}) => {
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
-    const [category, setCategory] = useState('Produto')
+    const [category, setCategory] = useState('')
     const [avatar, setAvatar] = useState<File>()
     const [info, setInfo] = useState('')
     const [infoLength, setInfoLength] = useState(600);

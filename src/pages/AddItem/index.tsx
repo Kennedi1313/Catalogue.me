@@ -81,8 +81,7 @@ function AddItem() {
                         value={category}
                         onChange={(e) => {setCategory(e.target.value)}}
                         options={[
-                            {value: 'Produto', label: 'Produto'},
-                            {value: 'Serviço', label: 'Serviço'},
+                            
                         ]} 
                     />
                     <Input 
