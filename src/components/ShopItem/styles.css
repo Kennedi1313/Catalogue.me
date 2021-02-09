@@ -105,10 +105,10 @@
     height: 4rem;
 }
 
-.shop-item footer a:hover {
-    background-color: #192b2b;
-}
 @media(min-width: 800px) {
+    .shop-item footer a:hover {
+        background-color: #192b2b;
+    }
     .shop-item header, .shop-item footer {
         padding: 0rem;
     }

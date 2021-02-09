@@ -71,7 +71,7 @@ function ShopList() {
 
     useEffect(() => {
         async function searchAllItems(){
-
+            setLoading(true)
             const categories = await api.get('/categories', {params: {shop_id: shopId}})
 
             setArrayCategory(categories.data)
@@ -130,16 +130,12 @@ function ShopList() {
                             ]} 
                         />
                     </div>
-
-                    
                 </form>
-
-
             </PageHeader>
             
             <main>
                 
-                {!loading ? 
+                
                     <>
                         {arrayCategory.length > 1 ?
                         <div className="category">
@@ -151,15 +147,18 @@ function ShopList() {
                             })}
                         </div> : ''}
                         <h2 className="categoria">{category !== 'all' ? category : ''}</h2>
+                        {!loading ? 
                         <div className="container">
+                       
                             {items.map((item: itemProps["item"]) => {
                                 return ( <ShopItem key={item.id} shop_tag={shop_tag} path="shopList" whatsapp={whatsapp} item={item}/> )
                             }) }
-
+                            
                         </div>
+                        : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading" />}
                     </>
                     
-                : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading" />}
+                
 
                 <div className="pagination">
                     Foram encontrados {totalItens} itens

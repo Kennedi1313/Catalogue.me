@@ -113,7 +113,7 @@ function ItemDescription(){
                             
                             <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/'+shop_tag+'/item/'+item_id }>
                                 <img src={whatsappIcon} alt="whatsapp"/>
-                                Entrar em contato
+                                Realizar pedido
                             </a>
                         </footer>
                     </div>
