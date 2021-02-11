@@ -74,17 +74,20 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-items: center;
-    align-items: center;
     align-content: space-between;
+    align-items: center;
     padding: 1rem;
     font: 700 1.6rem Poppins;
     margin: 0 auto;
+    overflow-x: scroll;
+    width: 100%;
 }
 #page-shop-list main .pagination .pagination-button {
     display: flex;
     flex-direction: row;
     align-content: space-between;
     padding: 1rem;
+    margin: 0 auto;
 }
 
 #page-shop-list main .pagination .pagination-button button {
@@ -168,6 +171,12 @@ h4 {
 }
 
 @media(min-width: 800px) {
+    
+    #page-shop-list main .pagination {
+        overflow-x: unset;
+        align-items: center;
+    }
+
     #page-shop-list .category {
         overflow-y: hidden;
         overflow-x: hidden;
