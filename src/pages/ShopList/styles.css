@@ -91,6 +91,7 @@ h4 {
 
 #page-shop-list main .pagination .pagination-button button {
     color: #426f42;
+    background-color: whitesmoke;
     border: 0;
     cursor: pointer;
     display: flex;
