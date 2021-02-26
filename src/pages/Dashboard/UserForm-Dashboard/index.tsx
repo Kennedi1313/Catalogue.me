@@ -269,7 +269,9 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
                     </PageHeader>
                     <footer className="footer-simula-header">
                         <form onSubmit={handleMudarLogo}>
+                            <label htmlFor="arquivo"> Logo </label>
                             <div className="trocar-logo">
+                                
                                 <label id="label-file" htmlFor="arquivo">{labelInput ? labelInput : 'Selecionar imagem'}</label>
                                 <input 
                                     name="avatar" 

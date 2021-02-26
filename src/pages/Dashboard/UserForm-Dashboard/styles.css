@@ -315,6 +315,8 @@ footer > button {
 fieldset form label{
     color: #2F4F4F;
     margin-top: 1rem;
+    position: relative;
+    align-self: flex-start;
 }
 
 .footer-simula-header {
