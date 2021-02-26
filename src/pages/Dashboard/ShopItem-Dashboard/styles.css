@@ -18,20 +18,6 @@
     box-shadow: 0 0 1em #2F4F4F;
 }
 
-.shop-item header {
-    padding: 0;
-    height: 26rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-}
-
-.shop-item header img {
-    width: 100%;
-    height: 20rem;
-    object-fit: cover;
-}
 
 .shop-item header div {
     margin-top: 1rem;
