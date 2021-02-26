@@ -263,8 +263,6 @@ const EditShopForm: React.FC<ParamProps> = ({shop_id}) => {
                     <Link className="botao-aba-dir" to={'/dashboard/admin/shop'}> Editar loja </Link>
                 
                 </h1>
-                <label htmlFor="dica" className="dica-label">O que essa tela faz?</label>
-                <p className="dica" id="dica">Edite as informações da loja, personalize o estilo da loja mudando logo e cores tema.</p>
                 <fieldset>
                     <legend>Cabeçalho da loja</legend>
                     <PageHeader title={name} description={bio} color={shopColor} colorText={shopTextColor} logo={ isS3 ? logo : ( logo !== '' ? process.env.REACT_APP_API_URL + logo_url : process.env.REACT_APP_API_URL + default_url)}>

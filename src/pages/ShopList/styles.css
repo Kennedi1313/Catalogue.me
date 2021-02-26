@@ -170,6 +170,18 @@ h4 {
     width: 4rem;
 }
 
+#search-itens .input-block {
+    color: unset;
+}
+
+#search-itens .select-block label, #search-itens .textarea-block label, #search-itens .input-block label {
+    color: unset;
+}
+
+#search-itens .button-back {
+    color: unset;
+}
+
 @media(min-width: 800px) {
     
     #page-shop-list main .pagination {
@@ -205,7 +217,7 @@ h4 {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
     #page-shop-list #search-itens .input-block {
-        margin-top: 18px;
+        margin-top: 9px;
         width: 100%;
     }
     #page-shop-list #search-itens {

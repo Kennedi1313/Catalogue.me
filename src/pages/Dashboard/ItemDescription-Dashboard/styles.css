@@ -62,13 +62,21 @@ fieldset legend {
     padding: 0 2rem;
 }
 
+fieldset .select-block label, fieldset .textarea-block label, .input-block label{
+    color: #2F4F4F;
+    margin-top: 1rem;
+}
+
+fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
+    margin-bottom: 0rem;
+}
+
 .item-dashboard p .description {
     text-align: justify;
 }
 
 .item-dashboard footer {
     padding: 0rem;
-    border-top: 1px solid #2F4F4F;
     display: flex;
     align-items: left;
     justify-content: center;
@@ -104,7 +112,7 @@ fieldset legend {
 .item-dashboard header fieldset button {
     width: 100%;
     height: 5rem;
-    margin: 0 auto;
+    margin: 1rem auto;
     background-color:  #426f42;
     color: white;
     border: 0;
@@ -132,7 +140,6 @@ fieldset legend {
 }
 
 .item-dashboard header .info fieldset {
-    background-color: #2F4F4F;
     padding: 1rem;
     color: white;
 }
@@ -148,22 +155,40 @@ fieldset legend {
 }
 
 .add-image {
-    background-color: #2F4F4F;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-items: center;
     align-content: space-between;
     padding: 1rem;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+    margin-bottom: 2rem;
 }
 
 .add-image legend {
-    padding-top: 3rem;
-    font: 700 1.8rem Poppins;
-    color: white;
+    font: 600 1.8rem Poppins;
+    color: #2F4F4F;
 }
 
 .select-block label, .textarea-block label {
+    color: #2F4F4F;
+}
+
+.carousel-indicators li {
+    background-color: white;
+    border-radius: 5px;
+    height: 5px;
+}
+
+.carousel-control-next, .carousel-control-prev{
+    background-color: rgba(0,0,0,0.3);
+    top: 50%;
+    display: block;
+    height: min-content;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    margin: 1.5rem 1rem 1rem 1rem ;
     color: white;
 }
 
@@ -173,14 +198,8 @@ fieldset legend {
     border: 0;
 }
 
-.carousel-item-dashboard .deletar-avatar {
-    background-color: #4f2f2f;
-    color: white;
-}
-
-.carousel-item-dashboard .mudar-avatar {
-    background-color: #166296;
-    color: white;
+.carousel-item img{
+    margin-top: 3rem;
 }
 
 #item-description-dashboard h1 {
@@ -197,11 +216,72 @@ fieldset legend {
     justify-content: center;
 }
 
+.imagens legend {
+    font: 600 1.8rem Poppins;
+    color: #2F4F4F;
+}
 
+.imagens {
+    padding: 1rem;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+.item-imagens {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.item-imagens .imagem {
+    display: flex;
+    flex-direction: row;
+    height: 15rem;
+    width: 100%;
+    justify-content: space-between;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    margin-bottom: 1rem;
+}
+
+.item-imagens .imagem img {
+    max-width: 50%;
+}
+
+.item-imagens .imagem .button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.item-imagens .imagem button {
+    padding: 1rem;
+    width: 100%;
+}
+
+.item-imagens .imagem .deletar-avatar {
+    background-color: #4f2f2f;
+    color: white;
+}
+
+.item-imagens .imagem .mudar-avatar {
+    background-color: #2F4F4F;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.item-imagens .imagem .mudar-avatar:disabled {
+    background-color: #166296;
+    cursor: not-allowed;
+}
 
 @media(min-width: 700px) {
+    .item-imagens .imagem button {
+        padding: 1rem;
+        width: 20rem;
+    }
     .carousel {
         max-width: 70%;
+        height: fit-content;
     }
     .item-dashboard fieldset button, fieldset #label-file {
         width: 50%;
@@ -230,7 +310,6 @@ fieldset legend {
     }
 
     .item-dashboard header {
-        background-color: #2F4F4F;
         width: 100%;
         padding: 2rem 2rem;
         display: flex;
@@ -238,7 +317,7 @@ fieldset legend {
     }
 
     .item-dashboard header .info {
-        width: 50% !important;
+        min-width: 50% !important;
         margin-left: 2rem;
     }
 

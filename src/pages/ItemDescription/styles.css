@@ -13,15 +13,14 @@
 }
 
 .item {
-    width: 95vw;
-    margin-bottom: 30rem;
+    width: 100vw;
     height: min-content;
     margin: 0 auto;
-    margin-top: -2.5rem;
     background-color: white;
-    border: 1px solid white;
     color: black;
+    padding: 1rem;
     border-radius: 0.4rem;
+    margin-top: 2rem;
 }
 
 .item header {
@@ -91,20 +90,8 @@
     margin-left: 1.6rem;
 }
 
-.input-block {
-    color: unset !important;
-}
-
-.select-block label, .textarea-block label {
-    color: unset !important;
-}
-
-.button-back {
-    color: unset;
-}
-
 .item header .info {
-    padding: 1rem;
+    margin-top: 1rem;
 }
 
 @media(min-width: 700px) {
@@ -124,7 +111,6 @@
 
     .item {
         width: 90vw;
-        margin-top: -2.5rem;
     }
 
     .item header {
@@ -134,8 +120,8 @@
         flex-direction: row;
     }
 
-    .item header img {
-        width: 50vw;
+    .carousel-item img {
+        min-width: 40vw;
     }
 
     .carousel-item-next, .carousel-item-prev, .carousel-item .active {
@@ -144,9 +130,9 @@
     }
 
     .item header .info {
-        width: 50% !important;
-        margin-left: 2rem;
-        padding: 1rem;
+        min-width: 30vw !important;
+        justify-self: right;
+        margin-left: 10rem;
     }
 
     .item footer a {

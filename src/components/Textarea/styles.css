@@ -13,22 +13,11 @@
     min-height: 8rem;
     margin-top: 0;
     background-color: whitesmoke;
-    border: 1px solid grey;
+    border: 1px solid #2F4F4F;
     border-radius: 0.8rem;
     outline: 0;
     resize: vertical;
     padding: 0 1.6rem;
     font: 1.6rem;
     text-align: left;
-}
-
-.textarea-block:focus-within::after {
-    width: calc(100% - 3.2rem);
-    height: 2px;
-    content: '';
-    background-color: #2F4F4F;
-    position: absolute;
-    left: 1.6rem;
-    right: 1.6rem;
-    bottom: 1px;
 }

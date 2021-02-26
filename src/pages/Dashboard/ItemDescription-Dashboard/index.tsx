@@ -29,7 +29,7 @@ function ItemDescription(){
             item_id: 0
         }
     ]);
-    const [category, setCategory] = useState('');
+    const [itemCategory, setItemCategory] = useState('');
     const [info, setInfo] = useState('');
     const [price, setPrice] = useState('');
     const [itemAvatar, setItemAvatar] = useState('');
@@ -44,46 +44,52 @@ function ItemDescription(){
     }
 
     useEffect(() => {
-        async function getItem() {
-            const res = await api.get('/itembyid', { 
+        function getItem() {
+            const res = api.get('/itembyid', { 
                 params: { item_id } 
+            }).then((res) => {
+                setName(res.data[0].name)
+                setInfo(res.data[0].info)
+                setPrice(res.data[0].price)
+                
+                setItemAvatar(res.data[0].avatar)
+    
+                const avatarData = api.get('/itemavatarbyid', {
+                    params: {item_id}
+                }).then((avatarData) => {
+                    setAvatar(avatarData.data.itemsAvatar)
+                })
+                console.log(labelCategories)
+                if (labelCategories.length === 0) {
+                    const categories = api.get('/shops-categories', {
+                        params: {
+                            shop_id: user.shop_id
+                        }
+                    }).then((categories) => {
+                        let newlabel = labelCategories;
+                        let isPossuiCategoriaDoItem = false;
+            
+                        categories.data.map(({category}) => {
+                            if(category === res.data[0].category)
+                                isPossuiCategoriaDoItem = true;
+                            
+                            newlabel.push({value: category, label: category})
+                        })
+                        if(!isPossuiCategoriaDoItem)
+                            newlabel.push({value: res.data[0].category, label: res.data[0].category})
+                        console.log(res.data[0].category)
+                        setLabelCategories(newlabel)
+                        setItemCategory(res.data[0].category)
+                        console.log(labelCategories)
+                    });
+                }
+                
             })
-            setName(res.data[0].name)
-            setInfo(res.data[0].info)
-            setPrice(res.data[0].price)
-            setCategory(res.data[0].category)
-            setItemAvatar(res.data[0].avatar)
-
-            const avatarData = await api.get('/itemavatarbyid', {
-                params: {item_id}
-            })
-            setAvatar(avatarData.data.itemsAvatar)
         }
         getItem();
         
     }, [item_id, labelInput]);
 
-    useEffect(() => {
-        async function getCategories() {
-            
-            const categories = await api.get('/shops-categories', {
-                params: {
-                    shop_id: user.shop_id
-                }
-            });
-
-            let newlabel = labelCategories;
-            
-            categories.data.map(({category}) => {
-                newlabel.push({value: category, label: category})
-            })
-
-            setLabelCategories(newlabel)
-        }
-        if (labelCategories !== []) {
-            getCategories();
-        }
-    }, [labelCategories, user.shop_id])
     
     async function onChangeHandler(event) {
         setLabelInput(event.target.files[0].name)
@@ -141,14 +147,14 @@ function ItemDescription(){
         setLoading(true);
 
         const user_id = user.id
-        console.log(user_id)
+        console.log(itemCategory)
 
         api.post('/items-edit',{
                 item_id,
                 user_id,
                 name,
                 price,
-                category,
+                category: itemCategory,
                 info, 
             } 
         ).then((res) => {
@@ -199,8 +205,6 @@ function ItemDescription(){
     return (
         <div id="item-description-dashboard">
             <h1>Gerenciar Item</h1>
-            <label htmlFor="dica" className="dica-label">O que essa tela faz?</label>
-            <p className="dica" id="dica">Edite as informações do item, adicione ou delete imagens, torne uma das imagens a capa desse item.</p>
             <article className="item-dashboard">
                 
                 <header>
@@ -208,10 +212,7 @@ function ItemDescription(){
                         {avatar.map(({avatar, id, item_id}) => {
                             return (
                                     <Carousel.Item key={avatar} className="carousel-item-dashboard">
-                                        <button disabled={avatar === itemAvatar} onClick={() => handlerMudarAvatar(item_id, avatar)} className="mudar-avatar">{avatar !== itemAvatar ? "Tornar Capa" : "Capa"}</button>
-                                        <button onClick={() => handlerDeletarAvatar(id, avatar)} className="deletar-avatar">Deletar</button>
                                         <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>  
-                                        
                                     </Carousel.Item>
                                 )
                         }) }
@@ -232,8 +233,8 @@ function ItemDescription(){
                                 <Select 
                                     name="category" 
                                     label="Categoria" 
-                                    value={category}
-                                    onChange={(e) => {setCategory(e.target.value)}}
+                                    value={itemCategory}
+                                    onChange={(e) => {setItemCategory(e.target.value); console.log(e.target.value)}}
                                     options={labelCategories} 
                                 />
 
@@ -244,17 +245,15 @@ function ItemDescription(){
                                     maxLength={600}
                                     onChange={(e) => {setInfo(e.target.value); setInfoLength(600 - info.length)}}
                                 />
-                                
-                                <footer>
-                                    <Input 
-                                        name="price" 
-                                        label="Preço" 
-                                        type="number" 
-                                        value={price}
-                                        onChange={(e) => {setPrice(e.target.value)}}
-                                    />
-                                </footer>
-
+                            
+                                <Input 
+                                    name="price" 
+                                    label="Preço" 
+                                    type="number" 
+                                    value={price}
+                                    onChange={(e) => {setPrice(e.target.value)}}
+                                />
+                            
                                 {!loading ?
                             
                                     <button type="submit">Salvar</button>
@@ -279,9 +278,25 @@ function ItemDescription(){
                             onChange={onChangeHandler}
                         />
                         <button>Adicionar</button>
+                        
                     </fieldset>
                 </form>
-                
+                <fieldset className="imagens">
+                    <legend>Imagens deste item</legend>
+                    <div className="item-imagens">
+                        {avatar.map(({avatar, id, item_id}) => {
+                            return (
+                                    <div className="imagem">
+                                        <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>  
+                                        <div className="button-group">
+                                            <button disabled={avatar === itemAvatar} onClick={() => handlerMudarAvatar(item_id, avatar)} className="mudar-avatar">{avatar !== itemAvatar ? "Mudar capa" : "Capa atual"}</button>
+                                            <button onClick={() => handlerDeletarAvatar(id, avatar)} className="deletar-avatar">Deletar</button>
+                                        </div>
+                                    </div>
+                                )
+                        }) }
+                    </div>
+                </fieldset>
                 
             </article>
         </div>

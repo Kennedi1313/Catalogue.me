@@ -25,8 +25,7 @@
 
 #page-user-form-dash main fieldset {
     width: 100%;
-    background-color:  #2F4F4F;
-    color: white;
+    color: #2F4F4F;
     border: 0;
     padding: 1rem;
     margin: 0 auto 3rem;
@@ -64,7 +63,6 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding-bottom: 5rem;
     border-bottom: 1px solid snow;
 }
 
@@ -72,8 +70,8 @@
     width: 100%;
     height: 10rem;
     margin-top: 0;
-    background-color: snow;
-    border: 1px solid snow;
+    background-color: whitesmoke;
+    border: 1px solid #2F4F4F;
     outline: 0;
     padding: 0 1.6rem;
     font: 1.6rem;
@@ -99,7 +97,6 @@
 
 #page-user-form-dash main footer {
     width: 100%;
-    background-color: #2F4F4F;
     border-top: 1px solid snow;
     display: flex;
     flex-direction: column;
@@ -114,10 +111,10 @@
     justify-content: center;
     font-size: 1.4rem;
     line-height: 2.4rem;
-    color: white;
+    color: #2F4F4F;
 }
 
-#page-user-form-dash main footer button, #page-user-form-dash main form button {
+#page-user-form-dash main form button {
     width: 100%;
     height: 5rem;
     background-color: #426f42;
@@ -129,6 +126,11 @@
     justify-content: center;
     text-decoration: none;
     margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+footer > button {
+    margin-left: 0 !important;
 }
 
 #page-user-form-dash main footer button:hover {
@@ -149,7 +151,7 @@
     margin-top: 0;
     text-align: center;
     background-color: #2F4F4F;
-    color: white;
+    color: #2F4F4F;
     height: 8rem;
     width: 100%;
     font: 400 2rem Poppins;
@@ -210,6 +212,10 @@
     z-index: 100;
 }
 
+.header {
+    padding-bottom: 1.5rem;
+}
+
 .footer-simula-header {
     display: flex;
     flex-direction: column !important;
@@ -246,16 +252,19 @@
     display: flex;
     flex-direction: row !important;
     justify-content: center;
+    width: 100%;
 }
 
 .add-category .input-block {
     flex-direction: unset !important;
+    width: 100%;
 }
 
 .add-category input {
     border-radius: unset !important;
     border-top-left-radius: 0.4rem !important;
     margin: 0 !important;
+    margin-bottom: 1rem !important;
 }
 
 .add-category button {
@@ -270,7 +279,8 @@
 }
 
 .categories-container {
-    display: list-item;
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
@@ -278,6 +288,7 @@
     display: inline-flex;
     flex-direction: row;
     margin-top: 1rem;
+    width: 100%;
 }
 
 .categories button {
@@ -298,6 +309,18 @@
     padding: 1rem;
     margin: 0;
     height: 5.6rem;
+    width: 100%;
+}
+
+fieldset form label{
+    color: #2F4F4F;
+    margin-top: 1rem;
+}
+
+.footer-simula-header {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
 }
 
 @media(min-width: 700px ){
@@ -314,7 +337,6 @@
         max-width: 100vw;
     }
     #page-user-form-dash main fieldset {
-        background-color:  #2F4F4F;
         width: 80%;
         color: white;
         border: 0;
