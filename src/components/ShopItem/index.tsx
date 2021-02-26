@@ -37,10 +37,6 @@ const ShopItem: React.FC<itemProps> = ( { item, whatsapp, onDelete, onInative, o
 
     var nomeExibido = item.name;
 
-    if(nomeExibido.length > 35) {
-        nomeExibido = nomeExibido.substring(0, 35) + ' [...] ';
-    }
-
     return (
         <article className="shop-item">
             <Link to={'/'+shop_tag+'/item/'+item.id}>

@@ -18,15 +18,6 @@
     box-shadow: 0 0 1em #2F4F4F;
 }
 
-
-.shop-item header div {
-    margin-top: 1rem;
-}
-
-.shop-item header div strong {
-    display: block;
-}
-
 .shop-item > p {
     padding: 0 2rem;
 }

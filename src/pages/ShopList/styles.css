@@ -26,7 +26,6 @@
 #page-shop-list main .container {
     max-width: 800px;
     margin: 0rem auto;
-    text-align: justify;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 5px;
