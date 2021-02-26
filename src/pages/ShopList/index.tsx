@@ -10,6 +10,8 @@ import api from '../../services/api'
 import { Link, useParams } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/SearchOutlined';
 import whatsappIcon from '../../assets/images/whatsappIcon.png'
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 interface ParamProps {
     shop_tag: string
@@ -165,7 +167,7 @@ function ShopList() {
                     
                     <div className="pagination-button">
                         {currentPage > 1 && (
-                            <button onClick={() => setCurrentPage(currentPage - 1)} className="prev">Anterior</button>
+                            <button onClick={() => setCurrentPage(currentPage - 1)} className="prev"><NavigateBeforeIcon style={{ fontSize: 35 }}/></button>
                         )}
                     
                         {pages.map(page => (
@@ -180,7 +182,7 @@ function ShopList() {
                         ))
                         }     
                         {currentPage < pages.length && (
-                            <button onClick={() => setCurrentPage(currentPage + 1)} className="next">Próxima</button> 
+                            <button onClick={() => setCurrentPage(currentPage + 1)} className="next"><NavigateNextIcon style={{ fontSize: 35 }}/></button> 
                         )}      
                     </div>
                 </div>

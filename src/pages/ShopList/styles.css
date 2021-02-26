@@ -90,12 +90,9 @@ h4 {
 }
 
 #page-shop-list main .pagination .pagination-button button {
-    background-color: #426f42;
-    color: white;
+    color: #426f42;
     border: 0;
-    padding: 1rem;
     cursor: pointer;
-    font: 700 1.6rem Poppins;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,6 +108,7 @@ h4 {
     border: 1px solid  #426f42;
     margin-left: 2px;
     margin-right: 2px;
+    border-radius: 5px;
 }
 
 #page-shop-list main .pagination .pagination-button .pagination-item-selected {
@@ -120,6 +118,7 @@ h4 {
     margin-left: 2px;
     margin-right: 2px;
     background-color:  #2f4f2fbd;
+    border-radius: 5px;
 }
 
 #footer-shop {
