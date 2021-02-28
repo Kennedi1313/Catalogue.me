@@ -8,6 +8,7 @@ import Input from '../../../components/Input';
 import Select from '../../../components/Select';
 import StoreContext from '../../../components/Store/Context';
 import imageCompression from 'browser-image-compression';
+import { AddCircleOutlineRounded, DeleteOutlineRounded } from '@material-ui/icons';
 
 interface ParamProps {
     item_id: string,
@@ -39,7 +40,7 @@ function ItemDescription(){
     const [labelInput, setLabelInput] = useState('')
     const [labelCategories, setLabelCategories] = useState<ParamLabel[]>([])
     const [itemOptions, setItemOptions] = useState([{ label: '' } ]);
-    const [itemOptionsValue, setItemOptionsValue] = useState([{value: false}]);
+    const [optionLabel, setOptionLabel] = useState('');
 
     function resetFormState() {
         setLabelInput('')
@@ -67,14 +68,7 @@ function ItemDescription(){
                         item_id,
                     }
                 }).then((options) => {
-                    setItemOptions(options.data.itemsOptions)
-                    let arrayValues = Array();
-                    options.data.itemsOptions.forEach(itemsOptions => {
-                        if(itemsOptions)
-                            arrayValues.push({ value: false })
-                    });
-            
-                    setItemOptionsValue(arrayValues);
+                    setItemOptions(options.data.itemsOptions) 
                 });
 
                 if (labelCategories.length === 0) {
@@ -107,6 +101,56 @@ function ItemDescription(){
         
     }, [item_id, labelInput]);
 
+    function addNewItemOptions() {
+        
+        if(itemOptions.length === 0 || itemOptions[0].label === '') {
+            setItemOptions([{ label: optionLabel }])
+        } else {
+            setItemOptions([
+                ...itemOptions, 
+                { label: optionLabel }
+            ]);
+        }
+
+        api.post('/add-item-option',{
+            item_id,
+            options_label: optionLabel
+        }).then((res) => { 
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+        
+
+        setOptionLabel('');
+    }
+
+    function deleteItemOptions(label: string){
+        const updatedItemOptions = itemOptions.filter(function(itemOptions) {
+            if ( itemOptions.label === label ) {
+                return false;
+            }
+
+            return true;
+            
+        }).map( (itemOptions ) => {
+            return itemOptions;
+        });
+
+        setItemOptions(updatedItemOptions);
+
+        api.post('delete-item-option', {
+            item_id: item_id,
+            options_label: label
+        }).then((res) => { 
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+        
+    }
     
     async function onChangeHandler(event) {
         setLabelInput(event.target.files[0].name)
@@ -219,6 +263,7 @@ function ItemDescription(){
         }
         
     });
+
     return (
         <div id="item-description-dashboard">
             <h1>Gerenciar Item</h1>
@@ -303,7 +348,7 @@ function ItemDescription(){
                     <div className="item-imagens">
                         {avatar.map(({avatar, id, item_id}) => {
                             return (
-                                    <div className="imagem">
+                                    <div key={id} className="imagem">
                                         <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>  
                                         <div className="button-group">
                                             <button disabled={avatar === itemAvatar} onClick={() => handlerMudarAvatar(item_id, avatar)} className="mudar-avatar">{avatar !== itemAvatar ? "Mudar capa" : "Capa atual"}</button>
@@ -317,11 +362,16 @@ function ItemDescription(){
 
                 <fieldset className="imagens">
                     <legend>Opções deste item</legend>
+                    <div className="new-option">
+                        <Input name="label" label="Opção" type="text" value={optionLabel} onChange={ e => setOptionLabel(e.target.value) }/>
+                        <button type="button" onClick={ addNewItemOptions }> <AddCircleOutlineRounded style={{ fontSize: '40' }}/> </button>    
+                    </div>
                     <div className="item-imagens">
                         {itemOptions.map(({label}, index) => {
                             return (
-                                    <div className="item-options">
+                                    <div key={label} className="item-options">
                                         <span > { label } </span>   
+                                        <button type="button" onClick={e => deleteItemOptions(label)}><DeleteOutlineRounded style={{ fontSize: '30' }}/></button>
                                     </div>
                                 )
                         }) }

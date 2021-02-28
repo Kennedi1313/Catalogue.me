@@ -59,8 +59,9 @@ const ShopItem: React.FC<itemProps> = ( { item, onDelete, onInative } ) => {
                     </p>
                     {   
                         <div className="buttons">
+                            <p style={{alignSelf: 'center'}}>Ativo</p>
                             <Switch className="indisponivel" color="primary" checked={item.ativo} onClick={onInative}></Switch>
-                            <button type="button" className="deletar" onClick={onDelete}><DeleteIcon style={{fontSize: 30, color: '#f44336'}} /></button>
+                            
                         </div>   
                     }
                 </footer>
