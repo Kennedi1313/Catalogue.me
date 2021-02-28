@@ -38,6 +38,8 @@ function ItemDescription(){
     const [loading, setLoading] = useState(false);
     const [labelInput, setLabelInput] = useState('')
     const [labelCategories, setLabelCategories] = useState<ParamLabel[]>([])
+    const [itemOptions, setItemOptions] = useState([{ label: '' } ]);
+    const [itemOptionsValue, setItemOptionsValue] = useState([{value: false}]);
 
     function resetFormState() {
         setLabelInput('')
@@ -59,7 +61,22 @@ function ItemDescription(){
                 }).then((avatarData) => {
                     setAvatar(avatarData.data.itemsAvatar)
                 })
-                console.log(labelCategories)
+
+                const options = api.get('/getOptionsById', {
+                    params: {
+                        item_id,
+                    }
+                }).then((options) => {
+                    setItemOptions(options.data.itemsOptions)
+                    let arrayValues = Array();
+                    options.data.itemsOptions.forEach(itemsOptions => {
+                        if(itemsOptions)
+                            arrayValues.push({ value: false })
+                    });
+            
+                    setItemOptionsValue(arrayValues);
+                });
+
                 if (labelCategories.length === 0) {
                     const categories = api.get('/shops-categories', {
                         params: {
@@ -297,7 +314,19 @@ function ItemDescription(){
                         }) }
                     </div>
                 </fieldset>
-                
+
+                <fieldset className="imagens">
+                    <legend>Opções deste item</legend>
+                    <div className="item-imagens">
+                        {itemOptions.map(({label}, index) => {
+                            return (
+                                    <div className="item-options">
+                                        <span > { label } </span>   
+                                    </div>
+                                )
+                        }) }
+                    </div>
+                </fieldset>
             </article>
         </div>
     )

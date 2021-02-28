@@ -136,6 +136,55 @@
     max-width: 80vw;
 }
 
+.new-option {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-content: flex-end;
+}
+
+.new-option .input-block {
+    width: 100%;
+}
+
+.new-option button {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50% !important;
+    align-self: flex-end;
+    margin-bottom: 0.4rem;
+    background-color: transparent;
+    border: none;
+    color: #426f42;
+}
+
+.item-options {
+    display: flex;
+    flex-direction: row;
+    height: 6rem;
+    width: 100%;
+    justify-content: space-between;
+    align-content: flex-end;
+    background-color: whitesmoke;
+    padding-left: 1rem;
+    margin-top: 1rem;
+}
+
+.item-options span {
+    padding: 1rem;
+    font-size: 1.6rem;
+}
+
+.item-options button {
+    border-radius: 50% !important;
+    align-self: center;
+    margin-bottom: 0.7rem;
+    background-color: transparent;
+    border: none;
+    color: red;
+}
+
 @media(max-width: 700px ){
     #page-item-form main h2 p {
         display: none;

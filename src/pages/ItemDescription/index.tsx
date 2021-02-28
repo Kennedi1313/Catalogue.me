@@ -8,8 +8,9 @@ import api from '../../services/api';
 import { useContext } from 'react'
 
 import './styles.css'
-import {Carousel} from 'react-bootstrap'
+import { Carousel } from 'react-bootstrap'
 import StoreContext from '../../components/Store/Context';
+import Checkbox from '@material-ui/core/Checkbox';
 
 interface ParamProps {
     shop_tag: string,
@@ -30,6 +31,8 @@ function ItemDescription(){
     const [info, setInfo] = useState('');
     const [price, setPrice] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
+    const [itemOptions, setItemOptions] = useState([{ label: '' } ]);
+    const [itemOptionsValue, setItemOptionsValue] = useState([{value: false}]);
 
     const { user } = useContext(StoreContext)
 
@@ -60,10 +63,61 @@ function ItemDescription(){
             setWhatsapp(shop.data[0].whatsapp);
             setShopColor(shop.data[0].color);
             setShopTextColor(shop.data[0].color_text);
+
+            const options = await api.get('/getOptionsById', {
+                params: {
+                    item_id,
+                }
+            });
+            
+            setItemOptions(options.data.itemsOptions)
+
+            let arrayValues = Array();
+            options.data.itemsOptions.forEach(itemsOptions => {
+                if(itemsOptions)
+                    arrayValues.push({ value: false })
+            });
+    
+            setItemOptionsValue(arrayValues);
         }
         getItem();
     }, [item_id, shop_tag, whatsapp]);
     
+    function setItemOptionValue( position: number, checked: boolean ) {
+        
+        const updatedItemOptionsValue = itemOptionsValue.map( (itemOptionsValue, index ) => {
+            if ( index === position ) {
+                return { ...itemOptionsValue, value: (checked) };
+            }
+
+            return itemOptionsValue;
+        });
+        
+        setItemOptionsValue(updatedItemOptionsValue);
+        console.log(itemOptionsValue[position]);
+    }
+
+    let text = 'Olá! Tenho interesse no item: ' + name + '\n( ' + 
+        process.env.REACT_APP_URL + '/'+shop_tag+'/item/'+item_id + " )\n";
+
+    let label = false;
+    itemOptionsValue.map((value, index) => {
+            
+            if(value.value === true) {
+                if(label === false){
+                    text += "Opções marcadas: \n";
+                    label = true;
+                } 
+                return (
+                    text += ( itemOptions[index].label + "\n")
+                )
+            }
+            else
+                return ""
+        }) 
+
+    const textWhats = window.encodeURIComponent(text);
+
 
     var avatar_url = ''
     var default_url = '/uploads/default.png'
@@ -99,19 +153,30 @@ function ItemDescription(){
                     <div className="info">
                         <h2>{name}</h2>
                         
-                            <strong>Descrição</strong>
+                            { info && <strong>Descrição</strong> }
                             <p className="description">
                                 {info}
-                            </p>
-                        
-                        
+                            </p> 
+                            { itemOptions.length > 0 && <strong>Opções: </strong> }
+                            { itemOptions.length > 0 ? 
+                                itemOptions.map((itemOptions, index) => {
+                                return (
+                                    itemOptions.label !== '' ?
+                                        <div key={ itemOptions.label } className="item-description-options">
+                                            <label htmlFor={itemOptions.label}>{itemOptions.label}</label>
+                                            <Checkbox onChange={e => setItemOptionValue(index, !itemOptionsValue[index].value)} id={itemOptions.label} />
+                                        </div>
+                                    : null
+                                );
+                            }) : null}
                         <footer>
                             <p>
                                 Preço: 
                                 <strong>R$ {price}</strong>
                             </p>
-                            
-                            <a target="_blank" rel="noopener noreferrer" href={'https://wa.me/55' + whatsapp + '/?text=Olá%21%20Tenho%20interesse%20nesse%20item%20' +  process.env.REACT_APP_URL + '/'+shop_tag+'/item/'+item_id }>
+                        
+                            <a target="_blank" rel="noopener noreferrer" 
+                                href={ 'https://wa.me/55' + whatsapp + '/?text=' + textWhats }>
                                 <img src={whatsappIcon} alt="whatsapp"/>
                                 Realizar pedido
                             </a>

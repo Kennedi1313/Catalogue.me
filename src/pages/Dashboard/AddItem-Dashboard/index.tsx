@@ -6,6 +6,9 @@ import Select from '../../../components/Select';
 import api from '../../../services/api';
 import StoreContext from '../../../components/Store/Context';
 import imageCompression from 'browser-image-compression';
+import { Checkbox } from '@material-ui/core';
+import { DeleteOutlineRounded } from '@material-ui/icons'
+import { AddCircleOutlineRounded } from '@material-ui/icons'
 
 interface Props {
     categories: {
@@ -23,11 +26,48 @@ const AddItem: React.FC<Props> = ({categories}) => {
     const [avatar, setAvatar] = useState<File>()
     const [info, setInfo] = useState('')
     const [infoLength, setInfoLength] = useState(600);
+    const [ itemOptions, setItemOptions ] = useState([
+        { label: '' }
+    ]);
+    const [optionLabel, setOptionLabel] = useState('');
+
+    function addNewItemOptions() {
+        
+        if(itemOptions.length === 0 || itemOptions[0].label === '') {
+            setItemOptions([{ label: optionLabel }])
+        } else {
+            setItemOptions([
+                ...itemOptions, 
+                { label: optionLabel }
+            ]);
+        }
+        
+        setOptionLabel('');
+    }
+
+    function deleteItemOptions(label: string){
+        const updatedItemOptions = itemOptions.filter(function(itemOptions) {
+            if ( itemOptions.label === label ) {
+                return false;
+            }
+
+            return true;
+            
+        }).map( (itemOptions ) => {
+            return itemOptions;
+        });
+
+        setItemOptions(updatedItemOptions);
+        
+    }
 
     function resetFormState() {
         setName('');
         setPrice('');
         setInfo('');
+        setItemOptions([
+            { label: '' }
+        ]);
     }
 
     async function onChangeHandler(event) {
@@ -66,6 +106,8 @@ const AddItem: React.FC<Props> = ({categories}) => {
         formData.append("category", category);
         formData.append("avatar", avatar as File);
         formData.append("info", info);
+        formData.append("options", JSON.stringify(itemOptions))
+
 
         api.post('/items', formData, {
             headers: {
@@ -129,6 +171,28 @@ const AddItem: React.FC<Props> = ({categories}) => {
                     />
                     
                 </fieldset>
+
+                <fieldset>
+                    <legend>
+                        Opções adicionais
+                    </legend>
+                    <div className="new-option">
+                        <Input name="label" label="Opção" type="text" value={optionLabel} onChange={ e => setOptionLabel(e.target.value) }/>
+                        <button type="button" onClick={ addNewItemOptions }> <AddCircleOutlineRounded style={{ fontSize: '40' }}/> </button>    
+                    </div>
+                            
+                    { itemOptions.map((itemOptions, index) => {
+                        return (
+                            itemOptions.label !== '' ?
+                                <div key={ itemOptions.label } className="item-options">
+                                    <span>{itemOptions.label}</span>
+                                    <button type="button" onClick={e => deleteItemOptions(itemOptions.label)}><DeleteOutlineRounded style={{ fontSize: '30' }}/></button>
+                                </div>
+                            : null
+                        );
+                    })}
+                </fieldset>
+
                 {!loading ?
                 <footer>
                     <p>Importante! <br /> Preencha todos os dados.</p>
