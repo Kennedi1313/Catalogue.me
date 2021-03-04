@@ -96,13 +96,11 @@
 }
 
 #page-user-form-dash main footer {
-    width: 100%;
-    border-top: 1px solid snow;
+    height: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem 1rem;
-    margin-top: 1rem;
+    padding: 3rem 3rem 8rem;
 }
 
 #page-user-form-dash main footer p {
@@ -116,17 +114,16 @@
 
 #page-user-form-dash main form button {
     width: 100%;
-    height: 5rem;
+    height: 5.6rem;
     background-color: #426f42;
     color: white;
+    font: 700 1.6rem Poppins;
     border: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    margin-top: 1rem;
-    margin-left: 1rem;
 }
 
 footer > button {
@@ -150,8 +147,6 @@ footer > button {
     margin-bottom: 2rem;
     margin-top: 0;
     text-align: center;
-    background-color: #2F4F4F;
-    color: #2F4F4F;
     height: 8rem;
     width: 100%;
     font: 400 2rem Poppins;
@@ -164,8 +159,7 @@ footer > button {
     width: 50%;
     padding: 1rem;
     margin: 0 auto;
-    background-color: #2F4F4F;
-    color: white;
+    color: grey;
     border: 0;
     cursor: pointer;
     font: 700 1.6rem Poppins;
@@ -180,9 +174,9 @@ footer > button {
     width: 50%;
     padding: 1rem;
     margin: 0 auto;
-    background-color: #1b2e2e;
-    color: white;
-    border: 0;
+    background-color: snow;
+    color: #FF6347;
+    border-bottom: 2px solid #FF6347;
     cursor: pointer;
     font: 700 1.6rem Poppins;
     display: flex;
@@ -200,7 +194,7 @@ footer > button {
     padding: 0;
     margin-top: 1rem;
     width: 100%;
-    height: 5rem;
+    height: 5.6rem;
     display: flex;
     align-items: center;
     text-align: center;
@@ -230,6 +224,7 @@ footer > button {
     display: flex;
     flex-direction: row;
     padding-bottom: 1rem;
+    align-items: flex-end;
 }
 
 .footer-simula-header form .trocar-cor {
@@ -238,6 +233,10 @@ footer > button {
     flex-direction: row;
     align-items: flex-end;
     padding-bottom: 1rem;
+}
+
+.footer-simula-header form button {
+    margin-left: 1rem;
 }
 
 .footer-simula-header .color-picker-container {
@@ -353,8 +352,6 @@ fieldset form label{
         justify-content: space-between;
         flex-direction: row;
         width: 80%;
-        margin: auto 10%;
-        padding: 2rem 2.4rem;
     }
     #page-user-form-dash main footer p {
         justify-content: space-between;

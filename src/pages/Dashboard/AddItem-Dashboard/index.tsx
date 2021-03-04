@@ -128,7 +128,6 @@ const AddItem: React.FC<Props> = ({categories}) => {
          
         <div id="page-item-form" >
             <main>
-                <h1>Cadastro de Item</h1>
                 
                 <form onSubmit={handleCreate}>
                 <fieldset className="add-item">

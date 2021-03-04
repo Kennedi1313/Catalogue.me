@@ -164,7 +164,7 @@ function ItemDescription(){
                                     itemOptions.label !== '' ?
                                         <div key={ itemOptions.label } className="item-description-options">
                                             <label htmlFor={itemOptions.label}>{itemOptions.label}</label>
-                                            <Checkbox onChange={e => setItemOptionValue(index, !itemOptionsValue[index].value)} id={itemOptions.label} />
+                                            <Checkbox color="default" size="medium" onChange={e => setItemOptionValue(index, !itemOptionsValue[index].value)} id={itemOptions.label} />
                                         </div>
                                     : null
                                 );

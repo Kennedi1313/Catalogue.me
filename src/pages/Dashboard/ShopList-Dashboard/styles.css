@@ -14,9 +14,11 @@
     display: flex;
     flex-direction: column;
     font: 400 1.4rem Poppins;
+    padding-bottom: 8em;
 }
+
 #page-shop-list-dash main .container {
-    max-width: 800px;
+    max-width: 80%;
     margin: 0rem auto;
     text-align: justify;
     display: grid;
@@ -28,8 +30,6 @@
     margin-bottom: 2rem;
     margin-top: 0;
     text-align: center;
-    background-color: #2F4F4F;
-    color: white;
     height: 8rem;
     width: 100%;
     font: 400 2rem Poppins;
@@ -54,27 +54,23 @@
     transition: background-color 0.2s;
 }
 #page-shop-list-dash main .botao-aba-esq {
-    width: 50%;
-    padding: 1rem;
-    margin: 0 auto;
-    background-color: #1b2e2e;
-    color: white;
-    border: 0;
+    width: 100%;
+    color: #FF6347;
+    border-bottom: 2px solid #FF6347;
     cursor: pointer;
     font: 700 1.6rem Poppins;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    transition: background-color 0.2s;
+    transition: width .2s;
 }
 
 #page-shop-list-dash main .botao-aba-dir {
-    width: 50%;
+    width: 100%;
     padding: 1rem;
     margin: 0 auto;
-    background-color: #2F4F4F;
-    color: white;
+    color: grey;
     border: 0;
     cursor: pointer;
     font: 700 1.6rem Poppins;
@@ -87,9 +83,9 @@
 
 #page-shop-list-dash main div .categoria {
     color: #2F4F4F;
-    font: 700 2.3rem Poppins;
-    text-align: center;
+    font: 600 2rem Poppins;
     margin-top: 2rem;
+    margin-left: 10%;
 }
 
 @media(min-width: 800px) {

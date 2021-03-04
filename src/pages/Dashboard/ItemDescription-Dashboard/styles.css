@@ -30,6 +30,7 @@ fieldset legend {
     padding-top: 0;
     margin-top: 0;
     min-height: 100vh;
+    padding-bottom: 4rem;
 }
 .item-dashboard {
     padding-bottom: 6rem;
@@ -143,14 +144,8 @@ fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
     color: white;
 }
 .item-dashboard header .info fieldset legend {
-    font: 700 2.4rem Poppins;
-    color:#2F4F4F;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding-bottom: 2.2rem;
-    border-bottom: 1px solid snow;
+    font: 600 1.8rem Poppins;
+    color: #2F4F4F;
 }
 
 .add-image {
@@ -160,7 +155,6 @@ fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
     justify-items: center;
     align-content: space-between;
     padding: 1rem;
-    box-shadow: 0 0 2px rgba(0,0,0,0.5);
     margin-bottom: 2rem;
 }
 
@@ -177,13 +171,6 @@ fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
     background-color: white;
     border-radius: 5px;
     height: 5px;
-}
-
-.carousel-control-next, .carousel-control-prev{
-    background-color: rgba(0,0,0,0.3);
-    top: 50%;
-    display: block;
-    height: min-content;
 }
 
 .carousel-control-next-icon, .carousel-control-prev-icon {
@@ -205,9 +192,10 @@ fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
     margin-bottom: 2rem;
     margin-top: 0;
     text-align: center;
-    background-color: #2F4F4F;
+    background-color: #FF6347;
     color: white;
     height: 8rem;
+
     width: 100%;
     font: 700 1.6rem Poppins;
     display: flex;
@@ -222,7 +210,6 @@ fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
 
 .imagens {
     padding: 1rem;
-    box-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 
 .item-imagens {
@@ -325,10 +312,6 @@ fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
         padding: 1rem;
         width: 20rem;
     }
-    .carousel {
-        max-width: 70%;
-        height: fit-content;
-    }
     .item-dashboard fieldset button, fieldset #label-file {
         width: 50%;
     }
@@ -351,7 +334,7 @@ fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
         overflow: visible;
     }
     .item-dashboard {
-        width: 90%;
+        width: 80%;
         padding-bottom: 0rem;
     }
 
@@ -362,11 +345,6 @@ fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
         flex-direction: row;
     }
 
-    .item-dashboard header .info {
-        min-width: 50% !important;
-        margin-left: 2rem;
-    }
-
     .carousel-item-next, .carousel-item-prev, .carousel-item .active {
         display: none !important;
         transition: transform 0s ease, opacity .0s ease-out;
@@ -375,6 +353,10 @@ fieldset .select-block, fieldset .textarea-block, fieldset .input-block{
     .item-dashboard footer a {
         padding-right: 10rem;
         font-size: 2rem;
+    }
+
+    header .info {
+        width: 100%;
     }
 
     .item-dashboard footer p strong {

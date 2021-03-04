@@ -84,9 +84,9 @@ function Dashboard() {
                 <label htmlFor="chk" id="menu-icon" className="menu-icon">&#9776;</label>
                 <nav id="side-menu" className="buttons-side-container">
                    
-                    <Link className="link" to="/dashboard/admin/inicio">Inicio</Link>
-                    <Link className="link" to="/dashboard/admin/itens-ativos">Minha Loja</Link>
-                    <Link className="link" onClick={() => getCategories()} to="/dashboard/admin/add-item">Adicionar Itens</Link>
+                    <Link style={page === 'inicio' ? { color: '#FF6347' } : undefined} className="link" to="/dashboard/admin/inicio">Inicio</Link>
+                    <Link style={page === 'itens-ativos' || page === 'shop' || page === 'item' ? { color: '#FF6347' } : undefined} className="link" to="/dashboard/admin/itens-ativos">Minha Loja</Link>
+                    <Link style={page === 'add-item' ? { color: '#FF6347' } : undefined} className="link" onClick={() => getCategories()} to="/dashboard/admin/add-item">Adicionar Itens</Link>
 
                 </nav>
                 <div id="page-dashboard-content">
@@ -107,11 +107,11 @@ function Dashboard() {
                             <AddAvatar />
                         : page === 'inicio' ?
                             <fieldset className="link-shop">
-                                <legend>Bem vindo a area administrativa da sua loja. Gerencie seus itens no menu e compartilhe sua loja!</legend>
+                                <p>Bem vindo a area administrativa da sua loja. Gerencie seus itens no menu e compartilhe sua loja!</p>
                                 <div className="share">
                                     <h2>Copie esse link e envie para os seus clientes</h2>
                                     <div className="link">
-                                        <textarea ref={textAreaRef} id="url" readOnly value={process.env.REACT_APP_URL+'/'+shopTag}></textarea>
+                                        <textarea draggable="false" ref={textAreaRef} id="url" readOnly value={process.env.REACT_APP_URL+'/'+shopTag}></textarea>
                                         <a href="/dashboard/admin/inicio" onClick={copyToClipboard}>Copiar</a> 
                                     </div>
                                 </div>

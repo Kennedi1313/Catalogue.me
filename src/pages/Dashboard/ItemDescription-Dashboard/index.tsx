@@ -266,24 +266,13 @@ function ItemDescription(){
 
     return (
         <div id="item-description-dashboard">
-            <h1>Gerenciar Item</h1>
             <article className="item-dashboard">
-                
                 <header>
-                    <Carousel pause="hover" fade={true} interval={5000} keyboard={true}>
-                        {avatar.map(({avatar, id, item_id}) => {
-                            return (
-                                    <Carousel.Item key={avatar} className="carousel-item-dashboard">
-                                        <img src={ isS3 ? avatar : ( avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>  
-                                    </Carousel.Item>
-                                )
-                        }) }
-                        
-                    </Carousel>
                     <div className="info">
                         <form onSubmit={handleEdit}>
 
                             <fieldset>
+                                <legend>Informações do item</legend>
                                 <Input 
                                     name="name" 
                                     label="Nome" 

@@ -1,5 +1,6 @@
 main .menu-icon {
     display: none;
+    color: black;
 }
 main #chk {
     display: none;
@@ -10,8 +11,6 @@ main #chk {
     height: 100%;
     display: flex;
     flex-direction: column;
-    color: white;
-    background-color: #2F4F4F;
 }
 
 #page-dashboard main {
@@ -21,13 +20,14 @@ main #chk {
 }
 
 #side-menu {
-    background-color: #1c2f2f;
+    background-color: white;
     width: 100%;
-    height: 100%
+    height: 100%;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
 }
 
 #page-dashboard-content {
-    background-color: #2F4F4F;
+    background-color: whitesmoke;
     width: 100%;
     height: 100%;
 }
@@ -43,28 +43,33 @@ main #chk {
     width: 100%;
     display: flex;
     height: 4rem;
-    background-color:  #121f1f;
+    background-color: white;
     text-decoration: none;
-    color: white;
+    color: black;
     padding: 1rem;
     font: 400 1.4rem Poppins;
 }
 
 .buttons-side-container a + a {
     margin-top: 0.3rem;
+    
 }
 
 .buttons-side-container a:hover {
-    background-color:  #253f3f;
+    background-color:  snow;
+    color: #FF6347;
 }
 
 .link-shop {
     max-width: 80%;
-    margin: 0 auto;
-    margin-top: 1rem;
+    margin: 3rem auto;
     display: flex;
     align-items: center;
     align-content: center;
+    border-radius: 5px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    background-color: white;
 }
 
 .link-shop .share {
@@ -79,9 +84,10 @@ main #chk {
 .link-shop .share .link {
     width: 100%;
     display: flex;
-    padding: 4px;
+    padding: 2px;
     flex-direction: row;
-    background-color: #121f1f;
+    background-color: #FF6347;
+    border-radius: 10px;
 }
 
 .link-shop .share .link #url {
@@ -89,7 +95,7 @@ main #chk {
 }
 
 .link-shop .share .link a {
-    background-color: #121f1f;
+    background-color: #FF6347;
     color: white;
     padding: 1rem;
     cursor: pointer;
@@ -108,7 +114,10 @@ main #chk {
 
 #page-dashboard-content .link-shop textarea{
     width: 100%;
+    border-radius: 10px;
+    padding: 5px;
 }
+
 .logo-container {
     z-index: 100;
     width: 100%;
@@ -123,7 +132,7 @@ main #chk {
     float: left;
     font: 500 3rem Rancho;
     border: none;
-    color: #2F4F4F;
+    color: #FF6347;
     background-color: white;
 }
 
@@ -132,8 +141,7 @@ main #chk {
 }
 
 .logo-container .nav a {
-    background-color: #2F4F4F;
-    color: white;
+    color: #FF6347;
     padding: 1rem;
     border-radius: 1rem;
     font: 700 1.6rem Poppins;
@@ -167,7 +175,6 @@ main #chk {
     #page-dashboard main {
         margin: 0rem auto;
         width: 100%;
-        padding-bottom: 8rem !important;
         display: flex;
     }
 
@@ -192,7 +199,7 @@ main #chk {
         align-content: center;
         justify-items: center;
         justify-content: center;
-        background-color: #253f3f;
+        background-color: white;
         z-index: 10;
     }
 

@@ -46,13 +46,15 @@ const ShopItem: React.FC<itemProps> = ( { item, onDelete, onInative } ) => {
         <article className="shop-item">
             <Link to={'/dashboard/admin/item/'+item.id}>
                 <header>
+                
                 <img src={ isS3 ? item.avatar : ( item.avatar !== '' ? process.env.REACT_APP_API_URL + avatar_url : process.env.REACT_APP_API_URL + default_url)} alt="avatar"/>
-                    <div>
-                        <strong>{nomeExibido}</strong>
-                    </div>
+                    
                 </header>
             </Link>
                 <footer>
+                <div>
+                    <strong>{nomeExibido}</strong>
+                </div>
                     <p>
                         Preço: 
                         <strong>R$ {item.price}</strong>
