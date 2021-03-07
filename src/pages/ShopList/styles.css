@@ -145,10 +145,6 @@ h4 {
     color: unset;
 }
 
-#page-shop-list main img {
-    margin-bottom: 80vh;
-}
-
 @media(min-width: 800px) {
     
     #page-shop-list main .pagination {
