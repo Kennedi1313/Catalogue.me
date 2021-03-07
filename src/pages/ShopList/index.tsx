@@ -7,9 +7,8 @@ import Input from '../../components/Input'
 import PageHeader from '../../components/PageHeader'
 import Select from '../../components/Select'
 import api from '../../services/api'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/SearchOutlined';
-import whatsappIcon from '../../assets/images/whatsappIcon.png'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
@@ -158,7 +157,7 @@ function ShopList() {
                             }) }
                             
                         </div>
-                        : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading" />}
+                        : <div className="loading"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading" /></div>}
                     </>
                     
                 

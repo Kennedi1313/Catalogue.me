@@ -2,7 +2,6 @@ import { Switch } from '@material-ui/core'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './styles.css'
-import DeleteIcon from '@material-ui/icons/Delete';
 
 interface itemProps {
     item: {

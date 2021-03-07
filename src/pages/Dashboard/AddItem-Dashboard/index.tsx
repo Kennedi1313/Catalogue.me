@@ -6,7 +6,6 @@ import Select from '../../../components/Select';
 import api from '../../../services/api';
 import StoreContext from '../../../components/Store/Context';
 import imageCompression from 'browser-image-compression';
-import { Checkbox } from '@material-ui/core';
 import { DeleteOutlineRounded } from '@material-ui/icons'
 import { AddCircleOutlineRounded } from '@material-ui/icons'
 

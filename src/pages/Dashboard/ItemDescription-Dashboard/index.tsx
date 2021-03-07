@@ -2,7 +2,6 @@ import React, { FormEvent, useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import api from '../../../services/api';
 import './styles.css'
-import {Carousel} from 'react-bootstrap'
 import Textarea from '../../../components/Textarea';
 import Input from '../../../components/Input';
 import Select from '../../../components/Select';
@@ -48,7 +47,7 @@ function ItemDescription(){
 
     useEffect(() => {
         function getItem() {
-            const res = api.get('/itembyid', { 
+            api.get('/itembyid', { 
                 params: { item_id } 
             }).then((res) => {
                 setName(res.data[0].name)
@@ -57,13 +56,13 @@ function ItemDescription(){
                 
                 setItemAvatar(res.data[0].avatar)
     
-                const avatarData = api.get('/itemavatarbyid', {
+                api.get('/itemavatarbyid', {
                     params: {item_id}
                 }).then((avatarData) => {
                     setAvatar(avatarData.data.itemsAvatar)
                 })
 
-                const options = api.get('/getOptionsById', {
+                api.get('/getOptionsById', {
                     params: {
                         item_id,
                     }
@@ -72,7 +71,7 @@ function ItemDescription(){
                 });
 
                 if (labelCategories.length === 0) {
-                    const categories = api.get('/shops-categories', {
+                    api.get('/shops-categories', {
                         params: {
                             shop_id: user.shop_id
                         }
@@ -88,10 +87,10 @@ function ItemDescription(){
                         })
                         if(!isPossuiCategoriaDoItem)
                             newlabel.push({value: res.data[0].category, label: res.data[0].category})
-                        console.log(res.data[0].category)
+                       
                         setLabelCategories(newlabel)
                         setItemCategory(res.data[0].category)
-                        console.log(labelCategories)
+                    
                     });
                 }
                 
@@ -155,9 +154,7 @@ function ItemDescription(){
     async function onChangeHandler(event) {
         setLabelInput(event.target.files[0].name)
         const imageFile = event.target.files[0];
-        console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
-        console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
-      
+
         const options = {
           maxSizeMB: 1,
           maxWidthOrHeight: 1920,
@@ -165,9 +162,7 @@ function ItemDescription(){
         }
         try {
           const compressedFile = await imageCompression(imageFile, options);
-          console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
-          console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
-      
+ 
           setAvatarInp(compressedFile)
         } catch (error) {
           console.log(error);
@@ -208,7 +203,6 @@ function ItemDescription(){
         setLoading(true);
 
         const user_id = user.id
-        console.log(itemCategory)
 
         api.post('/items-edit',{
                 item_id,
@@ -285,7 +279,7 @@ function ItemDescription(){
                                     name="category" 
                                     label="Categoria" 
                                     value={itemCategory}
-                                    onChange={(e) => {setItemCategory(e.target.value); console.log(e.target.value)}}
+                                    onChange={(e) => {setItemCategory(e.target.value)}}
                                     options={labelCategories} 
                                 />
 

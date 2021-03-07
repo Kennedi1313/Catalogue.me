@@ -145,8 +145,12 @@ h4 {
     color: unset;
 }
 
-#page-shop-list main img {
+#page-shop-list main .loading {
     height: 100vh;
+}
+
+#page-shop-list main div img {
+    height: 100%;
 }
 
 @media(min-width: 800px) {

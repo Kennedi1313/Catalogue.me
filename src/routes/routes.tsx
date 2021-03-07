@@ -9,7 +9,6 @@ import Landing from '../pages/Landing';
 import ShopList from '../pages/ShopList';
 import UserForm from '../pages/UserForm';
 import Login from '../pages/Login';
-import AddItem from '../pages/AddItem';
 import Dashboard from '../pages/Dashboard';
 
 function Routes() {
@@ -24,7 +23,6 @@ function Routes() {
                     <Route exact path="/:shop_tag/item/:item_id" component={ItemDescription}/>
                     <Route exact path="/user/login" component={Login} />
 
-                    <PrivateRoute path="/item/add" component={AddItem}/>
                     <PrivateRoute path="/dashboard/admin/:page/:item_id?" component={Dashboard} />
                 </Switch>
             </StoreProvider>
