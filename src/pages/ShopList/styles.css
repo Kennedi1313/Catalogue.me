@@ -61,10 +61,10 @@ h4 {
 }
 
 #page-shop-list .category a {
-    border-radius: 0.4rem;
     padding: 1rem;
     min-width: fit-content;
-    border: 1px solid grey;
+    font: 700 1.6rem Poppins;
+    color: rgb(95, 95, 95);
     cursor: pointer;
     height: 4rem;
 }
@@ -90,7 +90,7 @@ h4 {
 }
 
 #page-shop-list main .pagination .pagination-button button {
-    color: grey;
+    color: rgb(95, 95, 95);
     background-color: whitesmoke;
     border: 0;
     cursor: pointer;
@@ -109,17 +109,16 @@ h4 {
     margin-left: 2px;
     margin-right: 2px;
     border-radius: 5px;
-    color: grey;
+    color: rgb(95, 95, 95);
 }
 
 #page-shop-list main .pagination .pagination-button .pagination-item-selected {
     padding: 1rem;
     cursor: pointer;
-    border-bottom: 2px solid grey;
-    color: grey;
+    border-bottom: 2px solid black;
+    color: black;
     margin-left: 2px;
     margin-right: 2px;
-    border-radius: 5px;
 }
 
 #footer-shop {
@@ -134,41 +133,6 @@ h4 {
     font: 700 1.8rem Poppins !important;
 }
 
-#footer-shop .divulgue a {
-    padding: 1rem;
-    width: 100%;
-    height: 5rem;
-    margin-top: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    background-color:  #2f4f2fbd;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    transition: 0.2s;
-}
-
-#footer-shop .contato a {
-    width: 100%;
-    height: 5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    background-color:  #2f4f2fbd;
-    color: white;
-    border: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    transition: 0.2s;
-    text-decoration: none;
-}
-
-#footer-shop .contato a img{
-    width: 4rem;
-}
-
 #search-itens .input-block {
     color: unset;
 }
@@ -179,6 +143,10 @@ h4 {
 
 #search-itens .button-back {
     color: unset;
+}
+
+#page-shop-list main img {
+    height: 100vh;
 }
 
 @media(min-width: 800px) {

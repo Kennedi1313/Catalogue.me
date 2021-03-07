@@ -115,6 +115,7 @@ function ShopList() {
                     <Input 
                         name="name" 
                         label="Nome" 
+                        placeholder="Pesquise nesta loja"
                         type="text"
                         value={name}
                         onChange={(e) => {setName(e.target.value)}}
@@ -141,10 +142,10 @@ function ShopList() {
                     <>
                         {arrayCategory.length > 1 ?
                         <div className="category">
-                            <a onClick={() => {setCategory('all'); setCurrentPage(1)}} style={category === 'all' ? {backgroundColor: 'grey'} : {}} >Todas</a>
+                            <a onClick={() => {setCategory('all'); setCurrentPage(1)}} style={category === 'all' ? {borderBottom: '2px solid black', color: 'black'} : {}} >Todas</a>
                             {arrayCategory.map((categoryButton) => {
                                 return(
-                                    <a key={categoryButton} onClick={() => {setCategory(categoryButton); setCurrentPage(1)}} style={categoryButton === category ? {backgroundColor: 'grey'} : {}} >{categoryButton}</a>  
+                                    <a key={categoryButton} onClick={() => {setCategory(categoryButton); setCurrentPage(1)}} style={categoryButton === category ? {borderBottom: '2px solid black', color: 'black'} : {}} >{categoryButton}</a>  
                                 )
                             })}
                         </div> : ''}

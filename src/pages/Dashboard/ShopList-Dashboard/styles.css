@@ -18,7 +18,6 @@
 }
 
 #page-shop-list-dash main .container {
-    max-width: 80%;
     margin: 0rem auto;
     text-align: justify;
     display: grid;
@@ -98,6 +97,7 @@
     }
     #page-shop-list-dash main div .container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        max-width: 80%;
     }
 
     .page-header-dash {
