@@ -83,9 +83,9 @@ function Dashboard() {
                 <label htmlFor="chk" id="menu-icon" className="menu-icon">&#9776;</label>
                 <nav id="side-menu" className="buttons-side-container">
                    
-                    <Link style={page === 'inicio' ? { color: '#FF6347' } : undefined} className="link" to="/dashboard/admin/inicio">Inicio</Link>
-                    <Link style={page === 'itens-ativos' || page === 'shop' || page === 'item' ? { color: '#FF6347' } : undefined} className="link" to="/dashboard/admin/itens-ativos">Minha Loja</Link>
-                    <Link style={page === 'add-item' ? { color: '#FF6347' } : undefined} className="link" onClick={() => getCategories()} to="/dashboard/admin/add-item">Adicionar Itens</Link>
+                    <Link style={page === 'inicio' ? { color: '#FF6347', borderTop: '2px solid #FF6347' } : undefined} className="link" to="/dashboard/admin/inicio">Inicio</Link>
+                    <Link style={page === 'itens-ativos' || page === 'shop' || page === 'item' ? { color: '#FF6347', borderTop: '2px solid #FF6347' } : undefined} className="link" to="/dashboard/admin/itens-ativos">Minha Loja</Link>
+                    <Link style={page === 'add-item' ? { color: '#FF6347', borderTop: '2px solid #FF6347' } : undefined} className="link" onClick={() => getCategories()} to="/dashboard/admin/add-item">Adicionar Itens</Link>
 
                 </nav>
                 <div id="page-dashboard-content">
