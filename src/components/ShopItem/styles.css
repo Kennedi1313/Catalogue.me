@@ -34,6 +34,7 @@
     min-height: 20rem;
     max-height: 20rem;
     object-fit: cover;
+    margin-bottom: 0 !important;
 }
 
 .shop-item header div strong {

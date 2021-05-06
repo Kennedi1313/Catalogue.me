@@ -74,6 +74,7 @@ function ShopList() {
         async function searchAllItems(){
             setLoading(true)
             const categories = await api.get('/categories', {params: {shop_id: shopId}})
+            console.log(shopId)
 
             setArrayCategory(categories.data)
 
@@ -157,7 +158,7 @@ function ShopList() {
                             }) }
                             
                         </div>
-                        : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading" />}
+                        : <img className="loading" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loading" />}
                     </>
                     
                 
